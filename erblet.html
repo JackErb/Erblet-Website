@@ -1,0 +1,125 @@
+<!doctype html>
+<title>Example</title>
+<style>
+  * {
+   box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+  }
+  #main {
+    display: flex;
+    min-height: 60vh;
+  }
+  #main > article {
+    flex: 1;
+  }
+  #main > nav,
+  #main > aside {
+    flex: 0 0 20vw;
+    /*border:
+    background: beige;*/
+  }
+  #main > nav {
+    order: -1;
+  }
+
+  header, footer, article, nav, aside {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  header, footer {
+    /*background: yellowgreen;*/
+    height: 20vh;
+  }
+
+  hr {
+    border-color: #FFFFFF;
+  }
+
+  #wallet {
+    padding: 1em;
+    background: white;
+    /*border-top: 2px solid #DDDDDD;
+    border-right: 2px solid #DDDDDD;*/
+    min-height: 56vh;
+  }
+
+  #borderright {
+    border-left: 2px solid #dddddd;
+    position: absolute;
+    right:22vw;
+    top: 25%;
+    bottom: 0;
+  }
+
+  #bordertop {
+    border-top: 2px solid #dddddd;
+    position: absolute;
+    top:20vh;
+    right:25vw;
+    left:2vw;
+  }
+
+  .walletpic {
+    height: 25vh;
+    width: auto;
+  }
+
+  .wallettext {
+    transform: rotate(270deg);
+    transform-origin: left bottom 0;
+    float: left;
+    position: relative;
+  }
+
+  #front {
+    top: 12.5vh;
+    left: 1em;
+  }
+
+  #back {
+    top: 12.5vh;
+    left: 1em;
+  }
+
+  #inside {
+    top: 12.5vh;
+    left: 1em;
+  }
+</style>
+<body>
+  <header>
+    <h1>Erblet</h1>
+  </header>
+
+
+  <div id="main">
+    <article>
+      <div id="bordertop"></div>
+      <div id="borderright"></div>
+      <div id="wallet">
+        <div class="wallettext" id="front"/>Front</div>
+        <img class="walletpic" src="images/front.png"/> <br/>
+
+        <div class="wallettext" id="back"/>Back</div>
+        <img class="walletpic" src="images/back.png"/> <br/>
+
+        <div class="wallettext" id="inside"/>Inside</div>
+        <img class="walletpic" src="images/inside.png"/>
+      </div>
+    </article>
+    <aside>Aside</aside>
+  </div>
+
+
+  <footer>
+    <br/>
+    <br/>
+    <hr>
+    <hr>
+    Email <br/>
+    Contact <br/>
+    Address <br/>
+  </footer>
+</body>
