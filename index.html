@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title>Duct Tape Wallet</title>
+<title>Duct Tape Wallets</title>
 <style>
   * {
    box-sizing: border-box;
@@ -37,13 +37,13 @@
     border-color: #FFFFFF;
   }
 
-  #wallet {
+  /*#wallet {
     padding: 1em;
     background: white;
-    /*border-top: 2px solid #DDDDDD;
-    border-right: 2px solid #DDDDDD;*/
+    border-top: 2px solid #DDDDDD;
+    border-right: 2px solid #DDDDDD;*//*
     min-height: 56vh;
-  }
+  }*/
 
   #borderright {
     border-left: 2px solid #dddddd;
@@ -61,7 +61,7 @@
     left:2vw;
   }
 
-  .walletpic {
+  /*.walletpic {
     height: 25vh;
     width: auto;
   }
@@ -86,11 +86,12 @@
   #inside {
     top: 12.5vh;
     left: 1em;
-  }
+  }*/
 </style>
 <body>
   <header>
     <h1>Erblet</h1>
+    <script type="text/javascript" src="index.js"></script>
   </header>
 
 
@@ -98,7 +99,7 @@
     <article>
       <div id="bordertop"></div>
       <div id="borderright"></div>
-      <div id="wallet">
+      <!--<div id="wallet">
         <div class="wallettext" id="front"/>Front</div>
         <img class="walletpic" src="images/front.png"/> <br/>
 
@@ -107,9 +108,23 @@
 
         <div class="wallettext" id="inside"/>Inside</div>
         <img class="walletpic" src="images/inside.png"/>
-      </div>
+      </div>-->
+      <img src="images/front.png" alt="" usemap="#FrontWalletMap" />
+      <map name="FrontWalletMap" id="FrontWalletMap">
+        <!--  Trim  -->
+        <area alt="" title="" href="#" onClick="trimClick()" shape="rect" coords="16,36,345,58" />
+        <area alt="" title="" href="#" onClick="trimClick()" shape="rect" coords="16,67,344,89" />
+        <area alt="" title="" href="#" onClick="trimClick()" shape="rect" coords="15,98,345,120" />
+        <area alt="" title="" href="#" onClick="trimClick()" shape="rect" coords="370,32,698,48" />
+
+        <!-- Inside -->
+        <area alt="" title="" href="#" onClick="insideClick()" shape="rect" coords="697,225,371,51" />
+        
+        <!-- Base -->
+        <area alt="" title="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
+      </map>
     </article>
-    <aside></aside>
+    <aside id="aside"></aside>
   </div>
 
 
