@@ -17,8 +17,6 @@
   #main > nav,
   #main > aside {
     flex: 0 0 20vw;
-    /*border:
-    background: beige;*/
   }
   #main > nav {
     order: -1;
@@ -29,21 +27,12 @@
     padding-right: 1em;
   }
   header, footer {
-    /*background: yellowgreen;*/
     height: 20vh;
   }
 
   hr {
     border-color: #FFFFFF;
   }
-
-  /*#wallet {
-    padding: 1em;
-    background: white;
-    border-top: 2px solid #DDDDDD;
-    border-right: 2px solid #DDDDDD;*//*
-    min-height: 56vh;
-  }*/
 
   #borderright {
     border-left: 2px solid #dddddd;
@@ -61,37 +50,60 @@
     left:2vw;
   }
 
-  /*.walletpic {
-    height: 25vh;
-    width: auto;
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
 
-  .wallettext {
-    transform: rotate(270deg);
-    transform-origin: left bottom 0;
-    float: left;
-    position: relative;
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
   }
 
-  #front {
-    top: 12.5vh;
-    left: 1em;
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
   }
 
-  #back {
-    top: 12.5vh;
-    left: 1em;
+  .color {
+    width:40px;
+    height:40px;
+    display:table-cell;
+    padding: 40px;
   }
 
-  #inside {
-    top: 12.5vh;
-    left: 1em;
-  }*/
+  #blueColor {
+    background-color: #499BC9;
+  }
+
+  #redColor {
+    background-color: #FF5F5E;
+  }
+
+  #yellowColor {
+    background-color: #F7BB73;
+  }
 </style>
 <body>
   <header>
     <h1>Erblet</h1>
-    <script type="text/javascript" src="index.js"></script>
   </header>
 
 
@@ -99,32 +111,48 @@
     <article>
       <div id="bordertop"></div>
       <div id="borderright"></div>
-      <!--<div id="wallet">
-        <div class="wallettext" id="front"/>Front</div>
-        <img class="walletpic" src="images/front.png"/> <br/>
 
-        <div class="wallettext" id="back"/>Back</div>
-        <img class="walletpic" src="images/back.png"/> <br/>
+      <div id="walletPictures" style="position:absolute;"/>
+        <!-- Front Picture of Wallet -->
+        <div id="frontWallet" style="position:relative;">
+          <img src="images/emptywallet.png" style="position: absolute; z-index:10;" usemap="#FrontWalletMap" />
 
-        <div class="wallettext" id="inside"/>Inside</div>
-        <img class="walletpic" src="images/inside.png"/>
-      </div>-->
-      <img src="images/front.png" alt="" usemap="#FrontWalletMap" />
-      <map name="FrontWalletMap" id="FrontWalletMap">
-        <!--  Trim  -->
-        <area alt="" title="" href="#" onClick="trimClick()" shape="rect" coords="16,36,345,58" />
-        <area alt="" title="" href="#" onClick="trimClick()" shape="rect" coords="16,67,344,89" />
-        <area alt="" title="" href="#" onClick="trimClick()" shape="rect" coords="15,98,345,120" />
-        <area alt="" title="" href="#" onClick="trimClick()" shape="rect" coords="370,32,698,48" />
+          <img class="base" src="images/base_red.png" style="position:absolute;" />
+          <img class="trim" src="images/trim_blue.png" style="position:absolute;" />
+          <img class="inside" src="images/inside_yellow.png" style="position:absolute;" />
+        </div>
 
-        <!-- Inside -->
-        <area alt="" title="" href="#" onClick="insideClick()" shape="rect" coords="697,225,371,51" />
-        
-        <!-- Base -->
-        <area alt="" title="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
-      </map>
+        <map name="FrontWalletMap" id="FrontWalletMap">
+          <!--  Trim  -->
+          <area alt="" href="#" onClick="trimClick()" shape="rect" coords="16,36,345,58" />
+          <area alt="" href="#" onClick="trimClick()" shape="rect" coords="16,67,344,89" />
+          <area alt="" href="#" onClick="trimClick()" shape="rect" coords="15,98,345,120" />
+          <area alt="" href="#" onClick="trimClick()" shape="rect" coords="370,32,698,48" />
+
+          <!-- Inside -->
+          <area alt="" href="#" onClick="insideClick()" shape="rect" coords="697,225,371,51" />
+
+          <!-- Base -->
+          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
+        </map>
+
+        <!-- Back Picture of Wallet (ADD LATER) -->
+
+      </div>
     </article>
     <aside id="aside"></aside>
+  </div>
+
+  <!-- Color Selector Popup -->
+  <div id="colorSelector" class="modal">
+
+    <!-- Colors -->
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">Trim Color &times;</span>
+      <div id="blueColor"   class="color"></div>
+      <div id="yellowColor" class="color"></div>
+      <div id="redColor"    class="color"></div>
+    </div>
   </div>
 
 
@@ -137,4 +165,6 @@
     Contact <br/>
     Address <br/>
   </footer>
+
+  <script type="text/javascript" src="index.js"></script>
 </body>
