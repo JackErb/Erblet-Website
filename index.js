@@ -26,7 +26,13 @@ window.onclick = function(event) {
   }
 }
 
-"images/base_red.png"
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+        closeModal();
+    }
+};
+
 function changeColor(color) {
   var images = document.getElementsByClassName(componentToChangeColor);
   for (var i=0; i<images.length; i++) {
@@ -36,9 +42,7 @@ function changeColor(color) {
 
 function openModal(target) {
   modal.style.display = "block";
-
   closeButton.innerHTML = target.charAt(0).toUpperCase() + target.slice(1) + " Color &times;";
-
   componentToChangeColor = target;
 }
 

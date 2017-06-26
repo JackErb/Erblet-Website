@@ -54,7 +54,7 @@
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 100; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -115,7 +115,7 @@
       <div id="walletPictures" style="position:absolute;"/>
         <!-- Front Picture of Wallet -->
         <div id="frontWallet" style="position:relative;">
-          <img src="images/emptywallet.png" style="position: absolute; z-index:10;" usemap="#FrontWalletMap" />
+          <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:10;" usemap="#FrontWalletMap" />
 
           <img class="base" src="images/base_red.png" style="position:absolute;" />
           <img class="trim" src="images/trim_blue.png" style="position:absolute;" />
