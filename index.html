@@ -4,29 +4,6 @@
   * {
    box-sizing: border-box;
   }
-  body {
-    margin: 0;
-  }
-  #main {
-    display: flex;
-    min-height: 60vh;
-  }
-  #main > article {
-    flex: 1;
-  }
-  #main > nav,
-  #main > aside {
-    flex: 0 0 20vw;
-  }
-  #main > nav {
-    order: -1;
-  }
-
-
-  #ducttapedisplay {
-    border-top: 1px solid #dfdfdf;
-    border-right: 1px solid #dfdfdf;
-  }
 
   #walletPictures {
     margin: 15px;
@@ -101,13 +78,7 @@
   }
 </style>
 <body>
-  <header>
-    <h1>Erblet</h1>
-  </header>
 
-
-  <div id="main">
-    <article id="ducttapedisplay">
       <div id="walletPictures" />
 
         <!-- Front Picture of Wallet -->
@@ -138,9 +109,6 @@
         <map name="BackWalletMap" id="BackWalletMap">
           <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" /></map>
       </div>
-    </article>
-    <aside id="aside"></aside>
-  </div>
 
   <!-- Color Selector Popup -->
   <div id="colorSelector" class="modal">
@@ -155,16 +123,6 @@
       </div>
     </div>
   </div>
-
-  <footer>
-    <br/>
-    <br/>
-    <hr>
-    <hr>
-    Email <br/>
-    Contact <br/>
-    Address <br/>
-  </footer>
 
   <script type="text/javascript" src="index.js"></script>
 </body>
