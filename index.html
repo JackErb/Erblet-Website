@@ -22,6 +22,16 @@
     order: -1;
   }
 
+
+  #ducttapedisplay {
+    border-top: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+  }
+
+  #walletPictures {
+    margin: 15px;
+  }
+
   header, footer, article, nav, aside {
     padding-left: 1em;
     padding-right: 1em;
@@ -32,22 +42,6 @@
 
   hr {
     border-color: #FFFFFF;
-  }
-
-  #borderright {
-    border-left: 2px solid #dddddd;
-    position: absolute;
-    right:22vw;
-    top: 25%;
-    bottom: 0;
-  }
-
-  #bordertop {
-    border-top: 2px solid #dddddd;
-    position: absolute;
-    top:20vh;
-    right:25vw;
-    left:2vw;
   }
 
   /* The Modal (background) */
@@ -113,20 +107,17 @@
 
 
   <div id="main">
-    <article>
-      <div id="bordertop"></div>
-      <div id="borderright"></div>
+    <article id="ducttapedisplay">
+      <div id="walletPictures" />
 
-      <div id="walletPictures" style="position:absolute;"/>
         <!-- Front Picture of Wallet -->
-        <div id="frontWallet" style="position:relative;">
-          <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:10;" usemap="#FrontWalletMap" />
+        <div id="frontWallet" style="height:271px; padding-bottom:10px;">
+          <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:1;" usemap="#FrontWalletMap" />
 
-          <img class="base" src="images/base_red.png" style="position:absolute;" />
-          <img class="trim" src="images/trim_blue.png" style="position:absolute;" />
-          <img class="inside" src="images/inside_yellow.png" style="position:absolute;" />
+          <img class="front_base" src="images/base_red.png" style="position:absolute;" />
+          <img class="front_trim" src="images/trim_blue.png" style="position:absolute;" />
+          <img class="front_inside" src="images/inside_yellow.png" style="position:absolute;" />
         </div>
-
         <map name="FrontWalletMap" id="FrontWalletMap">
           <!--  Trim  -->
           <area alt="" href="#" onClick="trimClick()" shape="rect" coords="16,36,345,58" />
@@ -138,11 +129,14 @@
           <area alt="" href="#" onClick="insideClick()" shape="rect" coords="697,225,371,51" />
 
           <!-- Base -->
-          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
-        </map>
+          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" /></map>
 
         <!-- Back Picture of Wallet (ADD LATER) -->
-
+        <div id="backWallet" style="padding-top: 10px;">
+          <img class="back_base" src="images/back_red.png" usemap="#BackWalletMap"/>
+        </div>
+        <map name="BackWalletMap" id="BackWalletMap">
+          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" /></map>
       </div>
     </article>
     <aside id="aside"></aside>
@@ -161,7 +155,6 @@
       </div>
     </div>
   </div>
-
 
   <footer>
     <br/>
