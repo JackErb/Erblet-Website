@@ -5,6 +5,7 @@
    box-sizing: border-box;
   }
   body {
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     margin: 0;
   }
   #main {
@@ -22,6 +23,7 @@
     order: -1;
   }
   #ducttapedisplay {
+    border-radius:3px;
     border-top: 1px solid #dfdfdf;
     border-right: 1px solid #dfdfdf;
   }
@@ -130,6 +132,20 @@
         <map name="BackWalletMap" id="BackWalletMap">
           <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" /></map>
       </div>
+
+      <!-- Snipcart Products -->
+      <div
+        id="buyButton"
+        style="padding:10px;margin-left:15px;float:right;background-color:#DDDDDD;cursor:pointer;border-radius:2px;"
+        class="snipcart-add-item"
+        data-item-id="2"
+        data-item-name="wallet"
+        data-item-price="0.5"
+        data-item-weight="1"
+        data-item-url="http://www.erblet.com/"
+        data-item-description="a duct tape wallet.">
+            buy wallet
+      </button>
     </article>
     <aside id="aside"></aside>
   </div>
@@ -151,25 +167,13 @@
   <footer>
     <br/>
     <br/>
-    <hr>
-    <hr>
-    Email <br/>
-    Contact <br/>
-    Address <br/>
+    <hr style="background-color: #dfdfdf; height: 1px; border: 0;">
+    <br/>
+    <br/>
+    email <br/>
+    contact <br/>
+    address <br/>
   </footer>
-
-
-  <!-- Snipcart Products -->
-  <button
-    class="snipcart-add-item"
-    data-item-id="2"
-    data-item-name="Wallet"
-    data-item-price="16.00"
-    data-item-weight="1"
-    data-item-url="http://www.erblet.com/"
-    data-item-description="A duct tape Wallet">
-        Buy wallet
-  </button>
 
   <script type="text/javascript" src="index.js"></script>
 </body>

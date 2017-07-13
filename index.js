@@ -4,6 +4,12 @@ var modal = document.getElementById("colorSelector");
 // When the user clicks on the 'x' button, close the modal
 var closeButton = document.getElementsByClassName("close")[0];
 
+var buyButton = document.getElementById("buyButton");
+
+var base = "red";
+var trim = "blue";
+var inside = "yellow";
+
 
 var componentToChangeColor = ""
 
@@ -34,6 +40,15 @@ document.onkeydown = function(evt) {
 };
 
 function changeColor(color) {
+  switch (componentToChangeColor) {
+    case "base":
+      base = color;
+    case "trim":
+      trim = color;
+    case "inside":
+      inside = color;
+  }
+
   var images = document.getElementsByClassName("front_" + componentToChangeColor);
   for (var i=0; i<images.length; i++) {
     images[i].src="images/" + componentToChangeColor + "_" + color + ".png";
@@ -43,6 +58,9 @@ function changeColor(color) {
     var images = document.getElementsByClassName("back_base");
     images[0].src = "images/back_" + color + ".png";
   }
+
+  window.alert('{"base":"' + base + '","trim": "' + trim + '","inside":"' + inside + '"}');
+  buyButton.setAttribute("data-item-metadata",'{"base":"' + base + '","trim": "' + trim + '","inside":"' + inside + '"}')
 }
 
 function openModal(target) {
