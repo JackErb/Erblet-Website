@@ -4,11 +4,30 @@
   * {
    box-sizing: border-box;
   }
-
+  body {
+    margin: 0;
+  }
+  #main {
+    display: flex;
+    min-height: 60vh;
+  }
+  #main > article {
+    flex: 1;
+  }
+  #main > nav,
+  #main > aside {
+    flex: 0 0 20vw;
+  }
+  #main > nav {
+    order: -1;
+  }
+  #ducttapedisplay {
+    border-top: 1px solid #dfdfdf;
+    border-right: 1px solid #dfdfdf;
+  }
   #walletPictures {
     margin: 15px;
   }
-
   header, footer, article, nav, aside {
     padding-left: 1em;
     padding-right: 1em;
@@ -16,11 +35,9 @@
   header, footer {
     height: 20vh;
   }
-
   hr {
     border-color: #FFFFFF;
   }
-
   /* The Modal (background) */
   .modal {
     display: none; /* Hidden by default */
@@ -35,7 +52,6 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-
   /* Modal Content */
   .modal-content {
     background-color: #fefefe;
@@ -44,7 +60,6 @@
     border: 1px solid #888;
     width: 80%;
   }
-
   /* The Close Button */
   .close {
     color: #aaaaaa;
@@ -52,33 +67,34 @@
     font-size: 28px;
     font-weight: bold;
   }
-
   .color {
     width:40px;
     height:40px;
     display:table-cell;
     padding: 40px;
   }
-
   #colors {
     display:table;
     margin: 0 auto;
   }
-
   #blueColor {
     background-color: #499BC9;
   }
-
   #redColor {
     background-color: #FF5F5E;
   }
-
   #yellowColor {
     background-color: #F7BB73;
   }
 </style>
 <body>
+  <header>
+    <h1>Erblet</h1>
+  </header>
 
+
+  <div id="main">
+    <article id="ducttapedisplay">
       <div id="walletPictures" />
 
         <!-- Front Picture of Wallet -->
@@ -109,6 +125,9 @@
         <map name="BackWalletMap" id="BackWalletMap">
           <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" /></map>
       </div>
+    </article>
+    <aside id="aside"></aside>
+  </div>
 
   <!-- Color Selector Popup -->
   <div id="colorSelector" class="modal">
@@ -123,6 +142,16 @@
       </div>
     </div>
   </div>
+
+  <footer>
+    <br/>
+    <br/>
+    <hr>
+    <hr>
+    Email <br/>
+    Contact <br/>
+    Address <br/>
+  </footer>
 
   <script type="text/javascript" src="index.js"></script>
 </body>
