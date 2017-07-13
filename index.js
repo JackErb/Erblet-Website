@@ -39,8 +39,10 @@ function changeColor(color) {
     images[i].src="images/" + componentToChangeColor + "_" + color + ".png";
   }
 
-  var images = document.getElementsByClassName("back_base");
-  images[0].src = "images/back_" + color + ".png";
+  if (componentToChangeColor == 'base') {
+    var images = document.getElementsByClassName("back_base");
+    images[0].src = "images/back_" + color + ".png";
+  }
 }
 
 function openModal(target) {
