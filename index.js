@@ -59,7 +59,6 @@ function changeColor(color) {
     images[0].src = "images/back_" + color + ".png";
   }
 
-  window.alert('{"base":"' + base + '","trim": "' + trim + '","inside":"' + inside + '"}');
   buyButton.setAttribute("data-item-metadata",'{"base":"' + base + '","trim": "' + trim + '","inside":"' + inside + '"}')
 }
 

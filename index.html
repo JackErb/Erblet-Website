@@ -7,17 +7,32 @@
   body {
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     margin: 0;
+
+    color: #444;
+    line-height:1.4;
+    font-size:15px;
   }
+
+  @media screen and (max-device-width: 480px) {
+    aside {
+      display:none;
+    }
+  }
+
+  aside {
+    overflow-x: hidden;
+  }
+
+
   #main {
     display: flex;
-    min-height: 60vh;
   }
   #main > article {
     flex: 1;
   }
   #main > nav,
   #main > aside {
-    flex: 0 0 20vw;
+    flex: 0 0 20%;
   }
   #main > nav {
     order: -1;
@@ -35,7 +50,7 @@
     padding-right: 1em;
   }
   header, footer {
-    height: 20vh;
+    height: auto;
   }
   hr {
     border-color: #FFFFFF;
@@ -90,8 +105,11 @@
   }
 </style>
 <body>
-  <header>
-    <h1>Erblet</h1>
+  <header style="margin-bottom:10px">
+    <div style="display:inline-block;">
+      <h1 style="color:black;">e r b l e t</h1>
+      <h4 style="text-align:center;">duct tape</h4>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <!-- REMEMBER TO UPDATE TO ACTUAL API KEY WHEN DONE TESTING -->
@@ -147,7 +165,7 @@
             buy wallet
       </button>
     </article>
-    <aside id="aside"></aside>
+    <aside id="aside">Purchase your very own, custom-made duct tape wallet.</aside>
   </div>
 
   <!-- Color Selector Popup -->
