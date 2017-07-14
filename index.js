@@ -43,10 +43,13 @@ function changeColor(color) {
   switch (componentToChangeColor) {
     case "base":
       base = color;
+      break;
     case "trim":
       trim = color;
+      break;
     case "inside":
       inside = color;
+      break;
   }
 
   var images = document.getElementsByClassName("front_" + componentToChangeColor);
@@ -58,8 +61,6 @@ function changeColor(color) {
     var images = document.getElementsByClassName("back_base");
     images[0].src = "images/back_" + color + ".png";
   }
-
-  buyButton.setAttribute("data-item-metadata",'{"base":"' + base + '","trim": "' + trim + '","inside":"' + inside + '"}')
 }
 
 function openModal(target) {
@@ -83,3 +84,21 @@ function baseClick() {
 function insideClick() {
   openModal("inside");
 }
+
+
+updateBuyButton();
+
+Snipcart.execute('config', 'show_continue_shopping', true);
+
+Snipcart.subscribe('cart.opened'), function() {
+  // Display wallet overlay image
+  var customField = $('.snip-customfields')[0];
+});
+
+Snipcart.subscribe('cart.closed'), function() {
+  // Hide wallet overlay image
+});
+
+Snipcart.subscribe('item.adding', function(ev, item, items) {
+  item.description = base + '-' + trim + '-' + inside + ' wallet';
+});
