@@ -99,5 +99,3 @@ Snipcart.subscribe('cart.closed', function() {
 Snipcart.subscribe('item.adding', function(ev, item, items) {
   item.description = base + '-' + trim + '-' + inside + ' wallet';
 });
-
-window.alert("ok");
