@@ -11,7 +11,7 @@ var trim = "blue";
 var inside = "yellow";
 
 
-var componentToChangeColor = ""
+var componentToChangeColor = "";
 
 document.getElementById("blueColor").addEventListener("click", function() {
   changeColor("blue")
@@ -90,15 +90,17 @@ updateBuyButton();
 
 Snipcart.execute('config', 'show_continue_shopping', true);
 
-Snipcart.subscribe('cart.opened'), function() {
+Snipcart.subscribe('cart.opened', function() {
   // Display wallet overlay image
   var customField = $('.snip-customfields')[0];
 });
 
-Snipcart.subscribe('cart.closed'), function() {
+Snipcart.subscribe('cart.closed', function() {
   // Hide wallet overlay image
 });
 
 Snipcart.subscribe('item.adding', function(ev, item, items) {
   item.description = base + '-' + trim + '-' + inside + ' wallet';
 });
+
+window.alert("ok");
