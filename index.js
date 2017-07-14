@@ -85,9 +85,6 @@ function insideClick() {
   openModal("inside");
 }
 
-
-updateBuyButton();
-
 Snipcart.execute('config', 'show_continue_shopping', true);
 
 Snipcart.subscribe('cart.opened', function() {
