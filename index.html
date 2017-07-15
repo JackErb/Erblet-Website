@@ -22,16 +22,11 @@
   #main {
     display: flex;
   }
-  #main > article {
-    flex: 1;
-  }
-  #main > nav,
+
   #main > aside {
     flex: 0 0 20%;
   }
-  #main > nav {
-    order: -1;
-  }
+
   #ducttapedisplay {
     padding-top:15px;
     padding-left:30px;
@@ -47,12 +42,12 @@
     margin: 15px;
     z-index: 2;
   }
-  header, footer, article, nav, aside {
+  #header, #footer, article, nav, aside {
     padding-left: 1em;
     padding-right: 1em;
   }
-  header, footer {
-    height: auto;
+  #header, #footer {
+    width: auto;
   }
   hr {
     border-color: #FFFFFF;
@@ -144,9 +139,21 @@
   .wallet:hover {
 
   }
+
+  #page {
+    max-width:1050px;
+    display: inline-block;
+    position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  }
 </style>
 <body>
-  <header style="">
+  <div id="page">
+  <div id="header">
     <div style="display:inline-block; padding:1%;">
       <br/>
       <h1 style="color:black;">e r b l e t .</h1>
@@ -162,7 +169,7 @@
     <link type="text/css"
       href="index.css"
       rel="stylesheet /">
-  </header>
+  </div>
 
 
   <div id="main">
@@ -208,7 +215,7 @@
         class="snipcart-add-item"
         data-item-id="2"
         data-item-name="wallet"
-        data-item-price="0.5"
+        data-item-price="16"
         data-item-weight="1"
         data-item-url="http://www.erblet.com/"
         data-item-custom1-name="base"
@@ -239,11 +246,11 @@
     </div>
   </div>
 
-  <footer>
+  <div id="footer">
     <br/>
     <br/>
-    <hr style="background-color: #dfdfdf; height: 1px; border: 0;">
-    <hr style="background-color: #dfdfdf; height: 1px; border: 0;">
+    <!--<hr style="background-color: #dfdfdf; height: 1px; border: 0;">
+    <hr style="background-color: #dfdfdf; height: 1px; border: 0;">-->
     <br/>
     <br/>
     email <br/>
@@ -251,7 +258,8 @@
     address <br/>
     <br/>
     <br/>
-  </footer>
+  </div>
+  </div>
 
   <script type="text/javascript" src="index.js"></script>
 </body>
