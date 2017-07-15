@@ -114,24 +114,35 @@
   #buyButton {
     padding: 10px;
     float: right;
-    background-color:
-    #DDDDDD; cursor:
-    pointer;
-    border-radius: 4px;
+    background-color: #e7e7e7;
+    border-top: 1px solid #cecece;
+    border-left: 1px solid #cecece;
+    border-right: 1px solid #b6b6b6;
+    border-bottom: 3px solid #b6b6b6;
+    cursor: pointer;
+    border-radius: 6px;
     margin-bottom: 2%;
+
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
   }
-</style>
 
+  #buyButton:hover {
+    background-color: #f4f4f4;
   }
 
-</style>
-
+  #buyButton:active {
+    border-bottom: 1px solid #b6b6b6;
   }
 </style>
 <body>
   <header style="">
     <div style="display:inline-block;">
+      <br/>
+      <br/>
       <h1 style="color:black;">e r b l e t .</h1>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -184,6 +195,16 @@
       </div>
 
       <!-- Snipcart Products -->
+      <!--<div
+        id="buyButton"
+        class="snipcart-add-item"
+        data-item-id="2"
+        data-item-name="wallet"
+        data-item-price="0.5"
+        data-item-weight="1"
+        data-item-url="http://www.erblet.com/">
+            buy wallet
+      </div>-->
       <div
         id="buyButton"
         class="snipcart-add-item"
