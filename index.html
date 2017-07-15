@@ -34,12 +34,18 @@
   }
   #ducttapedisplay {
     padding-top:15px;
+    padding-left:30px;
     border-radius:3px;
     border-top: 1px solid #dfdfdf;
     border-right: 1px solid #dfdfdf;
+
+    max-width:820px;
+
+    position: relative;
   }
   #walletPictures {
     margin: 15px;
+    z-index: 2;
   }
   header, footer, article, nav, aside {
     padding-left: 1em;
@@ -104,6 +110,23 @@
   #yellowColor {
     background-color: #F7BB73;
   }
+
+  #buyButton {
+    padding: 10px;
+    float: right;
+    background-color:
+    #DDDDDD; cursor:
+    pointer;
+    border-radius: 4px;
+    margin-bottom: 2%;
+  }
+</style>
+
+  }
+
+</style>
+
+  }
 </style>
 <body>
   <header style="">
@@ -115,14 +138,7 @@
     <!-- REMEMBER TO UPDATE TO ACTUAL API KEY WHEN DONE TESTING -->
     <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
             data-api-key="NjFiZDRlN2YtZWNjNC00MGFkLTgwMmUtYzRlNTBmOTI1ZTE1NjM2MzU1MDIwMDIxMDcyMjMw"
-            id="snipcart"
-            data-cart-custom1-name="Comments"
-    data-cart-custom2-name="Rating on 10"
-    data-cart-custom2-options="1|2|3|4|5|6|7|8|9|10"
-    data-cart-custom3-name="Do you accept terms?"
-    data-cart-custom3-options="true|false"
-    data-cart-custom3-required="true">
-    </script>
+            id="snipcart"></script>
     <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
     <link type="text/css"
       href="index.css"
@@ -132,13 +148,17 @@
 
   <div id="main">
     <article id="ducttapedisplay">
+      <!-- White block divs that cover up parts of the border -->
+      <div style="position: absolute; left: 0; background-color: white; width: 3%; padding-top: 3%; z-index: 1; margin-top: -16px; margin-right: -1px;"></div>
+      <div style="position: absolute; right: 0; background-color: white; width: 3%; padding-top: 3%; z-index: 1; margin-top: -16px; margin-right: -1px;"></div>
+
       <div id="walletPictures" />
 
         <!-- Front Picture of Wallet -->
-        <div id="frontWallet" style="height:271px; padding-bottom:10px;">
-          <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:1;" usemap="#FrontWalletMap" />
+        <div id="frontWallet" style="height:271px; padding-bottom:10px; z-index:20;">
+          <img id="walletFrame" src="images/emptywallet.png" style="position: absolute;" usemap="#FrontWalletMap" />
 
-          <img class="front_base" src="images/base_red.png" style="position:absolute;" />
+          <img class="front_base" src="images/base_red.png" style="position:absolute;  z-index:2;" />
           <img class="front_trim" src="images/trim_blue.png" style="position:absolute;" />
           <img class="front_inside" src="images/inside_yellow.png" style="position:absolute;" />
         </div>
@@ -166,7 +186,6 @@
       <!-- Snipcart Products -->
       <div
         id="buyButton"
-        style="padding:10px;margin-left:15px;float:right;background-color:#DDDDDD;cursor:pointer;border-radius:4px;"
         class="snipcart-add-item"
         data-item-id="2"
         data-item-name="wallet"
@@ -196,6 +215,7 @@
   <footer>
     <br/>
     <br/>
+    <hr style="background-color: #dfdfdf; height: 1px; border: 0;">
     <hr style="background-color: #dfdfdf; height: 1px; border: 0;">
     <br/>
     <br/>
