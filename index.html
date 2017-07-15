@@ -135,6 +135,15 @@
   #buyButton:active {
     border-bottom: 1px solid #b6b6b6;
   }
+
+
+  .wallet {
+
+    cursor: pointer;
+  }
+  .wallet:hover {
+
+  }
 </style>
 <body>
   <header style="">
@@ -166,12 +175,12 @@
       <div id="walletPictures" />
 
         <!-- Front Picture of Wallet -->
-        <div id="frontWallet" style="height:271px; padding-bottom:10px; z-index:20;">
-          <img id="walletFrame" src="images/emptywallet.png" style="position: absolute;" usemap="#FrontWalletMap" />
+        <div id="frontWallet" style="height:271px; padding-bottom:10px; z-index:2;">
+          <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:20;" usemap="#FrontWalletMap" />
 
-          <img class="front_base" src="images/base_red.png" style="position:absolute;  z-index:2;" />
-          <img class="front_trim" src="images/trim_blue.png" style="position:absolute;" />
-          <img class="front_inside" src="images/inside_yellow.png" style="position:absolute;" />
+          <img class="front_base wallet" src="images/base_red.png" style="position:absolute;  z-index:2;" />
+          <img class="front_trim wallet" src="images/trim_blue.png" style="position:absolute; z-index:3;" />
+          <img class="front_inside wallet" src="images/inside_yellow.png" style="position:absolute; z-index:4;" />
         </div>
         <map name="FrontWalletMap" id="FrontWalletMap">
           <!--  Trim  -->
@@ -188,23 +197,13 @@
 
         <!-- Back Picture of Wallet (ADD LATER) -->
         <div id="backWallet" style="padding-top: 10px;">
-          <img class="back_base" src="images/back_red.png" usemap="#BackWalletMap"/>
+          <img class="back_base wallet" src="images/back_red.png" usemap="#BackWalletMap"/>
         </div>
         <map name="BackWalletMap" id="BackWalletMap">
           <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" /></map>
       </div>
 
       <!-- Snipcart Products -->
-      <!--<div
-        id="buyButton"
-        class="snipcart-add-item"
-        data-item-id="2"
-        data-item-name="wallet"
-        data-item-price="0.5"
-        data-item-weight="1"
-        data-item-url="http://www.erblet.com/">
-            buy wallet
-      </div>-->
       <div
         id="buyButton"
         class="snipcart-add-item"
@@ -216,7 +215,9 @@
             buy wallet
       </div>
     </article>
-    <aside id="aside">Purchase your very own, custom-made duct tape wallet.</aside>
+    <aside id="aside">
+      Purchase your very own, custom-made duct tape wallet.
+    </aside>
   </div>
 
   <!-- Color Selector Popup -->
