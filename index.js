@@ -61,6 +61,14 @@ function changeColor(color) {
     var images = document.getElementsByClassName("back_base");
     images[0].src = "images/back_" + color + ".png";
   }
+
+  updateBuyButton();
+}
+
+function updateBuyButton() {
+  $('#buyButton').data('item-custom1-value', base);
+  $('#buyButton').data('item-custom2-value', trim);
+  $('#buyButton').data('item-custom3-value', inside);
 }
 
 function openModal(target) {
@@ -97,7 +105,7 @@ Snipcart.subscribe('cart.closed', function() {
 });
 
 Snipcart.subscribe('item.adding', function(ev, item, items) {
-  window.alert(base + '-' + trim + '-' + inside + ' wallet');
-
   item.description = base + '-' + trim + '-' + inside + ' wallet';
 });
+
+updateBuyButton();
