@@ -74,6 +74,8 @@ function updateBuyButton() {
   $('#buyButton').data('item-custom1-value', base);
   $('#buyButton').data('item-custom2-value', trim);
   $('#buyButton').data('item-custom3-value', inside);
+
+  $('#currentCart').text("Current cart: " + (walletPrice * Snipcart.api.items.all().length) + "$");
 }
 
 function openModal(target) {
