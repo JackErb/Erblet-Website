@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <title>Duct Tape Wallets</title>
 <style>
-  * {
-   box-sizing: border-box;
-  }
   body {
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     margin: 0;
@@ -135,8 +132,7 @@
   }
 
   #checkoutButton {
-    float: center;
-    max-width:90px;
+    float: right;
   }
 
 
@@ -163,6 +159,10 @@
   }
 
   #aside {
+  }
+
+  #checkoutButton {
+    margin-top: 10px;
   }
 
   p {
@@ -250,6 +250,7 @@
 
       <div id="cartDisplay">
         <p id="currentCart">Current cart:</p>
+        <div id="walletsCartDisplay"></div>
         <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
       </div>
     </aside>

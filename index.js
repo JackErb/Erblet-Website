@@ -107,7 +107,8 @@ Snipcart.subscribe('item.adding', function(ev, item, items) {
 
   item.image = drawWallet(0.4,0.4).toDataURL();
 
-  document.getElementById('cartDisplay').insertBefore(drawWallet(0.2,0.2),document.getElementById('currentCart').nextSibling);
+  $('#walletsCartDisplay').prepend(drawWallet(0.2,0.2));
+  //document.getElementById('cartDisplay').insertBefore(drawWallet(0.2,0.2),document.getElementById('currentCart').nextSibling);
   $('#currentCart').text("Current cart: " + (walletPrice * (Snipcart.api.items.all().length + 1)) + "$");
   window.alet
 });
@@ -171,7 +172,7 @@ function updateCheckoutCart() {
     base = item.customFields[0]['value'];
     trim = item.customFields[1]['value'];
     inside = item.customFields[2]['value'];
-    document.getElementById('cartDisplay').insertBefore(drawWallet(0.2,0.2),document.getElementById('checkoutButton'));
+    $('#walletsCartDisplay').prepend(drawWallet(0.2,0.2));
   }
   base = tempBase;
   trim = tempTrim;
