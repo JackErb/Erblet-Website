@@ -10,7 +10,6 @@ var base = "red";
 var trim = "blue";
 var inside = "yellow";
 
-
 var componentToChangeColor = "";
 
 document.getElementById("blueColor").addEventListener("click", function() {
@@ -95,17 +94,32 @@ function insideClick() {
 
 Snipcart.execute('config', 'show_continue_shopping', true);
 
-Snipcart.subscribe('cart.opened', function() {
-  // Display wallet overlay image
-  var customField = $('.snip-customfields')[0];
-});
-
-Snipcart.subscribe('cart.closed', function() {
-  // Hide wallet overlay image
-});
-
 Snipcart.subscribe('item.adding', function(ev, item, items) {
   item.description = base + '-' + trim + '-' + inside + ' wallet';
+
+
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+
+  var img = new Image();
+
+  ctx.scale(0.4,0.4);
+
+  img.src = 'images/base_' + base + '.png';
+  ctx.drawImage(img, 0, 0);
+
+  img.src = 'images/trim_' + trim + '.png';
+  ctx.drawImage(img, 0, 0);
+
+  img.src = 'images/inside_' + inside + '.png';
+  ctx.drawImage(img, 0, 0);
+
+  item.image = canvas.toDataURL();
 });
 
-updateBuyButton();
+
+Snipcart.subscribe('cart.loaded', function (item) {
+      window.alert($('.snip-table__item').length);
+});
+
+Snipcart.subscribe('cart.ready', updateBuyButton);
