@@ -74,9 +74,6 @@ function updateBuyButton() {
   $('#buyButton').data('item-custom1-value', base);
   $('#buyButton').data('item-custom2-value', trim);
   $('#buyButton').data('item-custom3-value', inside);
-
-
-  $('#currentCart').text("Current cart: " + (walletPrice * Snipcart.api.items.all().length) + "$");
 }
 
 function openModal(target) {
@@ -109,9 +106,12 @@ Snipcart.subscribe('item.adding', function(ev, item, items) {
   item.image = drawWallet(0.4,0.4).toDataURL();
 
   document.getElementById('cartDisplay').insertBefore(drawWallet(0.2,0.2),document.getElementById('currentCart').nextSibling);
+  $('#currentCart').text("Current cart: " + (walletPrice * (Snipcart.api.items.all().length + 1)) + "$");
+  window.alet
 });
 
 Snipcart.subscribe('item.removed', function() {
+  $('#currentCart').text("Current cart: " + (walletPrice * Snipcart.api.items.all().length) + "$");
   updateCheckoutCart();
 });
 
