@@ -2,7 +2,17 @@
   visibility: hidden;
 }
 
+/* TODO: Make thumbnail show up on smaller screen size */
 .snip-product__thumbnail {
   position: relative;
   width: 150px !important;
+}
+
+#snipcart-show-discount-box {
+  display: none;
+}
+
+/* hide quantity section in snipcart*/
+.snip-table__cell--center {
+  display: none;
 }
