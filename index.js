@@ -125,18 +125,26 @@ function drawWallet(scale) {
 
   var ctx = canvas.getContext('2d');
 
-  var img = new Image();
 
   ctx.scale(scale, scale);
 
-  img.src = 'images/base_' + base + '.png';
-  ctx.drawImage(img, 0, 0);
+  var baseImg = new Image();
+  baseImg.onload = function() {
+    ctx.drawImage(baseImg, 0, 0);
+  }
+  baseImg.src = 'images/base_' + base + '.png';
 
-  img.src = 'images/trim_' + trim + '.png';
-  ctx.drawImage(img, 0, 0);
+  var trimImg = new Image();
+  trimImg.onload = function() {
+    ctx.drawImage(trimImg, 0, 0);
+  }
+  trimImg.src = 'images/trim_' + trim + '.png';
 
-  img.src = 'images/inside_' + inside + '.png';
-  ctx.drawImage(img, 0, 0);
+  var insideImg = new Image();
+  insideImg.onload = function() {
+    ctx.drawImage(insideImg, 0, 0);
+  }
+  insideImg.src = 'images/inside_' + inside + '.png';
 
   return canvas;
 }
