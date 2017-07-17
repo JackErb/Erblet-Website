@@ -149,7 +149,7 @@ function drawWallet(scale, canvas) {
   }
 
   if (trim == base || inside == trim) {
-    ctx.strokeRect(369,33,329,16);
+    ctx.strokeRect(370,33,327,16);
   }
 
 
@@ -158,7 +158,7 @@ function drawWallet(scale, canvas) {
   ctx.fillRect(369,49,329,178);
 
   if (inside == trim || inside == base) {
-    ctx.strokeRect(369,49,329,178);
+    ctx.strokeRect(370,49,327,178);
   }
 
   return canvas;
