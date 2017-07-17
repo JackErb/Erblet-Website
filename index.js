@@ -53,6 +53,8 @@ function changeColor(color) {
   switch (componentToChangeColor) {
     case "base":
       base = color;
+      //var color = (colorHexCodes[base] & 0xfefefe) >> 1;
+      //$('.walletDisplay').css('boxShadow','3px 3px 1px #' + color);
       break;
     case "trim":
       trim = color;
@@ -73,13 +75,11 @@ function updateBuyButton() {
   $('#buyButton').data('item-custom1-value', base);
   $('#buyButton').data('item-custom2-value', trim);
   $('#buyButton').data('item-custom3-value', inside);
-
-  $('#currentCart').text("Current cart: " + (walletPrice * Snipcart.api.items.all().length) + "$");
 }
 
 function openModal(target) {
   modal.style.display = "block";
-  closeButton.innerHTML = target.charAt(0).toUpperCase() + target.slice(1) + " Color &times;";
+  closeButton.innerHTML = target + " color &times;";
   componentToChangeColor = target;
 }
 
@@ -108,12 +108,9 @@ Snipcart.subscribe('item.adding', function(ev, item, items) {
 
   $('#walletsCartDisplay').prepend(drawWallet(0.2));
 
-  $('#currentCart').text("Current cart: " + (walletPrice * (Snipcart.api.items.all().length + 1)) + "$");
-  window.alet
 });
 
 Snipcart.subscribe('item.removed', function() {
-  $('#currentCart').text("Current cart: " + '$' + (walletPrice * Snipcart.api.items.all().length));
   updateCheckoutCart();
 });
 

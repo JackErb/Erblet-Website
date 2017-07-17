@@ -5,21 +5,24 @@
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     margin: 0;
 
-    color: #444;
+    /*color: #444;*/
+    color: #cecece;
     line-height:1.4;
     font-size:15px;
   }
 
   #main {
     display: flex;
+    position: relative;
+    padding-bottom: 20px;
   }
 
   #ducttapedisplay {
     padding-top:15px;
     padding-left:30px;
     border-radius:3px;
-    border-top: 1px solid #dfdfdf;
-    border-right: 1px solid #dfdfdf;
+    border-top: 2px solid #dfdfdf;
+    border-right: 2px solid #dfdfdf;
 
     max-width:820px;
 
@@ -29,12 +32,22 @@
     margin: 15px;
     z-index: 2;
   }
+
+  #aside {
+    position: relative;
+    flex-grow: 1;
+    border-top: 2px solid #dfdfdf;
+  }
   #header, #footer, article, nav, #aside {
     padding-left: 1em;
     padding-right: 1em;
   }
   #header, #footer {
     width: auto;
+  }
+  #header {
+    display:inline-block;
+    padding: 3% 3% 0 3%;
   }
   hr {
     border-color: #FFFFFF;
@@ -72,12 +85,23 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+
+    cursor: pointer;
+
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
   }
+  .close:hover {
+    color: #cecece;
+  }
+
   .color {
     width:40px;
     height:40px;
-    display:table-cell;
+    display: inline-block;
     padding: 40px;
+    margin: 2px;
   }
   #colors {
     display:table;
@@ -104,6 +128,8 @@
     border-radius: 6px;
     margin-bottom: 2%;
 
+    color: #989898;
+
     transition-duration: 0.4s;
     -webkit-transition-duration: 0.4s;
     -moz-transition-duration: 0.4s;
@@ -123,7 +149,18 @@
 
   #checkoutButton {
     float: right;
-    margin-top: 10px;
+    bottom: 0;
+    right: 0;
+  }
+
+  #asideFooter {
+    position: absolute;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    width: auto;
+    bottom: 0;
+    right: 0;
+    display: inline;
   }
 
 
@@ -144,26 +181,54 @@
     bottom: 0;
     left: 0;
 
-    background: #F1F1F1;
+    background: #F5F5F5;
     box-shadow: 3px 3px 1px #DDDDDD;
 
 
   }
   #footer {
-
+    background-color: #F1F1F1;
   }
 
   p {
     margin-bottom: 15px;
   }
+
+  #walletPictures canvas {
+    box-shadow: 3px 3px 1px #DFDFDF;
+  }
+
+  #currentCart {
+    font-size: 19px;
+    color: #cecece;
+    text-align: center;
+  }
+
+  #links {
+  }
+
+  h1 {
+    color: #303030;
+  }
+
+  a {
+    transition-duration: 0.2s;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+  }
+
+  a:link { color:#aaaaaa; text-decoration:none; font-weight:bold; }
+  a:visited { color: #aaaaaa; text-decoration:none; font-weight:bold; }
+  a:hover { color: #818181; text-decoration:none; font-weight:bold; }
+  a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
 </style>
 <body>
   <div id="page">
   <div id="header">
-    <div style="display:inline-block; padding:1%;">
+    <div>
       <br/>
-      <h1 style="color:black;">e r b l e t .</h1>
-
+      <h1>e r b l e t .</h1>
+      <div id="links"><a href="erblet.com/gallery">Gallery</a> &nbsp;&nbsp; <a href="erblet.com/timelapse">Timelapse</a> &nbsp;&nbsp; <a href="erblet.com/instagram">Instagram</a></div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -181,15 +246,15 @@
   <div id="main">
     <article id="ducttapedisplay">
       <!-- White block divs that cover up parts of the border -->
-      <div style="position: absolute; left: 0; background-color: #F1F1F1; width: 3%; padding-top: 3%; z-index: 1; margin-top: -16px; margin-right: -1px;"></div>
-      <div style="position: absolute; right: 0; background-color: #F1F1F1; width: 3%; padding-top: 3%; z-index: 1; margin-top: -16px; margin-right: -1px;"></div>
+      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 3%; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+      <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 3%; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
 
       <div id="walletPictures" />
         <!-- Front Picture of Wallet -->
         <div id="frontWallet" style="height:271px; padding-bottom:10px; z-index:2;">
           <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:20;" usemap="#FrontWalletMap" />
 
-          <canvas id="frontWalletDisplay" width="720" height="271"></canvas>
+          <canvas class="walletDisplay" id="frontWalletDisplay" width="720" height="271"></canvas>
         </div>
         <map name="FrontWalletMap" id="FrontWalletMap">
           <!--  Trim  -->
@@ -210,7 +275,7 @@
         <div id="backWallet" style="padding-top: 10px;">
           <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:20;" usemap="#BackWalletMap" />
 
-          <canvas id="backWalletDisplay" width="720" height="271"></canvas>
+          <canvas class="walletDisplay" id="backWalletDisplay" width="720" height="271"></canvas>
         </div>
         <map name="BackWalletMap" id="BackWalletMap">
           <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
@@ -236,11 +301,13 @@
       </div>
     </article>
     <div id="aside">
-      <p>Click the components of the wallet to customize.</p>
-
+      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 8%; padding-top: 10%; z-index: 1;margin-top: -2px;margin-right: -2px;"></div>
+      <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 8%; padding-top: 10%; z-index: 1;margin-top: -2px;"></div>
       <div id="cartDisplay">
-        <p id="currentCart">Current cart:</p>
+        <p id="currentCart"><b>current cart</b></p>
         <div id="walletsCartDisplay"></div>
+      </div>
+      <div id="asideFooter">
         <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
       </div>
     </div>
@@ -251,7 +318,7 @@
 
     <!-- Colors -->
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">Trim Color &times;</span>
+      <span class="close" onclick="closeModal()">trim color &times;</span>
       <div id="colors">
         <div id="blueColor"   class="color"></div>
         <div id="yellowColor" class="color"></div>
@@ -260,15 +327,15 @@
     </div>
   </div>
 
+
   <div id="footer">
-    <br/>
-    <br/>
     <hr style="background-color: #dfdfdf; height: 1px; border: 0;">
     <hr style="background-color: #dfdfdf; height: 1px; border: 0;">
     <br/>
     <br/>
-    contact us: <br/>
+    contact <br/>
     erbletwallets@gmail.com <br/>
+
     <br/>
     <br/>
   </div>
