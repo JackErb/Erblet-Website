@@ -13,10 +13,16 @@ var inside = "yellow";
 
 var walletPrice = 16;
 
-
 var componentToChangeColor = "";
 
 var checkoutButtonWasPressed = false;
+
+var colorHexCodes = {
+  'red'   : '#ED6A64',
+  'blue'  : '#5E99C5',
+  'yellow': '#EEBD7E'
+}
+
 
 document.getElementById("blueColor").addEventListener("click", function() {
   changeColor("blue")
@@ -125,10 +131,25 @@ function drawWallet(scale) {
 
   var ctx = canvas.getContext('2d');
 
-
   ctx.scale(scale, scale);
 
-  var baseImg = new Image();
+  // Draw base
+  ctx.fillStyle = colorHexCodes[base];
+  ctx.fillRect(0,0,720,271);
+
+  // Draw trim
+  ctx.fillStyle = colorHexCodes[trim];
+  ctx.fillRect(15,38,329,22)
+  ctx.fillRect(15,68,329,22);
+  ctx.fillRect(15,98,329,22);
+  ctx.fillRect(369,33,329,16);
+
+  //Draw inside
+  ctx.fillStyle = colorHexCodes[inside];
+  ctx.fillRect(369,49,329,178);
+
+
+  /*var baseImg = new Image();
   baseImg.onload = function() {
     ctx.drawImage(baseImg, 0, 0);
   }
@@ -144,7 +165,7 @@ function drawWallet(scale) {
   insideImg.onload = function() {
     ctx.drawImage(insideImg, 0, 0);
   }
-  insideImg.src = 'images/inside_' + inside + '.png';
+  insideImg.src = 'images/inside_' + inside + '.png';*/
 
   return canvas;
 }
