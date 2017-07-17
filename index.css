@@ -16,3 +16,34 @@
 .snip-table__cell--center {
   display: none;
 }
+
+
+
+
+@media screen and (max-device-width: 480px) {
+  #main {
+    display: inline;
+  }
+  #aside {
+    clear: both;
+    display:block;
+  }
+
+  #walletsCartDisplay canvas {
+    padding-right: 5px;
+  }
+
+  #checkoutButton {
+    float: none;
+    width: auto;
+    display: inline-block;
+  }
+}
+
+@media screen and (min-device-width: 480px) {
+  #walletsCartDisplay canvas {
+    display: block;
+    padding-bottom: 5px;
+    margin: 0 auto;
+  }
+}

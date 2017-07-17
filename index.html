@@ -10,18 +10,8 @@
     font-size:15px;
   }
 
-  @media screen and (max-device-width: 480px) {
-    aside {
-      display:none;
-    }
-  }
-
   #main {
     display: flex;
-  }
-
-  #main > aside {
-    flex: 0 0 20%;
   }
 
   #ducttapedisplay {
@@ -39,7 +29,7 @@
     margin: 15px;
     z-index: 2;
   }
-  #header, #footer, article, nav, aside {
+  #header, #footer, article, nav, #aside {
     padding-left: 1em;
     padding-right: 1em;
   }
@@ -133,6 +123,7 @@
 
   #checkoutButton {
     float: right;
+    margin-top: 10px;
   }
 
 
@@ -162,21 +153,8 @@
 
   }
 
-  #aside {
-  }
-
-  #checkoutButton {
-    margin-top: 10px;
-  }
-
   p {
     margin-bottom: 15px;
-  }
-
-  #walletsCartDisplay canvas {
-    display: block;
-    padding-bottom: 5px;
-    margin: 0 auto;
   }
 </style>
 <body>
@@ -257,7 +235,7 @@
             add to cart
       </div>
     </article>
-    <aside id="aside">
+    <div id="aside">
       <p>Click the components of the wallet to customize.</p>
 
       <div id="cartDisplay">
@@ -265,7 +243,7 @@
         <div id="walletsCartDisplay"></div>
         <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
       </div>
-    </aside>
+    </div>
   </div>
 
   <!-- Color Selector Popup -->
