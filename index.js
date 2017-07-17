@@ -113,7 +113,7 @@ Snipcart.subscribe('item.adding', function(ev, item, items) {
 });
 
 Snipcart.subscribe('item.removed', function() {
-  $('#currentCart').text("Current cart: " + (walletPrice * Snipcart.api.items.all().length) + "$");
+  $('#currentCart').text("Current cart: " + '$' + (walletPrice * Snipcart.api.items.all().length));
   updateCheckoutCart();
 });
 
