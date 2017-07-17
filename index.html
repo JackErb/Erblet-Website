@@ -203,14 +203,11 @@
       <div style="position: absolute; right: 0; background-color: white; width: 3%; padding-top: 3%; z-index: 1; margin-top: -16px; margin-right: -1px;"></div>
 
       <div id="walletPictures" />
-
         <!-- Front Picture of Wallet -->
         <div id="frontWallet" style="height:271px; padding-bottom:10px; z-index:2;">
           <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:20;" usemap="#FrontWalletMap" />
 
-          <img class="front_base wallet" src="images/base_red.png" style="position:absolute;  z-index:2;" />
-          <img class="front_trim wallet" src="images/trim_blue.png" style="position:absolute; z-index:3;" />
-          <img class="front_inside wallet" src="images/inside_yellow.png" style="position:absolute; z-index:4;" />
+          <canvas id="frontWalletDisplay" width="720" height="271"></canvas>
         </div>
         <map name="FrontWalletMap" id="FrontWalletMap">
           <!--  Trim  -->
@@ -223,14 +220,19 @@
           <area alt="" href="#" onClick="insideClick()" shape="rect" coords="697,225,371,51" />
 
           <!-- Base -->
-          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" /></map>
+          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
+        </map>
 
-        <!-- Back Picture of Wallet (ADD LATER) -->
+
+        <!-- Back Picture of Wallet -->
         <div id="backWallet" style="padding-top: 10px;">
-          <img class="back_base wallet" src="images/back_red.png" usemap="#BackWalletMap"/>
+          <img id="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:20;" usemap="#BackWalletMap" />
+
+          <canvas id="backWalletDisplay" width="720" height="271"></canvas>
         </div>
         <map name="BackWalletMap" id="BackWalletMap">
-          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" /></map>
+          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
+        </map>
       </div>
 
       <!-- Snipcart Products -->

@@ -13,7 +13,7 @@ var inside = "yellow";
 
 var walletPrice = 16;
 
-var componentToChangeColor = "";
+var componentToChangeColor = "base";
 
 var checkoutButtonWasPressed = false;
 
@@ -22,7 +22,6 @@ var colorHexCodes = {
   'blue'  : '#5E99C5',
   'yellow': '#EEBD7E'
 }
-
 
 document.getElementById("blueColor").addEventListener("click", function() {
   changeColor("blue")
@@ -63,15 +62,9 @@ function changeColor(color) {
       break;
   }
 
-  var images = document.getElementsByClassName("front_" + componentToChangeColor);
-  for (var i=0; i<images.length; i++) {
-    images[i].src="images/" + componentToChangeColor + "_" + color + ".png";
-  }
+  drawWallet(1.0,$('#frontWalletDisplay')[0]);
+  drawBackWallet($('#backWalletDisplay')[0]);
 
-  if (componentToChangeColor == 'base') {
-    var images = document.getElementsByClassName("back_base");
-    images[0].src = "images/back_" + color + ".png";
-  }
 
   updateBuyButton();
 }
@@ -111,10 +104,10 @@ Snipcart.execute('config', 'show_continue_shopping', true);
 Snipcart.subscribe('item.adding', function(ev, item, items) {
   item.description = base + '-' + trim + '-' + inside;
 
-  item.image = drawWallet(0.4,0.4).toDataURL();
+  item.image = drawWallet(0.4).toDataURL();
 
-  $('#walletsCartDisplay').prepend(drawWallet(0.2,0.2));
-  //document.getElementById('cartDisplay').insertBefore(drawWallet(0.2,0.2),document.getElementById('currentCart').nextSibling);
+  $('#walletsCartDisplay').prepend(drawWallet(0.2));
+
   $('#currentCart').text("Current cart: " + (walletPrice * (Snipcart.api.items.all().length + 1)) + "$");
   window.alet
 });
@@ -124,10 +117,12 @@ Snipcart.subscribe('item.removed', function() {
   updateCheckoutCart();
 });
 
-function drawWallet(scale) {
-  var canvas = document.createElement('canvas');
-  canvas.width = "" + Math.round(scale * 720);
-  canvas.height = "" + Math.round(scale * 271);
+function drawWallet(scale, canvas) {
+  if (canvas == null) {
+    canvas = document.createElement('canvas');
+    canvas.width = "" + Math.round(scale * 720);
+    canvas.height = "" + Math.round(scale * 271);
+  }
 
   var ctx = canvas.getContext('2d');
 
@@ -148,24 +143,15 @@ function drawWallet(scale) {
   ctx.fillStyle = colorHexCodes[inside];
   ctx.fillRect(369,49,329,178);
 
+  return canvas;
+}
 
-  /*var baseImg = new Image();
-  baseImg.onload = function() {
-    ctx.drawImage(baseImg, 0, 0);
-  }
-  baseImg.src = 'images/base_' + base + '.png';
+function drawBackWallet(canvas) {
+  var ctx = canvas.getContext('2d');
 
-  var trimImg = new Image();
-  trimImg.onload = function() {
-    ctx.drawImage(trimImg, 0, 0);
-  }
-  trimImg.src = 'images/trim_' + trim + '.png';
-
-  var insideImg = new Image();
-  insideImg.onload = function() {
-    ctx.drawImage(insideImg, 0, 0);
-  }
-  insideImg.src = 'images/inside_' + inside + '.png';*/
+  // Draw base
+  ctx.fillStyle = colorHexCodes[base];
+  ctx.fillRect(0,0,720,271);
 
   return canvas;
 }
@@ -201,8 +187,9 @@ function updateCheckoutCart() {
     base = item.customFields[0]['value'];
     trim = item.customFields[1]['value'];
     inside = item.customFields[2]['value'];
-    $('#walletsCartDisplay').prepend(drawWallet(0.2,0.2));
+    $('#walletsCartDisplay').prepend(drawWallet(0.2));
   }
+
   base = tempBase;
   trim = tempTrim;
   inside = tempInside;
@@ -210,6 +197,7 @@ function updateCheckoutCart() {
 
 
 Snipcart.subscribe('cart.ready', function() {
+  changeColor('red');
   updateBuyButton();
 
   updateCheckoutCart();
