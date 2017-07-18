@@ -131,7 +131,7 @@ function insideClick() {
 Snipcart.execute('config', 'show_continue_shopping', true);
 
 Snipcart.subscribe('item.adding', function(ev, item, items) {
-  item.description = base + '-' + trim + '-' + inside;
+  item.description = base.replace('-',' ') + '-' + trim.replace('-', ' ')+ '-' + inside.replace('-', ' ');
 
   item.image = drawWallet(0.4).toDataURL();
 
