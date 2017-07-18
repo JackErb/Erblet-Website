@@ -92,18 +92,22 @@
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
+    width: 50%;
+
+    position: relative;
 
     border-radius:5px;
   }
   /* The Close Button */
   .close {
     color: #aaaaaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
 
+    padding-bottom:15px;
     cursor: pointer;
+
+    width: 100%;
 
     transition-duration: 0.4s;
     -webkit-transition-duration: 0.4s;
@@ -114,25 +118,18 @@
   }
 
   .color {
-    width:40px;
-    height:40px;
+    width:10px;
+    height:10px;
     display: inline-block;
     padding: 40px;
     margin: 2px;
+    margin-right:10px;
   }
   #colors {
     display:table;
     margin: 0 auto;
   }
-  #blueColor {
-    background-color: #499BC9;
-  }
-  #redColor {
-    background-color: #FF5F5E;
-  }
-  #yellowColor {
-    background-color: #F7BB73;
-  }
+
 
   .button {
     padding: 10px;
@@ -328,11 +325,9 @@
 
     <!-- Colors -->
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">trim color &times;</span>
+      <div class="close" onclick="closeModal()">trim color &times;</div>
       <div id="colors">
-        <div id="blueColor"   class="color"></div>
-        <div id="yellowColor" class="color"></div>
-        <div id="redColor"    class="color"></div>
+
       </div>
     </div>
   </div>

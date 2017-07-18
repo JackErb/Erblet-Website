@@ -18,22 +18,54 @@ var componentToChangeColor = "base";
 var checkoutButtonWasPressed = false;
 
 var colorHexCodes = {
-  'red'   : '#ED6A64',
-  'blue'  : '#5E99C5',
-  'yellow': '#EEBD7E'
+  'red'   : '#ed6a64',
+  'blue'  : '#5e99c5',
+  'yellow': '#eebd7e',
+  'electric-blue' : '#1eb3e1',
+  'teal' : '#18a2ac',
+  'icy-blue' : '#79ceea',
+  'dark-blue' : '#102c52',
+  'grey' : '#51545b',
+  'green' : '#0f7b42',
+  'neon-green' : '#27d63d',
+  'sage' : '#a0d8b2',
+  'peach' : '#fca489',
+  'neon-orange' : '#fe6627',
+  'pink' : '#dbe1d3',
+  'fuchsia' : '#de1f83',
+  'dark-red' : '#a8001c',
+  'baby-pink' : '#f0b9e0',
+  'lilac' : '#c6b6e0',
+  'purple' : '#532b74',
+  'merlot' : '#7c3141',
+  'beige' : '#f0d7c9',
+  'brown' : '#6f372c',
+  'black' : '#0f181f',
+  'white' : '#f7f7f7',
+  'dove-grey' : '#c3c7ca',
+  'fluorescent citrus' : '#bfd979',
+  'olive' : '#494835',
+  'terracota' : '#bf5124',
+  'yellow' : '#fdee35'
+  //Bronze
+  //Silver
+  //Gold
 }
 
-document.getElementById("blueColor").addEventListener("click", function() {
-  changeColor("blue")
-}, false);
+// Create all color icons
+for (var key in colorHexCodes) {
+  if (colorHexCodes.hasOwnProperty(key)) {
+    var colorDiv = document.createElement("div");
+    colorDiv.id = key;
+    colorDiv.className += 'color';
+    colorDiv.style.backgroundColor = colorHexCodes[key];
 
-document.getElementById("redColor").addEventListener("click", function() {
-  changeColor("red")
-}, false);
-
-document.getElementById("yellowColor").addEventListener("click", function() {
-  changeColor("yellow")
-}, false);
+    $('#colors').append(colorDiv);
+    document.getElementById(key).onclick = function(event) {
+      changeColor(event.srcElement.id)
+    }
+  }
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
