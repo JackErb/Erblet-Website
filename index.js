@@ -7,9 +7,9 @@ var closeButton = document.getElementsByClassName("close")[0];
 
 var buyButton = document.getElementById("buyButton");
 
-var base = "red";
-var trim = "blue";
-var inside = "yellow";
+var base = "sage";
+var trim = "neon-green";
+var inside = "green";
 
 var walletPrice = 16;
 
@@ -18,9 +18,6 @@ var componentToChangeColor = "base";
 var checkoutButtonWasPressed = false;
 
 var colorHexCodes = {
-  'red'   : '#ed6a64',
-  'blue'  : '#5e99c5',
-  'yellow': '#eebd7e',
   'electric-blue' : '#1eb3e1',
   'teal' : '#18a2ac',
   'icy-blue' : '#79ceea',
@@ -28,12 +25,12 @@ var colorHexCodes = {
   'grey' : '#51545b',
   'green' : '#0f7b42',
   'neon-green' : '#27d63d',
-  'sage' : '#a0d8b2',
+  'sage' : '#91c9a2',
   'peach' : '#fca489',
   'neon-orange' : '#fe6627',
   'pink' : '#dbe1d3',
   'fuchsia' : '#de1f83',
-  'dark-red' : '#a8001c',
+  'red' : '#a5122a',
   'baby-pink' : '#f0b9e0',
   'lilac' : '#c6b6e0',
   'purple' : '#532b74',
@@ -46,7 +43,7 @@ var colorHexCodes = {
   'fluorescent citrus' : '#bfd979',
   'olive' : '#494835',
   'terracota' : '#bf5124',
-  'yellow' : '#fdee35'
+  'yellow' : '#EFC854'
   //Bronze
   //Silver
   //Gold
@@ -244,7 +241,7 @@ function updateCheckoutCart() {
 
 
 Snipcart.subscribe('cart.ready', function() {
-  changeColor('red');
+  changeColor(base);
   updateBuyButton();
 
   updateCheckoutCart();
