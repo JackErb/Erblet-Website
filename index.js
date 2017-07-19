@@ -7,15 +7,17 @@ var closeButton = document.getElementsByClassName("close")[0];
 
 var buyButton = document.getElementById("buyButton");
 
-var base = "sage";
-var trim = "neon-green";
-var inside = "green";
+var base = "dark-blue";
+var trim = "electric-blue";
+var inside = "icy-blue";
 
 var walletPrice = 16;
 
 var componentToChangeColor = "base";
 
 var checkoutButtonWasPressed = false;
+
+var cartDisplay = [];
 
 var colorHexCodes = {
   'electric-blue' : '#1eb3e1',
@@ -38,7 +40,7 @@ var colorHexCodes = {
   'beige' : '#f0d7c9',
   'brown' : '#6f372c',
   'black' : '#0f181f',
-  'white' : '#f7f7f7',
+  'white' : '#ffffff',
   'dove-grey' : '#c3c7ca',
   'fluorescent citrus' : '#bfd979',
   'olive' : '#494835',
@@ -135,8 +137,7 @@ Snipcart.subscribe('item.adding', function(ev, item, items) {
 
   item.image = drawWallet(0.4).toDataURL();
 
-  $('#walletsCartDisplay').prepend(drawWallet(0.2));
-
+  addWalletIconToCart(item);
 });
 
 Snipcart.subscribe('item.removed', function() {
@@ -218,7 +219,8 @@ Snipcart.subscribe('cart.opened', function (item) {
 });
 
 function updateCheckoutCart() {
-  $('#cartDisplay canvas').remove();
+  $('#cartDisplay .cartItem').remove();
+  cartDisplay = [];
 
   var tempBase = base;
   var tempTrim = trim;
@@ -231,12 +233,38 @@ function updateCheckoutCart() {
     base = item.customFields[0]['value'];
     trim = item.customFields[1]['value'];
     inside = item.customFields[2]['value'];
-    $('#walletsCartDisplay').prepend(drawWallet(0.2));
+    addWalletIconToCart(item);
   }
 
   base = tempBase;
   trim = tempTrim;
   inside = tempInside;
+}
+
+function addWalletIconToCart(item) {
+  var canvas = drawWallet(0.2);
+  canvas.style.float = 'left';
+  var container = document.createElement('div');
+  container.className = 'cartItem';
+
+  var xButton = document.createElement('p');
+  xButton.innerHTML = '&#10006; &nbsp;&nbsp;';
+  xButton.style.display = 'inline-block';
+  xButton.style.float = 'left';
+
+  xButton.onclick = function() {
+    var items = Snipcart.api.items.all().filter(function(item2) {
+      return item2.uniqueId == item.uniqueId;
+    });
+    Snipcart.api.items.clear();
+    Snipcart.api.items.add(items);
+  }
+
+  container.style.display = 'inline-block';
+  container.append(xButton);
+  container.append(canvas);
+
+  $('#walletsCartDisplay').prepend(container);
 }
 
 

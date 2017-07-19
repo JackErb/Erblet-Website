@@ -88,7 +88,7 @@
   }
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
+    background-color: #f7f7f7;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -128,6 +128,8 @@
     transition-duration: 0.4s;
     -webkit-transition-duration: 0.4s;
     -moz-transition-duration: 0.4s;
+
+    cursor: pointer;
   }
 
   #colors {
@@ -215,8 +217,12 @@
   }
 
   #walletsCartDisplay{
+    width: 223px;
     height: 612px;
     overflow-y: scroll;
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
   }
 
   h1 {
@@ -233,6 +239,17 @@
   a:visited { color: #aaaaaa; text-decoration:none; font-weight:bold; }
   a:hover { color: #818181; text-decoration:none; font-weight:bold; }
   a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
+
+  .cartItem {
+    width: 170px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .cartItem p {
+    cursor: pointer;
+  }
 </style>
 <body>
   <div id="page">
@@ -302,6 +319,7 @@
         data-item-name="wallet"
         data-item-price="16"
         data-item-weight="1"
+        data-item-stackable="false"
         data-item-url="http://www.erblet.com/"
         data-item-custom1-name="base"
         data-item-custom1-options="red|blue|yellow"
