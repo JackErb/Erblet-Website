@@ -15,8 +15,7 @@
     width:1050px;
     position: relative;
     margin: auto;
-    min-width:
-    width: auto;
+    height: 100%;
     top: 0;
     right: 0;
     bottom: 0;
@@ -245,6 +244,7 @@
     height: auto;
     margin: 0 auto;
     position: relative;
+    display:inline-block;
   }
 
   .cartItem p {
@@ -287,16 +287,16 @@
         </div>
         <map name="FrontWalletMap" id="FrontWalletMap">
           <!--  Trim  -->
-          <area alt="" href="#" onClick="trimClick()" shape="rect" coords="16,36,345,58" />
-          <area alt="" href="#" onClick="trimClick()" shape="rect" coords="16,67,344,89" />
-          <area alt="" href="#" onClick="trimClick()" shape="rect" coords="15,98,345,120" />
-          <area alt="" href="#" onClick="trimClick()" shape="rect" coords="370,32,698,48" />
+          <area alt="" href="#" onClick="openModal('trim')" shape="rect" coords="16,36,345,58" />
+          <area alt="" href="#" onClick="openModal('trim')" shape="rect" coords="16,67,344,89" />
+          <area alt="" href="#" onClick="openModal('trim')" shape="rect" coords="15,98,345,120" />
+          <area alt="" href="#" onClick="openModal('trim')" shape="rect" coords="370,32,698,48" />
 
           <!-- Inside -->
-          <area alt="" href="#" onClick="insideClick()" shape="rect" coords="697,225,371,51" />
+          <area alt="" href="#" onClick="openModal('inside')" shape="rect" coords="697,225,371,51" />
 
           <!-- Base -->
-          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
+          <area alt="" href="#" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
         </map>
 
 
@@ -307,14 +307,14 @@
           <canvas class="walletDisplay" id="backWalletDisplay" width="720" height="271"></canvas>
         </div>
         <map name="BackWalletMap" id="BackWalletMap">
-          <area alt="" href="#" onClick="baseClick()" shape="rect" coords="5,5,715,266" />
+          <area alt="" href="#" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
         </map>
       </div>
 
       <!-- Snipcart Products -->
       <div
-        id="buyButton"
-        class="snipcart-add-item button"
+        class="snipcart-add-item"
+        style="display:none;"
         data-item-id="2"
         data-item-name="wallet"
         data-item-price="16"
@@ -329,6 +329,7 @@
         data-item-custom3-options="red|blue|yellow">
             add to cart
       </div>
+      <div id="buyButton" class="button">add to cart</div>
     </article>
     <div id="aside">
       <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 8%; padding-top: 10%; z-index: 1;margin-top: -2px;margin-right: -2px;"></div>

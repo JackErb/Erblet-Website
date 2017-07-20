@@ -17,8 +17,6 @@ var componentToChangeColor = "base";
 
 var checkoutButtonWasPressed = false;
 
-var cartDisplay = [];
-
 var colorHexCodes = {
   'electric-blue' : '#1eb3e1',
   'teal' : '#18a2ac',
@@ -51,6 +49,31 @@ var colorHexCodes = {
   //Gold
 }
 
+
+
+/* Cart stuff */
+
+var localCart = [];
+
+buyButton.onclick = function () {
+  localCart.push({
+    'base': base,
+    'trim': trim,
+    'inside': inside
+  });
+  updateCheckoutCart()
+}
+
+
+
+
+
+
+
+
+
+/* Modal stuff */
+
 // Create all color icons
 for (var key in colorHexCodes) {
   if (colorHexCodes.hasOwnProperty(key)) {
@@ -73,40 +96,13 @@ window.onclick = function(event) {
   }
 }
 
+// When the user presses escape, close the modal
 document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27) {
         closeModal();
     }
 };
-
-function changeColor(color) {
-  switch (componentToChangeColor) {
-    case "base":
-      base = color;
-      //var color = (colorHexCodes[base] & 0xfefefe) >> 1;
-      //$('.walletDisplay').css('boxShadow','3px 3px 1px #' + color);
-      break;
-    case "trim":
-      trim = color;
-      break;
-    case "inside":
-      inside = color;
-      break;
-  }
-
-  drawWallet(1.0,$('#frontWalletDisplay')[0]);
-  drawBackWallet($('#backWalletDisplay')[0]);
-
-
-  updateBuyButton();
-}
-
-function updateBuyButton() {
-  $('#buyButton').data('item-custom1-value', base);
-  $('#buyButton').data('item-custom2-value', trim);
-  $('#buyButton').data('item-custom3-value', inside);
-}
 
 function openModal(target) {
   modal.style.display = "block";
@@ -118,31 +114,93 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-function trimClick() {
-  openModal("trim");
+// Switch the color of the wallet
+function changeColor(color) {
+  switch (componentToChangeColor) {
+    case "base":
+      base = color;
+      break;
+    case "trim":
+      trim = color;
+      break;
+    case "inside":
+      inside = color;
+      break;
+  }
+
+  drawWallet(1.0,$('#frontWalletDisplay')[0]);
+  drawBackWallet($('#backWalletDisplay')[0]);
 }
 
-function baseClick() {
-  openModal("base");
-}
 
-function insideClick() {
-  openModal("inside");
-}
+
+
+
+
+
+/* Snipcart stuff */
 
 Snipcart.execute('config', 'show_continue_shopping', true);
 
-Snipcart.subscribe('item.adding', function(ev, item, items) {
+Snipcart.subscribe('cart.ready', function() {
+  changeColor(base);
+
+  updateCheckoutCart();
+});
+
+Snipcart.subscribe('cart.opened', function (item) {
+  if (!checkoutButtonWasPressed) {
+    Snipcart.api.modal.close();
+    return;
+  }
+
+  checkoutButtonWasPressed = false;
+});
+
+/*Snipcart.subscribe('item.adding', function(ev, item, items) {
   item.description = base.replace('-',' ') + ' - ' + trim.replace('-', ' ')+ ' - ' + inside.replace('-', ' ');
 
   item.image = drawWallet(0.4).toDataURL();
 
-  addWalletIconToCart(item);
+  addWalletIconToCart(item, Snipcart.api.items.count());
 });
 
 Snipcart.subscribe('item.removed', function() {
   updateCheckoutCart();
-});
+});*/
+
+function checkout() {
+  checkoutButtonWasPressed = true;
+  Snipcart.api.items.clear().then(function() {
+    Snipcart.api.items.add(localCart.map(function(wallet) {
+        return {
+          "id": "WALLET",
+          "name": "wallet",
+          "description": wallet.base.replace('-', ' ') + ' - ' + wallet.trim.replace('-', ' ') + ' - ' + wallet.inside.replace('-', ' ') + ' wallet.',
+          "url": "/",
+          image: drawWallet(0.4).toDataURL(),
+          "price": 16.0,
+          "quantity": 1,
+          "stackable": false,
+          "customFields": [{
+            "base": base,
+            "trim": trim,
+            "inside": inside,
+          }]
+        }
+      }));
+    })
+  Snipcart.api.modal.show();
+}
+document.getElementById('checkoutButton').onclick = checkout;
+
+
+
+
+
+
+
+/* Drawing wallet */
 
 function drawWallet(scale, canvas) {
   if (canvas == null) {
@@ -201,47 +259,7 @@ function drawBackWallet(canvas) {
   return canvas;
 }
 
-function checkout() {
-  checkoutButtonWasPressed = true;
-  Snipcart.api.modal.show();
-}
-
-document.getElementById('checkoutButton').onclick = checkout;
-
-
-Snipcart.subscribe('cart.opened', function (item) {
-  if (!checkoutButtonWasPressed) {
-    Snipcart.api.modal.close();
-    return;
-  }
-
-  checkoutButtonWasPressed = false;
-});
-
-function updateCheckoutCart() {
-  $('#cartDisplay .cartItem').remove();
-  cartDisplay = [];
-
-  var tempBase = base;
-  var tempTrim = trim;
-  var tempInside = inside;
-
-  var items = Snipcart.api.items.all();
-  for (var i = 0; i < items.length; i++){
-    var item = items[i];
-
-    base = item.customFields[0]['value'];
-    trim = item.customFields[1]['value'];
-    inside = item.customFields[2]['value'];
-    addWalletIconToCart(item);
-  }
-
-  base = tempBase;
-  trim = tempTrim;
-  inside = tempInside;
-}
-
-function addWalletIconToCart(item) {
+function addWalletIconToCart(item, number) {
   var canvas = drawWallet(0.2);
   canvas.style.float = 'left';
   var container = document.createElement('div');
@@ -251,27 +269,40 @@ function addWalletIconToCart(item) {
   xButton.innerHTML = '&#10006; &nbsp;&nbsp;';
   xButton.style.display = 'inline-block';
   xButton.style.float = 'left';
+  xButton.id = "" + number;
+  xButton.className = "xButton";
 
-  xButton.onclick = function() {
-    var items = Snipcart.api.items.all().filter(function(item2) {
-      return item2.uniqueId == item.uniqueId;
-    });
-    Snipcart.api.items.clear();
-    Snipcart.api.items.add(items);
-  }
+  // Remove wallet from cart
+  $(xButton).click(function(event) {
+    var number = event.target.id;
 
-  container.style.display = 'inline-block';
+    localCart.splice(number, 1);
+    updateCheckoutCart();
+  })
+
   container.append(xButton);
   container.append(canvas);
 
   $('#walletsCartDisplay').prepend(container);
 }
 
+function updateCheckoutCart() {
+  $('#cartDisplay .cartItem').remove();
 
-Snipcart.subscribe('cart.ready', function() {
-  changeColor(base);
-  updateBuyButton();
+  var tempBase = base;
+  var tempTrim = trim;
+  var tempInside = inside;
 
-  updateCheckoutCart();
+  for (var i = 0; i < localCart.length; i++){
+    var wallet = localCart[i];
 
-});
+    base = wallet.base;
+    trim = wallet.trim;
+    inside = wallet.inside;
+    addWalletIconToCart(wallet, i);
+  }
+
+  base = tempBase;
+  trim = tempTrim;
+  inside = tempInside;
+}
