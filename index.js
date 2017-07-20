@@ -1,5 +1,4 @@
 
-// Get the modal
 var modal = document.getElementById("colorSelector");
 
 // When the user clicks on the 'x' button, close the modal
