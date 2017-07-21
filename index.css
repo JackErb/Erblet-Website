@@ -79,6 +79,28 @@
     padding: 30px;
   }
 
+  #buyButton {
+    margin-right: 15px;
+  }
+
+  .button {
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  #links {
+    font-size: 25px;
+  }
+
+  #currentCart {
+    font-size: 25px;
+  }
+
 }
 
 @media screen and (max-device-width: 480px) {

@@ -54,15 +54,36 @@ var colorHexCodes = {
 
 var localCart = [];
 
-buyButton.onclick = function () {
+function addToCart(b, t, i) {
   localCart.push({
-    'base': base,
-    'trim': trim,
-    'inside': inside
+    'base': b,
+    'trim': t,
+    'inside': i
   });
-  updateCheckoutCart()
+
+  updateCheckoutCart();
 }
 
+buyButton.onclick = function () {
+  addToCart(base, trim, inside);
+}
+
+function syncCart() {
+  localCart = [];
+
+  var wallets = Snipcart.api.items.all();
+  window.alert(wallets.length);
+
+  for (var i = 0; i < wallets.length; i++) {
+    var wallet = wallets[i];
+
+    var b = wallet.customFields[0]['value'];
+    var t = wallet.customFields[1]['value'];
+    var i = wallet.customFields[2]['value'];
+
+    addToCart(b, t, i);
+  }
+}
 
 
 
@@ -145,6 +166,8 @@ Snipcart.subscribe('cart.ready', function() {
   changeColor(base);
 
   updateCheckoutCart();
+
+  syncCart();
 });
 
 Snipcart.subscribe('cart.opened', function (item) {
@@ -271,13 +294,21 @@ function addWalletIconToCart(item, number) {
   xButton.id = "" + number;
   xButton.className = "xButton";
 
-  // Remove wallet from cart
-  $(xButton).click(function(event) {
+
+  var removeWallet = function(event) {
     var number = event.target.id;
 
     localCart.splice(number, 1);
     updateCheckoutCart();
-  })
+  }
+
+  // Remove wallet from cart
+  $(xButton).click(removeWallet)
+
+  // If the screen is phone-sized, allow the wallet to be removed by touching the container
+  if (window.matchMedia( "(min-width: 480px)" ).matches) {
+    $(container).click(removeWallet);
+  }
 
   container.append(xButton);
   container.append(canvas);
