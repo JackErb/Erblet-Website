@@ -60,22 +60,23 @@ function addToCart(b, t, i) {
     'trim': t,
     'inside': i
   });
-
-  updateCheckoutCart();
 }
 
 buyButton.onclick = function () {
   addToCart(base, trim, inside);
+  updateCheckoutCart();
+
+  syncCartToSnipcart();
 }
 
 function syncCart() {
   localCart = [];
 
   var wallets = Snipcart.api.items.all();
-  window.alert(wallets.length);
+  console.log(wallets);
 
-  for (var i = 0; i < wallets.length; i++) {
-    var wallet = wallets[i];
+  for (var j = 0; j < wallets.length; j++) {
+    var wallet = wallets[j];
 
     var b = wallet.customFields[0]['value'];
     var t = wallet.customFields[1]['value'];
@@ -83,6 +84,8 @@ function syncCart() {
 
     addToCart(b, t, i);
   }
+
+  updateCheckoutCart();
 }
 
 
@@ -148,7 +151,7 @@ function changeColor(color) {
       break;
   }
 
-  drawWallet(1.0,$('#frontWalletDisplay')[0]);
+  drawWallet(1.0, base, trim, inside, $('#frontWalletDisplay')[0]);
   drawBackWallet($('#backWalletDisplay')[0]);
 }
 
@@ -166,8 +169,7 @@ Snipcart.subscribe('cart.ready', function() {
   changeColor(base);
 
   updateCheckoutCart();
-
-  syncCart();
+  Snipcart.api.items.clear();
 });
 
 Snipcart.subscribe('cart.opened', function (item) {
@@ -179,17 +181,10 @@ Snipcart.subscribe('cart.opened', function (item) {
   checkoutButtonWasPressed = false;
 });
 
-/*Snipcart.subscribe('item.adding', function(ev, item, items) {
-  item.description = base.replace('-',' ') + ' - ' + trim.replace('-', ' ')+ ' - ' + inside.replace('-', ' ');
-
-  item.image = drawWallet(0.4).toDataURL();
-
-  addWalletIconToCart(item, Snipcart.api.items.count());
-});
-
-Snipcart.subscribe('item.removed', function() {
+Snipcart.subscribe('cart.closed', function() {
+  syncCart();
   updateCheckoutCart();
-});*/
+});
 
 function checkout() {
   checkoutButtonWasPressed = true;
@@ -200,19 +195,27 @@ function checkout() {
           "name": "wallet",
           "description": wallet.base.replace('-', ' ') + ' - ' + wallet.trim.replace('-', ' ') + ' - ' + wallet.inside.replace('-', ' ') + ' wallet.',
           "url": "/",
-          image: drawWallet(0.4).toDataURL(),
+          image: drawWallet(0.4, wallet.base, wallet.trim, wallet.inside).toDataURL(),
           "price": 16.0,
           "quantity": 1,
           "stackable": false,
           "customFields": [{
-            "base": base,
-            "trim": trim,
-            "inside": inside,
+            'name': "base",
+            'value': wallet.base
+          },
+          {
+            'name': "trim",
+            'value': wallet.trim
+          },
+          {
+            'name': "inside",
+            'value': wallet.inside
           }]
         }
       }));
-    })
-  Snipcart.api.modal.show();
+    }).then(function() {
+      Snipcart.api.modal.show();
+    });
 }
 document.getElementById('checkoutButton').onclick = checkout;
 
@@ -224,12 +227,13 @@ document.getElementById('checkoutButton').onclick = checkout;
 
 /* Drawing wallet */
 
-function drawWallet(scale, canvas) {
+function drawWallet(scale, base, trim, inside, canvas) {
   if (canvas == null) {
     canvas = document.createElement('canvas');
     canvas.width = "" + Math.round(scale * 720);
     canvas.height = "" + Math.round(scale * 271);
   }
+
 
   var ctx = canvas.getContext('2d');
 
@@ -282,7 +286,7 @@ function drawBackWallet(canvas) {
 }
 
 function addWalletIconToCart(item, number) {
-  var canvas = drawWallet(0.2);
+  var canvas = drawWallet(0.2, base, trim, inside);
   canvas.style.float = 'left';
   var container = document.createElement('div');
   container.className = 'cartItem';
@@ -306,7 +310,7 @@ function addWalletIconToCart(item, number) {
   $(xButton).click(removeWallet)
 
   // If the screen is phone-sized, allow the wallet to be removed by touching the container
-  if (window.matchMedia( "(min-width: 480px)" ).matches) {
+  if (window.matchMedia('(min-width: 480px)').matches) {
     $(container).click(removeWallet);
   }
 
