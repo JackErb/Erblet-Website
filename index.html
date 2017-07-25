@@ -138,7 +138,6 @@
   }
 
   #colors {
-    display:table;
     margin: 0 auto;
   }
 
@@ -280,6 +279,11 @@
   #links {
     padding-top: 15px;
   }
+
+  #colorsContainer {
+    display: none;
+    padding: 15px;
+  }
 </style>
 <body>
   <header>
@@ -375,18 +379,12 @@
     </div>
   </div>
 
-  <!-- Color Selector Popup -->
-  <div id="colorSelector" class="modal">
+  <div id="colorsContainer">
+    <div id="colors">
 
-    <!-- Colors -->
-    <div class="modal-content">
-      <div class="close" onclick="closeModal()">trim color &times;</div>
-      <div id="colors">
-
-      </div>
     </div>
+    <div class="close" onclick="closeModal()">trim color &times;</div>
   </div>
-
 
   <div id="footer">
     <br/>

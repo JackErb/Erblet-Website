@@ -1,6 +1,4 @@
 
-var modal = document.getElementById("colorSelector");
-
 // When the user clicks on the 'x' button, close the modal
 var closeButton = document.getElementsByClassName("close")[0];
 
@@ -62,12 +60,12 @@ function addToCart(b, t, i) {
   });
 }
 
-buyButton.onclick = function () {
+$(buyButton).click(function () {
   addToCart(base, trim, inside);
   updateCheckoutCart();
 
   syncCartToSnipcart();
-}
+});
 
 function syncCart() {
   localCart = [];
@@ -97,6 +95,8 @@ function syncCart() {
 
 /* Modal stuff */
 
+var colorsContainer = document.getElementById("colorsContainer");
+
 // Create all color icons
 for (var key in colorHexCodes) {
   if (colorHexCodes.hasOwnProperty(key)) {
@@ -106,16 +106,12 @@ for (var key in colorHexCodes) {
     colorDiv.style.backgroundColor = colorHexCodes[key];
 
     $('#colors').append(colorDiv);
-    document.getElementById(key).onclick = function(event) {
-      changeColor(event.srcElement.id)
-    }
-  }
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-      closeModal();
+    $('#' + key).click(function(event) {
+      changeColor(event.target.id)
+      $('html,body').animate({
+            scrollTop: 0},
+            'smooth');
+    });
   }
 }
 
@@ -128,13 +124,19 @@ document.onkeydown = function(evt) {
 };
 
 function openModal(target) {
-  modal.style.display = "block";
+  colorsContainer.style.display = "block";
   closeButton.innerHTML = target + " color &times;";
   componentToChangeColor = target;
+
+  var offset = $('#colorsContainer').offset().top - $(window).scrollTop();
+
+  $('html,body').animate({
+        scrollTop: offset},
+        'slow');
 }
 
 function closeModal() {
-  modal.style.display = "none";
+  colorsContainer.style.display = "none";
 }
 
 // Switch the color of the wallet
@@ -217,7 +219,8 @@ function checkout() {
       Snipcart.api.modal.show();
     });
 }
-document.getElementById('checkoutButton').onclick = checkout;
+
+$('#checkoutButton').click(checkout);
 
 
 
