@@ -37,10 +37,10 @@ var colorHexCodes = {
   'black' : '#0f181f',
   'white' : '#ffffff',
   'dove-grey' : '#c3c7ca',
-  'fluorescent-citrus' : '#bfd979',
+  'fluorescent-citrus' : '#b7f22f',
   'olive' : '#494835',
   'terracota' : '#bf5124',
-  'yellow' : '#EFC854'
+  'yellow' : '#f4f418'
   //Bronze
   //Silver
   //Gold
@@ -128,7 +128,7 @@ function openModal(target) {
   closeButton.innerHTML = target + " color &times;";
   componentToChangeColor = target;
 
-  var offset = $('#close').offset().top - $(window).scrollTop();
+  var offset = $('#colors').offset().top - $(window).scrollTop();
 
   $('html,body').animate({
         scrollTop: offset},
