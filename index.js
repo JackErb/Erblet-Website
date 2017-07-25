@@ -1,6 +1,6 @@
 
 // When the user clicks on the 'x' button, close the modal
-var closeButton = document.getElementsByClassName("close")[0];
+var closeButton = document.getElementById("close");
 
 var buyButton = document.getElementById("buyButton");
 
@@ -37,7 +37,7 @@ var colorHexCodes = {
   'black' : '#0f181f',
   'white' : '#ffffff',
   'dove-grey' : '#c3c7ca',
-  'fluorescent citrus' : '#bfd979',
+  'fluorescent-citrus' : '#bfd979',
   'olive' : '#494835',
   'terracota' : '#bf5124',
   'yellow' : '#EFC854'
@@ -128,7 +128,7 @@ function openModal(target) {
   closeButton.innerHTML = target + " color &times;";
   componentToChangeColor = target;
 
-  var offset = $('#colorsContainer').offset().top - $(window).scrollTop();
+  var offset = $('#close').offset().top - $(window).scrollTop();
 
   $('html,body').animate({
         scrollTop: offset},
