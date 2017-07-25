@@ -4,9 +4,9 @@ var closeButton = document.getElementById("close");
 
 var buyButton = document.getElementById("buyButton");
 
-var base = "dark-blue";
-var trim = "electric-blue";
-var inside = "icy-blue";
+var base = "peach";
+var trim = "merlot";
+var inside = "beige";
 
 var walletPrice = 16;
 
@@ -25,7 +25,7 @@ var colorHexCodes = {
   'sage' : '#91c9a2',
   'peach' : '#fca489',
   'neon-orange' : '#fe6627',
-  'pink' : '#dbe1d3',
+  'pink' : '#f754d7',
   'fuchsia' : '#de1f83',
   'red' : '#a5122a',
   'baby-pink' : '#f0b9e0',
@@ -36,7 +36,7 @@ var colorHexCodes = {
   'brown' : '#6f372c',
   'black' : '#0f181f',
   'white' : '#ffffff',
-  'dove-grey' : '#c3c7ca',
+  'dove-grey' : '#dedede',
   'fluorescent-citrus' : '#b7f22f',
   'olive' : '#494835',
   'terracota' : '#bf5124',
@@ -44,6 +44,19 @@ var colorHexCodes = {
   //Bronze
   //Silver
   //Gold
+}
+
+function componentDisplayName(name) {
+  switch(name) {
+    case 'base':
+      return 'primary';
+    case 'trim':
+      return 'secondary';
+    case 'inside':
+      return 'tertiary';
+    default:
+      return '';
+  }
 }
 
 
@@ -91,8 +104,6 @@ function syncCart() {
 
 
 
-
-
 /* Modal stuff */
 
 var colorsContainer = document.getElementById("colorsContainer");
@@ -125,8 +136,9 @@ document.onkeydown = function(evt) {
 
 function openModal(target) {
   colorsContainer.style.display = "block";
-  closeButton.innerHTML = target + " color &times;";
   componentToChangeColor = target;
+
+  closeButton.innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
 
   var offset = $('#colors').offset().top - $(window).scrollTop();
 
