@@ -109,7 +109,7 @@ for (var key in colorHexCodes) {
     $('#' + key).click(function(event) {
       changeColor(event.target.id)
       $('html,body').animate({
-            scrollTop: 0},
+            scrollTop: $('#header').offset().top},
             'smooth');
     });
   }
@@ -317,8 +317,8 @@ function addWalletIconToCart(item, number) {
     $(container).click(removeWallet);
   }
 
-  container.append(xButton);
-  container.append(canvas);
+  container.appendChild(xButton);
+  container.appendChild(canvas);
 
   $('#walletsCartDisplay').prepend(container);
 }
