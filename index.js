@@ -18,7 +18,7 @@ var colorHexCodes = {
   'electric-blue' : '#1eb3e1',
   'teal' : '#18a2ac',
   'icy-blue' : '#79ceea',
-  'dark-blue' : '#0C21A9',
+  'dark-blue' : '#11198B',
   'grey' : '#51545b',
   'green' : '#0f7b42',
   'neon-green' : '#27d63d',
