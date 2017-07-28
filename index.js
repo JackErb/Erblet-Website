@@ -19,7 +19,7 @@ var colorHexCodes = {
   'teal' : '#18a2ac',
   'electric-blue' : '#1eb3e1',
   'icy-blue' : '#79ceea',
-  'purple' : '#532b74',
+  'purple' : '#7D319E',
   'lilac' : '#c6b6e0',
   'green' : '#0f7b42',
   'sage' : '#91c9a2',
