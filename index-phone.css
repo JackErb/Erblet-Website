@@ -1,3 +1,5 @@
+/* CSS to edit the site on mobile platforms */
+
 @media screen and (max-device-width: 480px) {
   #header, #footer, article, nav, #aside {
     box-sizing: border-box;
