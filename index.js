@@ -15,32 +15,39 @@ var componentToChangeColor = "base";
 var checkoutButtonWasPressed = false;
 
 var colorHexCodes = {
-  'electric-blue' : '#1eb3e1',
+  'dark-blue' : '#11198B',
   'teal' : '#18a2ac',
+  'electric-blue' : '#1eb3e1',
   'icy-blue' : '#79ceea',
-  'dark-blue' : '#0C21A9',
-  'grey' : '#51545b',
-  'green' : '#0f7b42',
-  'neon-green' : '#27d63d',
-  'sage' : '#91c9a2',
-  'peach' : '#fca489',
-  'neon-orange' : '#fe6627',
-  'pink' : '#f754d7',
-  'fuchsia' : '#de1f83',
-  'red' : '#a5122a',
-  'baby-pink' : '#f0b9e0',
+  'purple' : '#7D319E',
   'lilac' : '#c6b6e0',
-  'purple' : '#532b74',
-  'merlot' : '#7c3141',
-  'beige' : '#f0d7c9',
-  'brown' : '#6f372c',
-  'black' : '#0f181f',
-  'white' : '#ffffff',
-  'dove-grey' : '#dedede',
+  'olive' : '#0F3714',
+  'green' : '#0f7b42',
+  'sage' : '#91c9a2',
+  'neon-green' : '#27d63d',
   'fluorescent-citrus' : '#b7f22f',
-  'olive' : '#494835',
+  'merlot' : '#7c3141',
+  'red' : '#a5122a',
+  'fuchsia' : '#de1f83',
+  'pink' : '#FA37D6',
+  'baby-pink' : '#f0b9e0',
   'terracota' : '#bf5124',
-  'yellow' : '#f4f418'
+  'neon-orange' : '#fe6627',
+  'peach' : '#fca489',
+  'yellow' : '#f4f418',
+  'black' : '#0f181f',
+  'brown' : '#6f372c',
+  'beige' : '#f0d7c9',
+  'grey' : '#6B6B6C',
+  'dove-grey' : '#C1BEC0',
+  'white' : '#ffffff'
+
+
+
+
+
+
+
   //Bronze
   //Silver
   //Gold
