@@ -16,10 +16,12 @@
   <div id="header">
     <div>
       <br/>
-      <b id="title">e r b l e t .</b>
-      <br/>
-      <b id="subtitle">&nbsp;&nbsp;&nbsp;duct tape wallets</b>
-      <div id="links"><a href="gallery.html">gallery</a> &nbsp;&nbsp; <a href="erblet.com/timelapse">timelapse</a> &nbsp;&nbsp; <a href="erblet.com/instagram">instagram</a></div>
+      <div id="titleBox">
+        <b id="title">&nbsp;e r b l e t .</b>
+        <br/>
+        <b id="subtitle">duct tape wallets</b>
+      </div>
+      <div id="links"><a href="about.html">about</a> &nbsp;&nbsp; <a href="gallery.html">gallery</a>  &nbsp;&nbsp; <a href="erblet.com/timelapse">timelapse</a></div>
     </div>
   </div>
 
@@ -27,8 +29,8 @@
   <div id="main">
     <article id="ducttapedisplay">
       <!-- White block divs that cover up parts of the border -->
-      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 3%; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
-      <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 3%; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+      <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
 
       <div id="walletPictures" />
         <!-- Front Picture of Wallet -->
@@ -39,13 +41,15 @@
         </div>
         <map name="FrontWalletMap" id="FrontWalletMap">
           <!--  Trim  -->
+          <!-- This specific trim makes a box for each component. It is currently removed in favor of one giant box encompassing all three of the successive ones.
           <area alt="" onClick="openModal('trim')" shape="rect" coords="16,36,345,58" />
           <area alt="" onClick="openModal('trim')" shape="rect" coords="16,67,344,89" />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="15,98,345,120" />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="370,32,698,48" />
+          <area alt="" onClick="openModal('trim')" shape="rect" coords="15,98,345,120" />-->
+          <area alt="" onClick="openModal('trim')" shape="rect" coords='15,38,344,117' />
+          <area alt="" onClick="openModal('trim')" shape="rect" coords="369,38,698,57" />
 
           <!-- Inside -->
-          <area alt="" onClick="openModal('inside')" shape="rect" coords="697,225,371,51" />
+          <area alt="" onClick="openModal('inside')" shape="rect" coords="369,57,698,235" />
 
           <!-- Base -->
           <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
@@ -78,8 +82,10 @@
       <div id="buyButton" class="button">add to cart</div>
     </article>
     <div id="aside">
-      <div class="asideblocks" style="position: absolute; left: 0; background-color: #F5F5F5; width: 8%; padding-top: 10%; z-index: 1;margin-top: -2px;margin-right: -2px;"></div>
-      <div class="asideblocks" style="position: absolute; right: 0; background-color: #F5F5F5; width: 8%; padding-top: 10%; z-index: 1;margin-top: -2px;"></div>
+      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-left: -2px;margin-top: -3px;"></div>
+      <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -3px;"></div>
+
+
       <div id="cartDisplay">
         <p id="currentCart"><b>current cart</b></p>
         <div id="walletsCartDisplay"></div>
