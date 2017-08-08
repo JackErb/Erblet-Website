@@ -8,11 +8,8 @@ var base = "peach";
 var trim = "merlot";
 var inside = "beige";
 
-var walletPrice = 16;
-
 var componentToChangeColor = "base";
 
-var checkoutButtonWasPressed = false;
 
 var colorHexCodes = {
   'dark-blue' : '#11198B',
@@ -41,12 +38,6 @@ var colorHexCodes = {
   'grey' : '#6B6B6C',
   'dove-grey' : '#C1BEC0',
   'white' : '#ffffff'
-
-
-
-
-
-
 
   //Bronze
   //Silver
@@ -83,8 +74,6 @@ function addToCart(b, t, i) {
 $(buyButton).click(function () {
   addToCart(base, trim, inside);
   updateCheckoutCart();
-
-  syncCartToSnipcart();
 });
 
 function syncCart() {
@@ -193,32 +182,21 @@ Snipcart.subscribe('cart.ready', function() {
   Snipcart.api.items.clear();
 });
 
-Snipcart.subscribe('cart.opened', function (item) {
-  if (!checkoutButtonWasPressed) {
-    Snipcart.api.modal.close();
-    return;
-  }
-
-  checkoutButtonWasPressed = false;
-});
-
 Snipcart.subscribe('cart.closed', function() {
   syncCart();
   updateCheckoutCart();
 });
 
 function checkout() {
-  checkoutButtonWasPressed = true;
   Snipcart.api.items.clear().then(function() {
     Snipcart.api.items.add(localCart.map(function(wallet) {
         return {
           "id": "WALLET",
           "name": "wallet",
           "description": wallet.base.replace('-', ' ') + ' - ' + wallet.trim.replace('-', ' ') + ' - ' + wallet.inside.replace('-', ' ') + ' wallet.',
-          "url": "/",
-          image: drawWallet(0.4, wallet.base, wallet.trim, wallet.inside).toDataURL(),
-          "price": 16.0,
-          "quantity": 1,
+          "url": "http://www.erblet.com/",
+          "image": drawWallet(0.4, wallet.base, wallet.trim, wallet.inside).toDataURL(),
+          "price": "16",
           "stackable": false,
           "customFields": [{
             'name': "base",

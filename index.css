@@ -16,6 +16,6 @@
 }
 
 /* hide quantity section in snipcart*/
-.snip-table__cell--center {
-  display: none;
-}
+/*.snip-table__cell--center {
+  visibility: hidden;
+}*/
