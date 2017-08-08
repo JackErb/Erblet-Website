@@ -248,28 +248,28 @@ function drawWallet(scale, base, trim, inside, canvas) {
 
   // Draw trim
   ctx.fillStyle = colorHexCodes[trim];
-  ctx.fillRect(15,38,329,22);
-  ctx.fillRect(15,68,329,22);
-  ctx.fillRect(15,98,329,22);
-  ctx.fillRect(369,33,329,16);
+  ctx.fillRect(15,38,329,19);
+  ctx.fillRect(15,68,329,19);
+  ctx.fillRect(15,98,329,19);
+  ctx.fillRect(369,38,329,19);
 
   if (trim == base) {
-    ctx.strokeRect(15,38,329,22);
-    ctx.strokeRect(15,68,329,22);
-    ctx.strokeRect(15,98,329,22);
+    ctx.strokeRect(15,38,329,19);
+    ctx.strokeRect(15,68,329,19);
+    ctx.strokeRect(15,98,329,19);
   }
 
   if (trim == base || inside == trim) {
-    ctx.strokeRect(370,33,327,16);
+    ctx.strokeRect(369,38,329,19);
   }
 
 
   //Draw inside
   ctx.fillStyle = colorHexCodes[inside];
-  ctx.fillRect(369,49,329,178);
+  ctx.fillRect(369,57,329,178);
 
   if (inside == trim || inside == base) {
-    ctx.strokeRect(370,49,327,178);
+    ctx.strokeRect(369,57,329,178);
   }
 
   return canvas;
