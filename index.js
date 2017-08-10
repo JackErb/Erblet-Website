@@ -177,6 +177,9 @@ function changeColor(color) {
   drawBackWallet($('#backWalletDisplay')[0]);
 }
 
+changeColor(base);
+
+
 
 
 
@@ -188,7 +191,6 @@ function changeColor(color) {
 Snipcart.execute('config', 'show_continue_shopping', true);
 
 Snipcart.subscribe('cart.ready', function() {
-  changeColor(base);
 
   updateCheckoutCart();
   Snipcart.api.items.clear();

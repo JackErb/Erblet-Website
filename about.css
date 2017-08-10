@@ -9,8 +9,8 @@ body {
 }
 
 #page {
-  width:1050px;
-  display: block;
+  width:1020px;
+  position: relative;
   margin: auto;
   height: 100%;
   top: 0;
@@ -22,13 +22,25 @@ body {
   box-shadow: 3px 3px 1px #b6b6b6;
 }
 
+#blocks {
+  height: 15px;
+}
+
 #main {
   position: relative;
-  display: block;
   min-height: 70vh;
   height: 70vh;
   text-align: center;
   border-top: 2px solid #dfdfdf;
+}
+
+#content {
+  padding-top: 50px;
+  padding-left: 20%;
+  padding-right: 20%;
+  line-height: 2.0;
+  font-weight: bold;
+  text-align: justify;
 }
 
 #aside {
@@ -51,6 +63,10 @@ body {
   background-color: #F0F0F0;
   text-align: center;
   padding-bottom: 15px;
+}
+
+span {
+  color: #888888;
 }
 
 p {
