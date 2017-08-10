@@ -21,9 +21,19 @@
   }
 
   #aside {
-    max-width: 100%;
-    clear: both;
+    max-width: 300px;
+    float: left;
     display: block;
+  }
+
+  #colorsContainer {
+    height: 700px;
+    margin-left: 350px;
+  }
+
+  #cartDisplay {
+    position: relative;
+    width: auto;
   }
 
   #walletsCartDisplay canvas {
@@ -31,9 +41,12 @@
   }
 
   #checkoutButton {
-    float: none;
     width: auto;
     display: inline-block;
+  }
+
+  #asideFooter {
+    position: absolute;
   }
 
 
@@ -44,19 +57,14 @@
     min-height: 90%;
   }
 
-  #ducttapedisplay canvas {
-    width: 100%;
-    height: 100%;
-  }
-
-  .modal-content {
-    right: 8%;
-    bottom: 16%;
-    min-width: 45%
+  #frontWallet, #backWallet {
+    display: table;
+    margin: 0 auto;
+    max-width: 720px;
   }
 
   .color {
-    padding: 30px;
+    padding: 33px;
   }
 
   #buyButton {
@@ -83,7 +91,6 @@
 
   #walletsCartDisplay {
     padding-left:90px;
-    min-height: 127px !important;
     position: relative;
     text-align: left;
     display: inline-block;

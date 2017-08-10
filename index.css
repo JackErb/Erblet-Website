@@ -1,9 +1,21 @@
 /* CSS file for Snipcart customization */
 
 
-.snip-customfields {
+.snip-customfields * {
   visibility: hidden;
 }
+
+.snip-customfields * {
+  max-width: 0 !important;
+  padding: 0 !important;
+}
+
+.snip-customfields {
+  max-width: 0 !important;
+  margin: 0 !important
+  padding: 0 !important;
+}
+
 
 /* TODO: Make thumbnail show up on smaller screen size */
 .snip-product__thumbnail {
@@ -14,6 +26,11 @@
 #snipcart-show-discount-box {
   display: none;
 }
+
+.snip-product__empty {
+  visibility: hidden;
+}
+
 
 /* hide quantity section in snipcart*/
 /*.snip-table__cell--center {

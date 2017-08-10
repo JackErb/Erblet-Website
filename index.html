@@ -80,24 +80,27 @@
         data-item-custom3-name="inside">
       </div>
       <div id="buyButton" class="button">add to cart</div>
+
+      <img id="helpButton" src="images/help-icon.png" onclick="displayHelp()" />
     </article>
-    <div id="aside">
-      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-left: -2px;margin-top: -3px;"></div>
-      <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -3px;"></div>
 
 
-      <div id="cartDisplay">
-        <p id="currentCart"><b>current cart</b></p>
-        <div id="walletsCartDisplay"></div>
-      </div>
-      <div id="asideFooter">
-        <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
-      </div>
+  </div>
+  <div id="aside">
+    <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-left: -2px;margin-top: -3px;"></div>
+    <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -3px;"></div>
+
+
+    <div id="cartDisplay">
+      <p id="currentCart"><b>current cart</b></p>
+      <div id="walletsCartDisplay"></div>
+    </div>
+    <div id="asideFooter">
+      <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
     </div>
   </div>
-
   <div id="colorsContainer">
-    <div id="close" onclick="closeModal()">trim color &times;</div>
+    <div id="close" onclick="closeModal()">base color &times;</div>
     <div id="colors">
 
     </div>

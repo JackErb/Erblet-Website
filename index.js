@@ -59,6 +59,18 @@ function componentDisplayName(name) {
 
 
 
+
+/* Help stuff */
+
+function displayHelp() {
+
+}
+
+
+
+
+
+
 /* Cart stuff */
 
 var localCart = [];
@@ -100,7 +112,7 @@ function syncCart() {
 
 
 
-/* Modal stuff */
+/* Color selection stuff */
 
 var colorsContainer = document.getElementById("colorsContainer");
 
@@ -113,16 +125,16 @@ for (var key in colorHexCodes) {
     colorDiv.style.backgroundColor = colorHexCodes[key];
 
     $('#colors').append(colorDiv);
-    $('#' + key).click(function(event) {
+    $(colorDiv).click(function(event) {
       changeColor(event.target.id)
       $('html,body').animate({
-            scrollTop: $('#header').offset().top},
-            'smooth');
-    });
+            scrollTop: $('#header').offset().top
+          }, 'smooth');
+      });
   }
 }
 
-// When the user presses escape, close the modal
+// When the user presses escape, close the color selector
 document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27) {
@@ -131,7 +143,7 @@ document.onkeydown = function(evt) {
 };
 
 function openModal(target) {
-  colorsContainer.style.display = "block";
+  colorsContainer.style.visibility = "visible";
   componentToChangeColor = target;
 
   closeButton.innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
@@ -140,11 +152,11 @@ function openModal(target) {
 
   $('html,body').animate({
         scrollTop: offset},
-        'slow');
+        'smooth');
 }
 
 function closeModal() {
-  colorsContainer.style.display = "none";
+  colorsContainer.style.visibility = "hidden";
 }
 
 // Switch the color of the wallet
@@ -193,7 +205,7 @@ function checkout() {
         return {
           "id": "WALLET",
           "name": "wallet",
-          "description": wallet.base.replace('-', ' ') + ' - ' + wallet.trim.replace('-', ' ') + ' - ' + wallet.inside.replace('-', ' ') + ' wallet.',
+          "description": wallet.base.replace('-', ' ') + ' - ' + wallet.trim.replace('-', ' ') + ' - ' + wallet.inside.replace('-', ' '),
           "url": "http://www.erblet.com/",
           "image": drawWallet(0.4, wallet.base, wallet.trim, wallet.inside).toDataURL(),
           "price": "16",
