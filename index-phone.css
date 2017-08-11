@@ -1,14 +1,19 @@
 /* CSS to edit the site on mobile platforms */
 
-@media screen and (max-device-width: 480px) {
-  #header, #footer, article, nav, #aside {
+@media screen and (max-device-width: 480px)  {
+  html,body {
+    position: relative;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     padding-right: 0em;
   }
   #page {
-    max-width: 100%;
+    max-width: 100% !important;
     padding: 0;
     margin: 0;
   }
@@ -21,23 +26,29 @@
   }
 
   #aside {
-    max-width: 300px;
-    float: left;
-    display: block;
+    padding-right: 10px;
+    max-width: 400px;
+    position: relative;
+    display: inline-block;
+    float: none;
+
+    border-right: 2px solid #dfdfdf;
   }
 
   #colorsContainer {
-    height: 700px;
-    margin-left: 350px;
+    margin-right: 75px;
+    max-width: 560px;
+    right: 0;
+    float: right !important;
+    width: auto !important;
+    height: 500px;
   }
 
   #cartDisplay {
     position: relative;
     width: auto;
-  }
 
-  #walletsCartDisplay canvas {
-    padding-right: 5px;
+    height: 500px;
   }
 
   #checkoutButton {
@@ -50,7 +61,7 @@
   }
 
 
-  #ducttapedisplay {
+  #ductTapeDisplay {
     display: inline-block;
     min-width: 100%;
     border-right: none;
@@ -64,7 +75,7 @@
   }
 
   .color {
-    padding: 33px;
+    padding: 38px;
   }
 
   #buyButton {
@@ -85,15 +96,13 @@
     font-size: 25px;
   }
 
-  #currentCart {
-    font-size: 25px;
-  }
-
   #walletsCartDisplay {
-    padding-left:90px;
+    padding-left: 15px;
     position: relative;
     text-align: left;
     display: inline-block;
+    height: 372px;
+    overflow: scroll;
   }
 
   .cartItem {
@@ -105,6 +114,24 @@
   }
 
   #currentCart {
+    font-size: 25px;
     max-width: 375px;
+  }
+
+  #content {
+    font-size: 18px;
+  }
+
+  #mainRight {
+    margin-right: 0px !important;
+  }
+
+  #aside-right {
+    height: 3vw;
+    margin-right: -2px;
+  }
+
+  #helpContent {
+    width: 130px;
   }
 }

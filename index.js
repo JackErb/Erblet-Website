@@ -62,10 +62,12 @@ function componentDisplayName(name) {
 
 /* Help stuff */
 
+var helpDisplayIsDown = false;
+
+$("#helpDisplay").animate({width:'toggle'},0);
 function displayHelp() {
-
+  $("#helpDisplay").animate({width:'toggle'});
 }
-
 
 
 
@@ -116,6 +118,8 @@ function syncCart() {
 
 var colorsContainer = document.getElementById("colorsContainer");
 
+$(colorsContainer).slideUp(0);
+
 // Create all color icons
 for (var key in colorHexCodes) {
   if (colorHexCodes.hasOwnProperty(key)) {
@@ -134,6 +138,9 @@ for (var key in colorHexCodes) {
   }
 }
 
+$(colorsContainer).height($(colorsContainer).height());
+
+
 // When the user presses escape, close the color selector
 document.onkeydown = function(evt) {
     evt = evt || window.event;
@@ -144,6 +151,7 @@ document.onkeydown = function(evt) {
 
 function openModal(target) {
   colorsContainer.style.visibility = "visible";
+  $(colorsContainer).slideDown('smooth');
   componentToChangeColor = target;
 
   closeButton.innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
@@ -156,7 +164,7 @@ function openModal(target) {
 }
 
 function closeModal() {
-  colorsContainer.style.visibility = "hidden";
+  $('#colorsContainer').slideUp('smooth');
 }
 
 // Switch the color of the wallet
@@ -304,6 +312,7 @@ function addWalletIconToCart(item, number) {
   canvas.style.float = 'left';
   var container = document.createElement('div');
   container.className = 'cartItem';
+  container.visibility = 'hidden';
 
   var xButton = document.createElement('p');
   xButton.innerHTML = '&#10006; &nbsp;&nbsp;';

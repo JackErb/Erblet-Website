@@ -1,129 +1,134 @@
 <!DOCTYPE html>
-<title>Duct Tape Wallets</title>
+<head>
+  <title>Duct Tape Wallets</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <!-- REMEMBER TO UPDATE TO ACTUAL API KEY WHEN DONE TESTING -->
+  <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
+          data-api-key="NjFiZDRlN2YtZWNjNC00MGFkLTgwMmUtYzRlNTBmOTI1ZTE1NjM2MzU1MDIwMDIxMDcyMjMw"
+          id="snipcart"></script>
+  <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
+  <link type="text/css" href="index.css" rel="stylesheet /">
+  <link type="text/css" href="index-general.css" rel="stylesheet /">
+  <link type="text/css" href="index-phone.css" rel="stylesheet /">
+</head>
 <body>
-  <header>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <!-- REMEMBER TO UPDATE TO ACTUAL API KEY WHEN DONE TESTING -->
-    <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
-            data-api-key="NjFiZDRlN2YtZWNjNC00MGFkLTgwMmUtYzRlNTBmOTI1ZTE1NjM2MzU1MDIwMDIxMDcyMjMw"
-            id="snipcart"></script>
-    <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
-    <link type="text/css" href="index.css" rel="stylesheet /">
-    <link type="text/css" href="index-general.css" rel="stylesheet /">
-    <link type="text/css" href="index-phone.css" rel="stylesheet /">
-  </header>
   <div id="page">
-  <div id="header">
-    <div>
-      <br/>
+    <header id="header">
       <div id="titleBox">
         <b id="title">&nbsp;e r b l e t .</b>
         <br/>
         <b id="subtitle">duct tape wallets</b>
       </div>
       <div id="links"><a href="about">about</a> &nbsp;&nbsp; <a href="gallery">gallery</a>  &nbsp;&nbsp; <a href="timelapse">timelapse</a></div>
-    </div>
-  </div>
+    </header>
 
 
-  <div id="main">
-    <article id="ducttapedisplay">
-      <!-- White block divs that cover up parts of the border -->
-      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
-      <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+    <div id="main">
+      <article id="ductTapeDisplay">
+        <!-- White block divs that cover up parts of the border -->
+        <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+        <div id="mainRight" style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
 
-      <div id="walletPictures" />
-        <!-- Front Picture of Wallet -->
-        <div id="frontWallet" style="padding-bottom:10px; z-index:2;">
-          <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#FrontWalletMap" />
+        <div id="walletPictures" />
+          <!-- Front Picture of Wallet -->
+          <div id="frontWallet" style="padding-bottom:10px; z-index:2;">
+            <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#FrontWalletMap" />
 
-          <canvas class="walletDisplay" id="frontWalletDisplay" width="720" height="271"></canvas>
+            <canvas class="walletDisplay" id="frontWalletDisplay" width="720" height="271"></canvas>
+            <div id="helpDisplay">
+              <div id="helpContent">
+                Click on a part of the wallet and then select a color to customize it!
+                <br/>
+                <br/>
+                The top image is the face of your wallet and the bottom is the back.
+              </div>
+            </div>
+          </div>
+          <map name="FrontWalletMap" id="FrontWalletMap">
+            <!--  Trim  -->
+            <!-- This specific trim makes a box for each component. It is currently removed in favor of one giant box encompassing all three of the successive ones.
+            <area alt="" onClick="openModal('trim')" shape="rect" coords="16,36,345,58" />
+            <area alt="" onClick="openModal('trim')" shape="rect" coords="16,67,344,89" />
+            <area alt="" onClick="openModal('trim')" shape="rect" coords="15,98,345,120" />-->
+            <area alt="" onClick="openModal('trim')" shape="rect" coords='15,38,344,117' />
+            <area alt="" onClick="openModal('trim')" shape="rect" coords="369,38,698,57" />
+
+            <!-- Inside -->
+            <area alt="" onClick="openModal('inside')" shape="rect" coords="369,57,698,235" />
+
+            <!-- Base -->
+            <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
+          </map>
+
+
+          <!-- Back Picture of Wallet -->
+          <div id="backWallet" style="padding-top: 10px;">
+            <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#BackWalletMap" />
+
+            <canvas class="walletDisplay" id="backWalletDisplay" width="720" height="271"></canvas>
+          </div>
+          <map name="BackWalletMap" id="BackWalletMap">
+            <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
+          </map>
         </div>
-        <map name="FrontWalletMap" id="FrontWalletMap">
-          <!--  Trim  -->
-          <!-- This specific trim makes a box for each component. It is currently removed in favor of one giant box encompassing all three of the successive ones.
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="16,36,345,58" />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="16,67,344,89" />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="15,98,345,120" />-->
-          <area alt="" onClick="openModal('trim')" shape="rect" coords='15,38,344,117' />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="369,38,698,57" />
 
-          <!-- Inside -->
-          <area alt="" onClick="openModal('inside')" shape="rect" coords="369,57,698,235" />
-
-          <!-- Base -->
-          <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
-        </map>
-
-
-        <!-- Back Picture of Wallet -->
-        <div id="backWallet" style="padding-top: 10px;">
-          <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#BackWalletMap" />
-
-          <canvas class="walletDisplay" id="backWalletDisplay" width="720" height="271"></canvas>
+        <!-- Snipcart Products -->
+        <div
+          class="snipcart-add-item"
+          data-item-id="WALLET"
+          data-item-name="wallet"
+          data-item-price="16"
+          data-item-stackable="false"
+          data-item-url="http://www.erblet.com/"
+          data-item-custom1-name="base"
+          data-item-custom2-name="trim"
+          data-item-custom3-name="inside">
         </div>
-        <map name="BackWalletMap" id="BackWalletMap">
-          <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
-        </map>
+        <div id="buyButton" class="button">add to cart</div>
+
+        <img id="helpButton" src="images/help-icon.png" onclick="displayHelp()" />
+      </article>
+
+
+    </div>
+    <div id="aside">
+      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-left: -2px;margin-top: -3px;"></div>
+      <div id="aside-right" style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -3px;"></div>
+
+
+      <div id="cartDisplay">
+        <p id="currentCart"><b>current cart</b></p>
+        <div id="walletsCartDisplay"></div>
       </div>
-
-      <!-- Snipcart Products -->
-      <div
-        class="snipcart-add-item"
-        data-item-id="WALLET"
-        data-item-name="wallet"
-        data-item-price="16"
-        data-item-stackable="false"
-        data-item-url="http://www.erblet.com/"
-        data-item-custom1-name="base"
-        data-item-custom2-name="trim"
-        data-item-custom3-name="inside">
+      <div id="asideFooter">
+        <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
       </div>
-      <div id="buyButton" class="button">add to cart</div>
-
-      <img id="helpButton" src="images/help-icon.png" onclick="displayHelp()" />
-    </article>
-
-
-  </div>
-  <div id="aside">
-    <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-left: -2px;margin-top: -3px;"></div>
-    <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -3px;"></div>
-
-
-    <div id="cartDisplay">
-      <p id="currentCart"><b>current cart</b></p>
-      <div id="walletsCartDisplay"></div>
     </div>
-    <div id="asideFooter">
-      <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
+    <div id="colorsContainer">
+      <div id="close" onclick="closeModal()">base color &times;</div>
+      <div id="colors">
+
+      </div>
     </div>
-  </div>
-  <div id="colorsContainer">
-    <div id="close" onclick="closeModal()">base color &times;</div>
-    <div id="colors">
 
+    <div id="footer">
+      <br/>
+      <br/>
+      <b style="text-align: centered">erbletwallets@gmail.com</b>
+      <br/>
+      <a href="https://www.instagram.com/erbletwallets/" target="_blank">
+        <img class="socialMediaLink" src="images/instagram.png"/>
+      </a>
+      <a href="https://www.facebook.com/Erblet-816163258546770/" target="_blank">
+        <img class="socialMediaLink" src="images/facebook.png"/>
+      </a>
+      <a href="https://twitter.com/erbletwallets" target="_blank">
+        <img class="socialMediaLink" src="images/twitter.png"/>
+      </a>
+      <br/>
+      <br/>
     </div>
-  </div>
-
-  <div id="footer">
-    <br/>
-    <br/>
-    <b style="text-align: centered">erbletwallets@gmail.com</b>
-    <br/>
-    <a href="https://www.instagram.com/erbletwallets/" target="_blank">
-      <img class="socialMediaLink" src="images/instagram.png"/>
-    </a>
-    <a href="https://www.facebook.com/Erblet-816163258546770/" target="_blank">
-      <img class="socialMediaLink" src="images/facebook.png"/>
-    </a>
-    <a href="https://twitter.com/erbletwallets" target="_blank">
-      <img class="socialMediaLink" src="images/twitter.png"/>
-    </a>
-    <br/>
-    <br/>
-  </div>
-
   </div>
 
   <script type="text/javascript" src="index.js"></script>
