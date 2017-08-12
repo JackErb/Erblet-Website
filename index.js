@@ -8,11 +8,8 @@ var base = "peach";
 var trim = "merlot";
 var inside = "beige";
 
-var walletPrice = 16;
-
 var componentToChangeColor = "base";
 
-var checkoutButtonWasPressed = false;
 
 var colorHexCodes = {
   'dark-blue' : '#11198B',
@@ -42,12 +39,6 @@ var colorHexCodes = {
   'dove-grey' : '#C1BEC0',
   'white' : '#ffffff'
 
-
-
-
-
-
-
   //Bronze
   //Silver
   //Gold
@@ -68,6 +59,20 @@ function componentDisplayName(name) {
 
 
 
+
+/* Help stuff */
+
+var helpDisplayIsDown = false;
+
+$("#helpDisplay").animate({width:'toggle'},0);
+function displayHelp() {
+  $("#helpDisplay").animate({width:'toggle'});
+}
+
+
+
+
+
 /* Cart stuff */
 
 var localCart = [];
@@ -83,8 +88,6 @@ function addToCart(b, t, i) {
 $(buyButton).click(function () {
   addToCart(base, trim, inside);
   updateCheckoutCart();
-
-  syncCartToSnipcart();
 });
 
 function syncCart() {
@@ -111,9 +114,11 @@ function syncCart() {
 
 
 
-/* Modal stuff */
+/* Color selection stuff */
 
 var colorsContainer = document.getElementById("colorsContainer");
+
+$(colorsContainer).slideUp(0);
 
 // Create all color icons
 for (var key in colorHexCodes) {
@@ -124,16 +129,19 @@ for (var key in colorHexCodes) {
     colorDiv.style.backgroundColor = colorHexCodes[key];
 
     $('#colors').append(colorDiv);
-    $('#' + key).click(function(event) {
+    $(colorDiv).click(function(event) {
       changeColor(event.target.id)
       $('html,body').animate({
-            scrollTop: $('#header').offset().top},
-            'smooth');
-    });
+            scrollTop: $('#header').offset().top
+          }, 'smooth');
+      });
   }
 }
 
-// When the user presses escape, close the modal
+$(colorsContainer).height($(colorsContainer).height());
+
+
+// When the user presses escape, close the color selector
 document.onkeydown = function(evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27) {
@@ -142,7 +150,8 @@ document.onkeydown = function(evt) {
 };
 
 function openModal(target) {
-  colorsContainer.style.display = "block";
+  colorsContainer.style.visibility = "visible";
+  $(colorsContainer).slideDown('smooth');
   componentToChangeColor = target;
 
   closeButton.innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
@@ -151,11 +160,11 @@ function openModal(target) {
 
   $('html,body').animate({
         scrollTop: offset},
-        'slow');
+        'smooth');
 }
 
 function closeModal() {
-  colorsContainer.style.display = "none";
+  $('#colorsContainer').slideUp('smooth');
 }
 
 // Switch the color of the wallet
@@ -176,6 +185,9 @@ function changeColor(color) {
   drawBackWallet($('#backWalletDisplay')[0]);
 }
 
+changeColor(base);
+
+
 
 
 
@@ -187,19 +199,9 @@ function changeColor(color) {
 Snipcart.execute('config', 'show_continue_shopping', true);
 
 Snipcart.subscribe('cart.ready', function() {
-  changeColor(base);
 
   updateCheckoutCart();
   Snipcart.api.items.clear();
-});
-
-Snipcart.subscribe('cart.opened', function (item) {
-  if (!checkoutButtonWasPressed) {
-    Snipcart.api.modal.close();
-    return;
-  }
-
-  checkoutButtonWasPressed = false;
 });
 
 Snipcart.subscribe('cart.closed', function() {
@@ -208,17 +210,15 @@ Snipcart.subscribe('cart.closed', function() {
 });
 
 function checkout() {
-  checkoutButtonWasPressed = true;
   Snipcart.api.items.clear().then(function() {
     Snipcart.api.items.add(localCart.map(function(wallet) {
         return {
           "id": "WALLET",
           "name": "wallet",
-          "description": wallet.base.replace('-', ' ') + ' - ' + wallet.trim.replace('-', ' ') + ' - ' + wallet.inside.replace('-', ' ') + ' wallet.',
-          "url": "/",
-          image: drawWallet(0.4, wallet.base, wallet.trim, wallet.inside).toDataURL(),
-          "price": 16.0,
-          "quantity": 1,
+          "description": wallet.base.replace('-', ' ') + ' - ' + wallet.trim.replace('-', ' ') + ' - ' + wallet.inside.replace('-', ' '),
+          "url": "http://www.erblet.com/",
+          "image": drawWallet(0.4, wallet.base, wallet.trim, wallet.inside).toDataURL(),
+          "price": "16",
           "stackable": false,
           "customFields": [{
             'name': "base",
@@ -270,28 +270,28 @@ function drawWallet(scale, base, trim, inside, canvas) {
 
   // Draw trim
   ctx.fillStyle = colorHexCodes[trim];
-  ctx.fillRect(15,38,329,22);
-  ctx.fillRect(15,68,329,22);
-  ctx.fillRect(15,98,329,22);
-  ctx.fillRect(369,33,329,16);
+  ctx.fillRect(15,38,329,19);
+  ctx.fillRect(15,68,329,19);
+  ctx.fillRect(15,98,329,19);
+  ctx.fillRect(369,38,329,19);
 
   if (trim == base) {
-    ctx.strokeRect(15,38,329,22);
-    ctx.strokeRect(15,68,329,22);
-    ctx.strokeRect(15,98,329,22);
+    ctx.strokeRect(15,38,329,19);
+    ctx.strokeRect(15,68,329,19);
+    ctx.strokeRect(15,98,329,19);
   }
 
   if (trim == base || inside == trim) {
-    ctx.strokeRect(370,33,327,16);
+    ctx.strokeRect(369,38,329,19);
   }
 
 
   //Draw inside
   ctx.fillStyle = colorHexCodes[inside];
-  ctx.fillRect(369,49,329,178);
+  ctx.fillRect(369,57,329,178);
 
   if (inside == trim || inside == base) {
-    ctx.strokeRect(370,49,327,178);
+    ctx.strokeRect(369,57,329,178);
   }
 
   return canvas;
@@ -312,6 +312,7 @@ function addWalletIconToCart(item, number) {
   canvas.style.float = 'left';
   var container = document.createElement('div');
   container.className = 'cartItem';
+  container.visibility = 'hidden';
 
   var xButton = document.createElement('p');
   xButton.innerHTML = '&#10006; &nbsp;&nbsp;';

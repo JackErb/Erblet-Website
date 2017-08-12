@@ -1,0 +1,137 @@
+/* CSS to edit the site on mobile platforms */
+
+@media screen and (max-device-width: 480px)  {
+  html,body {
+    position: relative;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding-right: 0em;
+  }
+  #page {
+    max-width: 100% !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  .asideblocks {
+    width: 3%;
+  }
+  #main {
+    display:block;
+  }
+
+  #aside {
+    padding-right: 10px;
+    max-width: 400px;
+    position: relative;
+    display: inline-block;
+    float: none;
+
+    border-right: 2px solid #dfdfdf;
+  }
+
+  #colorsContainer {
+    margin-right: 75px;
+    max-width: 560px;
+    right: 0;
+    float: right !important;
+    width: auto !important;
+    height: 500px;
+  }
+
+  #cartDisplay {
+    position: relative;
+    width: auto;
+
+    height: 500px;
+  }
+
+  #checkoutButton {
+    width: auto;
+    display: inline-block;
+  }
+
+  #asideFooter {
+    position: absolute;
+  }
+
+
+  #ductTapeDisplay {
+    display: inline-block;
+    min-width: 100%;
+    border-right: none;
+    min-height: 90%;
+  }
+
+  #frontWallet, #backWallet {
+    display: table;
+    margin: 0 auto;
+    max-width: 720px;
+  }
+
+  .color {
+    padding: 38px;
+  }
+
+  #buyButton {
+    margin-right: 15px;
+  }
+
+  .button {
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  #links {
+    font-size: 25px;
+  }
+
+  #walletsCartDisplay {
+    padding-left: 15px;
+    position: relative;
+    text-align: left;
+    display: inline-block;
+    height: 372px;
+    overflow: scroll;
+  }
+
+  .cartItem {
+    min-width: 200px;
+  }
+
+  .cartItem p {
+    font-size: 20px;
+  }
+
+  #currentCart {
+    font-size: 25px;
+    max-width: 375px;
+  }
+
+  #content {
+    font-size: 18px;
+  }
+
+  #mainRight {
+    margin-right: 0px !important;
+  }
+
+  #aside-right {
+    height: 3vw;
+    margin-right: -2px;
+  }
+
+  #helpContent {
+    width: 130px;
+  }
+}

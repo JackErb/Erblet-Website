@@ -1,360 +1,102 @@
 <!DOCTYPE html>
-<title>Duct Tape Wallets</title>
-<style>
-  body {
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-    margin: 0;
+<head>
+  <title>Duct Tape Wallets</title>
 
-    /*color: #444;*/
-    color: #aaaaaa;
-    line-height:1.4;
-    font-size:15px;
-  }
-
-  #page {
-    width:1050px;
-    position: relative;
-    margin: auto;
-    height: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    background: #F5F5F5;
-    box-shadow: 3px 3px 1px #b6b6b6;
-  }
-
-  #main {
-    display: flex;
-    position: relative;
-  }
-
-  #ducttapedisplay {
-    padding-top:15px;
-    padding-left:30px;
-    border-radius:3px;
-    border-top: 2px solid #dfdfdf;
-    border-right: 2px solid #dfdfdf;
-
-    max-width:820px;
-
-    position: relative;
-  }
-  #walletPictures {
-    margin: 15px;
-    z-index: 2;
-  }
-
-  #aside {
-    position: relative;
-    flex-grow: 1;
-    border-top: 2px solid #dfdfdf;
-  }
-  #header, #footer, article, nav, #aside {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-  #header, #footer {
-    width: auto;
-  }
-  #header {
-    position: relative;
-    display:inline-block;
-    padding: 3% 3% 0 3%;
-    width: 100%;
-  }
-  hr {
-    border-color: #FFFFFF;
-  }
-  /* The Close Button */
-  #close {
-    color: #aaaaaa;
-    font-size: 24px;
-    font-weight: bold;
-    padding-bottom: 10px;
-
-    cursor: pointer;
-
-    width: 100%;
-
-    transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-  }
-  #close:hover {
-    color: #cecece;
-  }
-
-  .color {
-    width:13px;
-    height:13px;
-    display: inline-block;
-    padding: 20px;
-    margin: 2px;
-    margin-right:10px;
-    border-radius: 2px;
-    transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-
-    cursor: pointer;
-  }
-
-  #colors {
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .walletFramec {
-    cursor: pointer;
-  }
-
-
-  .button {
-    padding: 10px;
-    background-color: #e7e7e7;
-    border-top: 1px solid #cecece;
-    border-left: 1px solid #cecece;
-    border-right: 1px solid #b6b6b6;
-    border-bottom: 3px solid #b6b6b6;
-    cursor: pointer;
-    border-radius: 6px;
-    margin-bottom: 2%;
-
-    color: #989898;
-
-    transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
-  }
-
-  .button:hover {
-    background-color: #f4f4f4;
-  }
-
-  .button:active {
-    border-bottom: 1px solid #b6b6b6;
-  }
-
-  #buyButton {
-    float: right;
-  }
-
-  #checkoutButton {
-    float: right;
-    bottom: 0;
-    right: 0;
-  }
-
-  #asideFooter {
-    position: absolute;
-    padding-bottom: 1em;
-    padding-right: 1em;
-    width: auto;
-    bottom: 0;
-    right: 0;
-    display: inline;
-  }
-
-
-  .wallet {
-
-    cursor: pointer;
-  }
-  .wallet:hover {
-
-  }
-
-  #footer {
-    background-color: #F0F0F0;
-    text-align: center;
-    padding-bottom: 15px;
-  }
-
-  p {
-    margin-bottom: 15px;
-  }
-
-  #walletPictures canvas {
-    box-shadow: 3px 3px 1px #b6b6b6;
-  }
-
-  #currentCart {
-    font-size: 16px;
-    color: #aaaaaa;
-    text-align: center;
-  }
-
-  #links {
-  }
-
-  #walletsCartDisplay{
-    width: 223px;
-    height: 612px;
-    overflow-y: scroll;
-    position: relative;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  a {
-    transition-duration: 0.2s;
-    -webkit-transition-duration: 0.2s;
-    -moz-transition-duration: 0.2s;
-  }
-
-  a:link { color:#aaaaaa; text-decoration:none; font-weight:bold; }
-  a:visited { color: #aaaaaa; text-decoration:none; font-weight:bold; }
-  a:hover { color: #818181; text-decoration:none; font-weight:bold; }
-  a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
-
-  .cartItem {
-    width: 170px;
-    height: auto;
-    margin: 0 auto;
-    position: relative;
-    display:inline-block;
-  }
-
-  .cartItem p {
-    cursor: pointer;
-  }
-
-  .xButton {
-    transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-  }
-  .xButton:hover {
-    color: #cecece;
-  }
-
-  img {
-    cursor: pointer;
-    cursor: hand;
-  }
-
-  #title {
-    font-size: 35px;
-    margin-bottom: 50px !important;
-    color: #303030;
-    line-height: 1.2;
-  }
-
-  #subtitle {
-    color: #888888;
-
-  }
-
-  #links {
-    padding-top: 30px;
-  }
-
-  #colorsContainer {
-    display: none;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .socialMediaLink {
-    display: inline;
-    text-align: center;
-    width: 25px;
-    height: auto;
-  }
-</style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <!-- REMEMBER TO UPDATE TO ACTUAL API KEY WHEN DONE TESTING -->
+  <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
+          data-api-key="NjFiZDRlN2YtZWNjNC00MGFkLTgwMmUtYzRlNTBmOTI1ZTE1NjM2MzU1MDIwMDIxMDcyMjMw"
+          id="snipcart"></script>
+  <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
+  <link type="text/css" href="index.css" rel="stylesheet /">
+  <link type="text/css" href="index-general.css" rel="stylesheet /">
+  <link type="text/css" href="index-phone.css" rel="stylesheet /">
+</head>
 <body>
-  <header>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <!-- REMEMBER TO UPDATE TO ACTUAL API KEY WHEN DONE TESTING -->
-    <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
-            data-api-key="NjFiZDRlN2YtZWNjNC00MGFkLTgwMmUtYzRlNTBmOTI1ZTE1NjM2MzU1MDIwMDIxMDcyMjMw"
-            id="snipcart"></script>
-    <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
-    <link type="text/css"
-      href="index.css"
-      rel="stylesheet /">
-  </header>
   <div id="page">
-  <div id="header">
-    <div>
-      <br/>
-      <b id="title">e r b l e t .</b>
-      <br/>
-      <b id="subtitle">&nbsp;&nbsp;&nbsp;duct tape wallets</b>
-      <div id="links"><a href="gallery.html">gallery</a> &nbsp;&nbsp; <a href="erblet.com/timelapse">timelapse</a> &nbsp;&nbsp; <a href="erblet.com/instagram">instagram</a></div>
+    <header id="header">
+      <div id="titleBox">
+        <b id="title">&nbsp;e r b l e t .</b>
+        <br/>
+        <b id="subtitle">duct tape wallets</b>
+      </div>
+      <div id="links"><a href="about">about</a> &nbsp;&nbsp; <a href="gallery">gallery</a>  &nbsp;&nbsp; <a href="timelapse">timelapse</a></div>
+    </header>
+
+
+    <div id="main">
+      <article id="ductTapeDisplay">
+        <!-- White block divs that cover up parts of the border -->
+        <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+        <div id="mainRight" style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+
+        <div id="walletPictures" />
+          <!-- Front Picture of Wallet -->
+          <div id="frontWallet" style="padding-bottom:10px; z-index:2;">
+            <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#FrontWalletMap" />
+
+            <canvas class="walletDisplay" id="frontWalletDisplay" width="720" height="271"></canvas>
+            <div id="helpDisplay">
+              <div id="helpContent">
+                select the part of the wallet that you would like to customize.
+                <br/>
+                <br/>
+                the top image is the inside of the wallet and the bottom image is the face of the wallet. the billfold will be the same color as the id holder.
+              </div>
+            </div>
+          </div>
+          <map name="FrontWalletMap" id="FrontWalletMap">
+            <!--  Trim  -->
+            <!-- This specific trim makes a box for each component. It is currently removed in favor of one giant box encompassing all three of the successive ones.
+            <area alt="" onClick="openModal('trim')" shape="rect" coords="16,36,345,58" />
+            <area alt="" onClick="openModal('trim')" shape="rect" coords="16,67,344,89" />
+            <area alt="" onClick="openModal('trim')" shape="rect" coords="15,98,345,120" />-->
+            <area alt="" onClick="openModal('trim')" shape="rect" coords='15,38,344,117' />
+            <area alt="" onClick="openModal('trim')" shape="rect" coords="369,38,698,57" />
+
+            <!-- Inside -->
+            <area alt="" onClick="openModal('inside')" shape="rect" coords="369,57,698,235" />
+
+            <!-- Base -->
+            <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
+          </map>
+
+
+          <!-- Back Picture of Wallet -->
+          <div id="backWallet" style="padding-top: 10px;">
+            <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#BackWalletMap" />
+
+            <canvas class="walletDisplay" id="backWalletDisplay" width="720" height="271"></canvas>
+          </div>
+          <map name="BackWalletMap" id="BackWalletMap">
+            <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
+          </map>
+        </div>
+
+        <!-- Snipcart Products -->
+        <div
+          class="snipcart-add-item"
+          data-item-id="WALLET"
+          data-item-name="wallet"
+          data-item-price="16"
+          data-item-stackable="false"
+          data-item-url="http://www.erblet.com/"
+          data-item-custom1-name="base"
+          data-item-custom2-name="trim"
+          data-item-custom3-name="inside">
+        </div>
+        <div id="buyButton" class="button">add to cart</div>
+
+        <img id="helpButton" src="images/help-icon.png" onclick="displayHelp()" />
+      </article>
+
+
     </div>
-  </div>
-
-
-  <div id="main">
-    <article id="ducttapedisplay">
-      <!-- White block divs that cover up parts of the border -->
-      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 3%; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
-      <div style="position: absolute; right: 0; background-color: #F5F5F5; width: 3%; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
-
-      <div id="walletPictures" />
-        <!-- Front Picture of Wallet -->
-        <div id="frontWallet" style="padding-bottom:10px; z-index:2;">
-          <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#FrontWalletMap" />
-
-          <canvas class="walletDisplay" id="frontWalletDisplay" width="720" height="271"></canvas>
-        </div>
-        <map name="FrontWalletMap" id="FrontWalletMap">
-          <!--  Trim  -->
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="16,36,345,58" />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="16,67,344,89" />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="15,98,345,120" />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="370,32,698,48" />
-
-          <!-- Inside -->
-          <area alt="" onClick="openModal('inside')" shape="rect" coords="697,225,371,51" />
-
-          <!-- Base -->
-          <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
-        </map>
-
-
-        <!-- Back Picture of Wallet -->
-        <div id="backWallet" style="padding-top: 10px;">
-          <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#BackWalletMap" />
-
-          <canvas class="walletDisplay" id="backWalletDisplay" width="720" height="271"></canvas>
-        </div>
-        <map name="BackWalletMap" id="BackWalletMap">
-          <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
-        </map>
-      </div>
-
-      <!-- Snipcart Products -->
-      <div
-        class="snipcart-add-item"
-        style="display:none;"
-        data-item-id="2"
-        data-item-name="wallet"
-        data-item-price="16"
-        data-item-weight="1"
-        data-item-stackable="false"
-        data-item-url="http://www.erblet.com/"
-        data-item-custom1-name="base"
-        data-item-custom1-options="red|blue|yellow"
-        data-item-custom2-name="trim"
-        data-item-custom2-options="red|blue|yellow"
-        data-item-custom3-name="inside"
-        data-item-custom3-options="red|blue|yellow">
-            add to cart
-      </div>
-      <div id="buyButton" class="button">add to cart</div>
-    </article>
     <div id="aside">
-      <div class="asideblocks" style="position: absolute; left: 0; background-color: #F5F5F5; width: 8%; padding-top: 10%; z-index: 1;margin-top: -2px;margin-right: -2px;"></div>
-      <div class="asideblocks" style="position: absolute; right: 0; background-color: #F5F5F5; width: 8%; padding-top: 10%; z-index: 1;margin-top: -2px;"></div>
+      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-left: -2px;margin-top: -3px;"></div>
+      <div id="aside-right" style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -3px;"></div>
+
+
       <div id="cartDisplay">
         <p id="currentCart"><b>current cart</b></p>
         <div id="walletsCartDisplay"></div>
@@ -363,33 +105,30 @@
         <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
       </div>
     </div>
-  </div>
+    <div id="colorsContainer">
+      <div id="close" onclick="closeModal()">base color &times;</div>
+      <div id="colors">
 
-  <div id="colorsContainer">
-    <div id="close" onclick="closeModal()">trim color &times;</div>
-    <div id="colors">
-
+      </div>
     </div>
-  </div>
 
-  <div id="footer">
-    <br/>
-    <br/>
-    <b style="text-align: centered">erbletwallets@gmail.com</b>
-    <br/>
-    <a href="https://www.instagram.com/erbletwallets/" target="_blank">
-      <img class="socialMediaLink" src="images/instagram.png"/>
-    </a>
-    <a href="https://www.facebook.com/Erblet-816163258546770/" target="_blank">
-      <img class="socialMediaLink" src="images/facebook.png"/>
-    </a>
-    <a href="https://twitter.com/erbletwallets" target="_blank">
-      <img class="socialMediaLink" src="images/twitter.png"/>
-    </a>
-    <br/>
-    <br/>
-  </div>
-
+    <div id="footer">
+      <br/>
+      <br/>
+      <b style="text-align: centered">erbletwallets@gmail.com</b>
+      <br/>
+      <a href="https://www.instagram.com/erbletwallets/" target="_blank">
+        <img class="socialMediaLink" src="images/instagram.png"/>
+      </a>
+      <a href="https://www.facebook.com/Erblet-816163258546770/" target="_blank">
+        <img class="socialMediaLink" src="images/facebook.png"/>
+      </a>
+      <a href="https://twitter.com/erbletwallets" target="_blank">
+        <img class="socialMediaLink" src="images/twitter.png"/>
+      </a>
+      <br/>
+      <br/>
+    </div>
   </div>
 
   <script type="text/javascript" src="index.js"></script>
