@@ -12,7 +12,7 @@ var componentToChangeColor = "base";
 
 
 var colorHexCodes = {
-  'dark-blue' : '#11198B',
+  'dark-blue' : '#2E1E87',
   'teal' : '#18a2ac',
   'electric-blue' : '#1eb3e1',
   'icy-blue' : '#79ceea',
