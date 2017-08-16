@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-family: Helvetica,Arial,sans-serif;
   margin: 0;
 
   /*color: #444;*/
@@ -60,14 +60,11 @@ body {
   border-top: 2px solid #dfdfdf;
 }
 
-#header, #footer {
-  width: auto;
-}
 #header {
   position: relative;
   display:inline-block;
-  padding-top: 50px;
-  padding-left: 3%;
+  padding-top: 40px;
+  padding-left: 2vw;
   width: 100%;
 }
 hr {
@@ -76,9 +73,10 @@ hr {
 /* The Close Button */
 #close {
   color: #aaaaaa;
-  font-size: 24px;
+  font-size: 19px;
   font-weight: bold;
   padding-bottom: 10px;
+  line-height: 1.4;
 
   cursor: pointer;
 
@@ -93,12 +91,10 @@ hr {
 }
 
 .color {
-  width:13px;
-  height:13px;
   display: inline-block;
-  padding: 30px;
-  margin: 2px;
-  margin-right:10px;
+  padding: 20px;
+  margin: 1px;
+  margin-bottom: 0;
   border-radius: 2px;
   transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
@@ -125,7 +121,7 @@ hr {
   border-right: 1px solid #b6b6b6;
   border-bottom: 3px solid #b6b6b6;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 5px;
   margin-bottom: 15px;
 
   color: #989898;
@@ -141,7 +137,7 @@ hr {
 }
 
 .button:hover {
-  background-color: #f4f4f4;
+  background-color: #efefef;
 }
 
 .button:active {
@@ -153,20 +149,13 @@ hr {
 }
 
 #checkoutButton {
-  float: right;
-  bottom: 0;
-  right: 0;
-}
-
-#asideFooter {
   position: absolute;
-  padding-right: 1em;
-  width: auto;
-  bottom: 0;
+  bottom: 10px;
   right: 0;
-  display: inline;
+  float: right;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
-
 
 .wallet {
 
@@ -201,9 +190,16 @@ p {
 #links {
 }
 
+#cartDisplay {
+  position: relative;
+  height: 248px;
+  border-bottom: 2px solid #dfdfdf;
+  margin-bottom: 15px;
+}
+
 #walletsCartDisplay{
   width: 223px;
-  height: 617px;
+  height: 200px;
   overflow-y: scroll;
   position: relative;
   margin: 0 auto;
@@ -264,10 +260,11 @@ img {
 }
 
 #colorsContainer {
-  visibility: hidden;
-  padding-left: 15px;
-  padding-right: 15px;
-  width: 1020px;
+  text-align: center;
+  padding: 15px;
+  padding-top: 0px;
+  width: 223px;
+  line-height: 0;
 }
 
 .socialMediaLink {
@@ -306,37 +303,39 @@ img {
 }
 
 #frontWallet {
+  display: inline-block;
   position: relative;
 }
 
 #helpDisplay {
   position: absolute;
-  left: 720px;
-  top: 0;
-  float: left;
-  overflow:hidden;
-
-  box-shadow: 3px 3px 1px #b6b6b6;
-
-  z-index: 3;
+  left: 369px;
+  top: 57px;
+  z-index: 10002;
 }
 
 #helpContent {
-  width: 190px;
-  height: 271px;
+  width: 329px;
+  height: 178px;
   padding: 10px;
-  padding-top: 5px;
-
-
-  background-color: #F0F0F0;
+  padding-top: 3px;
+  line-height: 1.4;
 
   text-align: center;
-  color: #aaa;
   font-weight: bold;
+}
+
+.walletFrame {
+  cursor: pointer;
+}
+
+.walletDisplay {
+  cursor: pointer;
 }
 
 #helpClose {
   margin-right: 10px;
+  margin-bottom: 15px;
   float: right;
   cursor: pointer;
 }

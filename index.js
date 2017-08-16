@@ -8,18 +8,22 @@ var base = "peach";
 var trim = "merlot";
 var inside = "beige";
 
-var componentToChangeColor = "base";
-
 
 var colorHexCodes = {
+<<<<<<< Updated upstream
   'dark-blue' : '#2E1E87',
   'teal' : '#18a2ac',
   'electric-blue' : '#1eb3e1',
+=======
+  'dark-blue' : '#11198B',
+  'teal' : '#18A2AC',
+  'electric-blue' : '#1EB3E1',
+>>>>>>> Stashed changes
   'icy-blue' : '#79ceea',
   'purple' : '#7D319E',
-  'lilac' : '#c6b6e0',
+  'lilac' : '#C6B6E0',
   'olive' : '#0F3714',
-  'green' : '#0f7b42',
+  'green' : '#0F7B42',
   'sage' : '#91c9a2',
   'neon-green' : '#27d63d',
   'fluorescent-citrus' : '#b7f22f',
@@ -44,6 +48,9 @@ var colorHexCodes = {
   //Gold
 }
 
+var componentToChangeColor = "base";
+changeColor(base);
+
 function componentDisplayName(name) {
   switch(name) {
     case 'base':
@@ -64,7 +71,7 @@ function componentDisplayName(name) {
 
 var helpDisplayIsDown = false;
 
-$("#helpDisplay").animate({width:'toggle'},0);
+$("#helpDisplay").animate({width:'hide'},0);
 function displayHelp() {
   $("#helpDisplay").animate({width:'toggle'});
 }
@@ -94,7 +101,6 @@ function syncCart() {
   localCart = [];
 
   var wallets = Snipcart.api.items.all();
-  console.log(wallets);
 
   for (var j = 0; j < wallets.length; j++) {
     var wallet = wallets[j];
@@ -113,12 +119,10 @@ function syncCart() {
 
 
 
-
 /* Color selection stuff */
 
 var colorsContainer = document.getElementById("colorsContainer");
 
-$(colorsContainer).slideUp(0);
 
 // Create all color icons
 for (var key in colorHexCodes) {
@@ -130,11 +134,8 @@ for (var key in colorHexCodes) {
 
     $('#colors').append(colorDiv);
     $(colorDiv).click(function(event) {
-      changeColor(event.target.id)
-      $('html,body').animate({
-            scrollTop: $('#header').offset().top
-          }, 'smooth');
-      });
+      changeColor(event.target.id);
+    })
   }
 }
 
@@ -156,11 +157,7 @@ function openModal(target) {
 
   closeButton.innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
 
-  var offset = $('#colors').offset().top - $(window).scrollTop();
-
-  $('html,body').animate({
-        scrollTop: offset},
-        'smooth');
+  $('#helpDisplay').animate({width:'hide'});
 }
 
 function closeModal() {
@@ -172,10 +169,6 @@ function changeColor(color) {
   switch (componentToChangeColor) {
     case "base":
       base = color;
-      $('#helpContent').css('background-color',LightenDarkenColor(colorHexCodes[base],20));
-      $('#helpContent').css('color',LightenDarkenColor(colorHexCodes[base],-20));
-      //$('#helpDisplay').css('color',LightenDarkenColor(colorHexCodes[base],-20));
-
       break;
     case "trim":
       trim = color;
@@ -185,11 +178,26 @@ function changeColor(color) {
       break;
   }
 
+  var lighten = 40;
+  var darken = -30;
+  switch (inside) {
+    case 'fluorescent-citrus':
+      lighten = 40;
+      darken = -40;
+      break;
+    case 'yellow':
+      darken = -50;
+      break;
+    case 'white':
+      darken = -60;
+      break;
+  }
+  $('#helpContent').css('background-color',adjustColor(colorHexCodes[inside],lighten));
+  $('#helpContent').css('color',adjustColor(colorHexCodes[inside],darken));
+
   drawWallet(1.0, base, trim, inside, $('#frontWalletDisplay')[0]);
   drawBackWallet($('#backWalletDisplay')[0]);
 }
-
-changeColor(base);
 
 
 
@@ -203,7 +211,6 @@ changeColor(base);
 Snipcart.execute('config', 'show_continue_shopping', true);
 
 Snipcart.subscribe('cart.ready', function() {
-
   updateCheckoutCart();
   Snipcart.api.items.clear();
 });
@@ -371,10 +378,14 @@ function updateCheckoutCart() {
 
 
 
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
 
 
-
-function LightenDarkenColor(col, amt) {
+function adjustColor(col, amt) {
 
     var usePound = false;
 
@@ -400,6 +411,7 @@ function LightenDarkenColor(col, amt) {
     if (g > 255) g = 255;
     else if (g < 0) g = 0;
 
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+    var color = (g | (b << 8) | (r << 16)).toString(16);
 
+    return '#' + pad(color, 6, 0);
 }

@@ -36,23 +36,16 @@
             <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#FrontWalletMap" />
 
             <canvas class="walletDisplay" id="frontWalletDisplay" width="720" height="271"></canvas>
-            <div id="helpDisplay">
+            <div id="helpDisplay" onclick='displayHelp()'>
               <div id="helpContent">
-                <span id='helpClose' onclick='displayHelp()'>&times;</span>
-                <br/>
-                select the part of the wallet that you would like to customize.
-                <br/>
-                <br/>
-                the top image is the inside of the wallet and the bottom image is the face of the wallet. the billfold will be the same color as the id holder.
+                <span id='helpClose'>&times;</span>
+                <p>select the part of the wallet that you would like to customize.</p>
+                <p>the top image is the inside of the wallet and the bottom image is the face of the wallet. the billfold will be the same color as the id holder.</p>
               </div>
             </div>
           </div>
           <map name="FrontWalletMap" id="FrontWalletMap">
-            <!--  Trim  -->
-            <!-- This specific trim makes a box for each component. It is currently removed in favor of one giant box encompassing all three of the successive ones.
-            <area alt="" onClick="openModal('trim')" shape="rect" coords="16,36,345,58" />
-            <area alt="" onClick="openModal('trim')" shape="rect" coords="16,67,344,89" />
-            <area alt="" onClick="openModal('trim')" shape="rect" coords="15,98,345,120" />-->
+            <!-- Trim -->
             <area alt="" onClick="openModal('trim')" shape="rect" coords='15,38,344,117' />
             <area alt="" onClick="openModal('trim')" shape="rect" coords="369,38,698,57" />
 
@@ -102,15 +95,16 @@
       <div id="cartDisplay">
         <p id="currentCart"><b>current cart</b></p>
         <div id="walletsCartDisplay"></div>
-      </div>
-      <div id="asideFooter">
         <div class="button" id="checkoutButton" onclick="Snipcart.api.modal.show" onclick="checkout()">check out</div>
-      </div>
-    </div>
-    <div id="colorsContainer">
-      <div id="close" onclick="closeModal()">base color &times;</div>
-      <div id="colors">
 
+        <div style="position: absolute; bottom: -2vw; left: 0; background-color: #F5F5F5; width: 2vw; height: 4vw; padding-top: 3%; z-index: 1; margin-left: 1px;margin-top: -3px;"></div>
+        <div style="position: absolute; bottom: 0; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-bottom: -2px;"></div>
+      </div>
+      <div id="colorsContainer">
+        <div id="close" onclick="closeModal()">base color &times;</div>
+        <div id="colors">
+
+        </div>
       </div>
     </div>
 
