@@ -48,7 +48,8 @@ var colorHexCodes = {
         [0.569, 'rgba(188, 184, 184, 1.000)'],
         [0.801, 'rgba(147, 141, 141, 1.000)'],
         [1.000, 'rgba(255, 255, 255, 1.000)']
-      ]
+      ],
+      'helpColor': '#bcb8b8'
   },
   'gold': {
       'presets': [0,2.372,648,244],
@@ -57,7 +58,8 @@ var colorHexCodes = {
         [0.240, 'rgba(248,249,159,1)'],
         [0.640, 'rgba(217,159,0,1)'],
         [1.000, 'rgba(244,242,183,1)']
-      ]
+      ],
+      'helpColor': '#f8f99f'
   }
 
   //Bronze
@@ -214,8 +216,15 @@ function changeColor(color) {
       darken = -60;
       break;
   }
-  $('#helpContent').css('background-color',adjustColor(colorHexCodes[inside],lighten));
-  $('#helpContent').css('color',adjustColor(colorHexCodes[inside],darken));
+  var color;
+  var isGradient = inside == 'silver' || inside == 'gold';
+  if (isGradient) {
+    color = colorHexCodes[inside]['helpColor'];
+  } else {
+    color = colorHexCodes[inside];
+  }
+  $('#helpContent').css('background-color',adjustColor(color,lighten));
+  $('#helpContent').css('color',adjustColor(color,darken));
 
   drawWallet(1.0, base, trim, inside, $('#frontWalletDisplay')[0]);
   drawBackWallet($('#backWalletDisplay')[0]);

@@ -306,12 +306,13 @@ img {
 
 .canvasWrap {
   position: relative;
+  display: inline-block;
 }
 
 
 #helpDisplay {
   position: absolute;
-  left: 365px;
+  left: 332px;
   top: 51px;
   z-index: 10002;
 }
@@ -330,8 +331,6 @@ img {
 
 .walletFrame {
   cursor: pointer;
-  width: 648px;
-  height: 244px;
 }
 
 .walletDisplay {
