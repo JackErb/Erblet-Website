@@ -10,15 +10,12 @@ var inside = "beige";
 
 
 var colorHexCodes = {
-<<<<<<< Updated upstream
   'dark-blue' : '#2E1E87',
   'teal' : '#18a2ac',
   'electric-blue' : '#1eb3e1',
-=======
   'dark-blue' : '#11198B',
   'teal' : '#18A2AC',
   'electric-blue' : '#1EB3E1',
->>>>>>> Stashed changes
   'icy-blue' : '#79ceea',
   'purple' : '#7D319E',
   'lilac' : '#C6B6E0',
@@ -41,7 +38,27 @@ var colorHexCodes = {
   'beige' : '#f0d7c9',
   'grey' : '#6B6B6C',
   'dove-grey' : '#C1BEC0',
-  'white' : '#ffffff'
+  'white' : '#ffffff',
+  'silver' : {
+      'presets': [2,0,648,244],
+      'colors': [
+        [0, 'rgba(214, 214, 214, 1.000)'],
+        [0.346, 'rgba(114, 112, 112, 1.000)'],
+        [0.451, 'rgba(150, 139, 139, 1.000)'],
+        [0.569, 'rgba(188, 184, 184, 1.000)'],
+        [0.801, 'rgba(147, 141, 141, 1.000)'],
+        [1.000, 'rgba(255, 255, 255, 1.000)']
+      ]
+  },
+  'gold': {
+      'presets': [0,2.372,648,244],
+      'colors': [
+        [0.000, 'rgba(193,193,11,1)'],
+        [0.240, 'rgba(248,249,159,1)'],
+        [0.640, 'rgba(217,159,0,1)'],
+        [1.000, 'rgba(244,242,183,1)']
+      ]
+  }
 
   //Bronze
   //Silver
@@ -130,7 +147,12 @@ for (var key in colorHexCodes) {
     var colorDiv = document.createElement("div");
     colorDiv.id = key;
     colorDiv.className += 'color';
-    colorDiv.style.backgroundColor = colorHexCodes[key];
+    if (key == 'gold' || key == 'silver') {
+      // Gradient color -- use an image
+      colorDiv.style.backgroundImage = 'url(images/' + key + '.png)';
+    } else {
+      colorDiv.style.backgroundColor = colorHexCodes[key];
+    }
 
     $('#colors').append(colorDiv);
     $(colorDiv).click(function(event) {
@@ -257,6 +279,23 @@ $('#checkoutButton').click(checkout);
 
 
 
+function getFill(ctx, color) {
+  var isGradient = color == 'gold' || color == 'silver';
+  if (isGradient) {
+    var info = colorHexCodes[color]
+
+    var presets = info['presets']
+    var grd = ctx.createLinearGradient(presets[0],presets[1],presets[2],presets[3]);
+
+    var colors = info['colors'];
+    console.log(colors);
+    for (var i = 0; i < colors.length; i++) {
+      grd.addColorStop(colors[i][0], colors[i][1]);
+    }
+    return grd;
+  }
+  return colorHexCodes[color];
+}
 
 /* Drawing wallet */
 
@@ -267,6 +306,8 @@ function drawWallet(scale, base, trim, inside, canvas) {
     canvas.height = "" + Math.round(scale * 271);
   }
 
+  var canvasScale = 0.9;
+
 
   var ctx = canvas.getContext('2d');
 
@@ -276,33 +317,34 @@ function drawWallet(scale, base, trim, inside, canvas) {
   ctx.lineWidth = 0.75;
 
   // Draw base
-  ctx.fillStyle = colorHexCodes[base];
-  ctx.fillRect(0,0,720,271);
+  ctx.fillStyle = getFill(ctx, base);
+  ctx.fillRect(0,0,720 * canvasScale,271 * canvasScale);
 
   // Draw trim
-  ctx.fillStyle = colorHexCodes[trim];
-  ctx.fillRect(15,38,329,19);
-  ctx.fillRect(15,68,329,19);
-  ctx.fillRect(15,98,329,19);
-  ctx.fillRect(369,38,329,19);
+  ctx.fillStyle = getFill(ctx, trim);
+
+  ctx.fillRect(15*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
+  ctx.fillRect(15*canvasScale,68*canvasScale,329*canvasScale,19*canvasScale);
+  ctx.fillRect(15*canvasScale,98*canvasScale,329*canvasScale,19*canvasScale);
+  ctx.fillRect(369*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
 
   if (trim == base) {
-    ctx.strokeRect(15,38,329,19);
-    ctx.strokeRect(15,68,329,19);
-    ctx.strokeRect(15,98,329,19);
+    ctx.strokeRect(15*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
+    ctx.strokeRect(15*canvasScale,68*canvasScale,329*canvasScale,19*canvasScale);
+    ctx.strokeRect(15*canvasScale,98*canvasScale,329*canvasScale,19*canvasScale);
   }
 
   if (trim == base || inside == trim) {
-    ctx.strokeRect(369,38,329,19);
+    ctx.strokeRect(369*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
   }
 
 
   //Draw inside
-  ctx.fillStyle = colorHexCodes[inside];
-  ctx.fillRect(369,57,329,178);
+  ctx.fillStyle = getFill(ctx, inside);
+  ctx.fillRect(369*canvasScale,57*canvasScale,329*canvasScale,178*canvasScale);
 
   if (inside == trim || inside == base) {
-    ctx.strokeRect(369,57,329,178);
+    ctx.strokeRect(369*canvasScale,57*canvasScale,329*canvasScale,178*canvasScale);
   }
 
   return canvas;
@@ -312,10 +354,9 @@ function drawBackWallet(canvas) {
   var ctx = canvas.getContext('2d');
 
   // Draw base
-  ctx.fillStyle = colorHexCodes[base];
-  ctx.fillRect(0,0,720,271);
-
-  return canvas;
+  console.log(base)
+  ctx.fillStyle = getFill(ctx, base);
+  ctx.fillRect(0,0,648,244);
 }
 
 function addWalletIconToCart(item, number) {

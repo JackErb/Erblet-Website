@@ -16,7 +16,7 @@
   <div id="page">
     <header id="header">
       <div id="titleBox">
-        <b id="title">&nbsp;erblet</b>
+        <b id="title">erblet</b>
         <br/>
         <b id="subtitle">duct tape wallets</b>
       </div>
@@ -32,15 +32,17 @@
 
         <div id="walletPictures" />
           <!-- Front Picture of Wallet -->
-          <div id="frontWallet" style="padding-bottom:10px; z-index:2;">
+          <div id="frontWallet" style="padding-bottom:10px;">
             <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#FrontWalletMap" />
 
-            <canvas class="walletDisplay" id="frontWalletDisplay" width="720" height="271"></canvas>
-            <div id="helpDisplay" onclick='displayHelp()'>
-              <div id="helpContent">
-                <span id='helpClose'>&times;</span>
-                <p>select the part of the wallet that you would like to customize.</p>
-                <p>the top image is the inside of the wallet and the bottom image is the face of the wallet. the billfold will be the same color as the id holder.</p>
+            <div class="canvasWrap">
+              <canvas class="walletDisplay" id="frontWalletDisplay" width="648px" height="244px"></canvas>
+              <div id="helpDisplay" onclick='displayHelp()'>
+                <div id="helpContent">
+                  <span id='helpClose'>&times;</span>
+                  <p>select the part of the wallet that you would like to customize.</p>
+                  <p>the top image is the inside of the wallet and the bottom image is the face of the wallet. the billfold will be the same color as the id holder.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -61,7 +63,7 @@
           <div id="backWallet" style="padding-top: 10px;">
             <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#BackWalletMap" />
 
-            <canvas class="walletDisplay" id="backWalletDisplay" width="720" height="271"></canvas>
+            <canvas class="walletDisplay" id="backWalletDisplay" width="648px" height="244px"></canvas>
           </div>
           <map name="BackWalletMap" id="BackWalletMap">
             <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
@@ -101,7 +103,7 @@
         <div style="position: absolute; bottom: 0; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-bottom: -2px;"></div>
       </div>
       <div id="colorsContainer">
-        <div id="close" onclick="closeModal()">base color &times;</div>
+        <div id="close" onclick="closeModal()">primary color &times;</div>
         <div id="colors">
 
         </div>
