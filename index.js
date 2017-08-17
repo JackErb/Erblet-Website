@@ -369,7 +369,7 @@ function drawBackWallet(canvas) {
 }
 
 function addWalletIconToCart(item, number) {
-  var canvas = drawWallet(0.2, base, trim, inside);
+  var canvas = drawWallet(0.25, base, trim, inside);
   canvas.style.float = 'left';
   var container = document.createElement('div');
   container.className = 'cartItem';

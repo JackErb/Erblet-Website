@@ -32,7 +32,8 @@
 }
 
 
-/* hide quantity section in snipcart*/
-/*.snip-table__cell--center {
-  visibility: hidden;
-}*/
+@media screen and (max-device-width: 480px)  {
+  .snip-ico--close {
+    font-size: 40px;
+  }
+}
