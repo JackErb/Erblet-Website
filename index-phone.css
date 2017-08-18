@@ -129,12 +129,15 @@
     position: relative;
     text-align: left;
     display: inline-block;
-    height: 372px;
+    min-width: 40vw;
+    height: 425px;
     overflow: scroll;
+
+    text-align: center;
   }
 
   .cartItem {
-    min-width: 200px;
+    width: auto;
   }
 
   .cartItem p {

@@ -371,7 +371,7 @@ function drawBackWallet(canvas) {
 }
 
 function addWalletIconToCart(item, number) {
-  var walletScale = isMobile ? 0.25 : 0.2;
+  var walletScale = isMobile ? 0.3 : 0.2;
   var canvas = drawWallet(walletScale, base, trim, inside);
   canvas.style.float = 'left';
   var container = document.createElement('div');
