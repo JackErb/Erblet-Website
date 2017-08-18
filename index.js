@@ -8,7 +8,9 @@ var base = "peach";
 var trim = "merlot";
 var inside = "beige";
 
-var isMobile = window.matchMedia('(min-width: 480px)').matches;
+function isMobile() {
+  return window.matchMedia('(max-width:480px)').matches;
+}
 
 
 var colorHexCodes = {
@@ -371,7 +373,8 @@ function drawBackWallet(canvas) {
 }
 
 function addWalletIconToCart(item, number) {
-  var walletScale = isMobile ? 0.3 : 0.2;
+  window.alert(isMobile());
+  var walletScale = isMobile() ? 0.25 : 0.2;
   var canvas = drawWallet(walletScale, base, trim, inside);
   canvas.style.float = 'left';
   var container = document.createElement('div');
@@ -397,7 +400,7 @@ function addWalletIconToCart(item, number) {
   $(xButton).click(removeWallet)
 
   // If the screen is phone-sized, allow the wallet to be removed by touching the container
-  if (isMobile) {
+  if (isMobile()) {
     $(container).click(removeWallet);
   }
 
