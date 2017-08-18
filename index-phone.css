@@ -25,6 +25,10 @@
     display:block;
   }
 
+  .xButton {
+    color: #aaaaaa;
+  }
+
   #header {
     margin-left: 15px;
   }
