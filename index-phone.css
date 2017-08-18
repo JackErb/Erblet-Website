@@ -96,6 +96,7 @@
 
   .color {
     padding: 35px;
+    margin: 2px;
   }
 
   #buyButton {
@@ -165,5 +166,17 @@
 
   #helpContent {
     width: 180px;
+  }
+
+  #helpButton {
+    width: 35px;
+  }
+
+  #email {
+    font-size: 20px;
+  }
+
+  .socialMediaLink {
+    width: 40px;
   }
 }
