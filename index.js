@@ -9,7 +9,7 @@ var trim = "merlot";
 var inside = "beige";
 
 function isMobile() {
-  return window.matchMedia('(max-width:480px)').matches;
+  return $('#title').css('font-size') == '50px';
 }
 
 
@@ -373,8 +373,7 @@ function drawBackWallet(canvas) {
 }
 
 function addWalletIconToCart(item, number) {
-  window.alert(isMobile());
-  var walletScale = isMobile() ? 0.25 : 0.2;
+  var walletScale = isMobile() ? 0.3 : 0.2;
   var canvas = drawWallet(walletScale, base, trim, inside);
   canvas.style.float = 'left';
   var container = document.createElement('div');
