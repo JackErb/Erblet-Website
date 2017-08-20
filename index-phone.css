@@ -1,6 +1,6 @@
 /* CSS to edit the site on mobile platforms */
 
-@media screen and (max-device-width: 480px)  {
+@media only screen and (max-width: 800px), (max-device-width: 480px)  {
   html,body {
     position: relative;
     max-width: 100%;
@@ -42,9 +42,9 @@
     float: none;
     width: 100vw !important;
 
-    border-right: 2px solid #dfdfdf;
     clear: both;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     padding-top: 30px;
   }
@@ -54,7 +54,6 @@
     right: 0;
     float: right !important;
     width: auto !important;
-    height: 500px;
   }
 
   #cartDisplay {
@@ -122,7 +121,7 @@
   }
 
   #subtitle {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   #links {
@@ -180,5 +179,28 @@
     margin: 1px;
     margin-top: 10px;
     width: 50px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  html,body {
+    min-width: 800px;
+  }
+
+  #aside {
+    min-width: 800px;
+    position: relative;
+  }
+
+  #colorsContainer {
+    max-width: 390px;
+    width: 50%;
+  }
+
+  #cartDisplay {
+    width: 50%;
+  }
+  .color {
+    padding: 33px;
   }
 }
