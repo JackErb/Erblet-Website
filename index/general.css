@@ -47,8 +47,11 @@ body {
   border-top: 2px solid #dfdfdf;
   border-right: 2px solid #dfdfdf;
 
+
+
   position: relative;
   width: 790px;
+  height: 590px;
 
 }
 #walletPictures {
