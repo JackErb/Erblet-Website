@@ -38,15 +38,15 @@ var colorHexCodes = {
   'peach' : '#fca489',
   'yellow' : '#f4f418',
   'black' : '#0f181f',
-  'brown' : '#6f372c',
-  'beige' : '#f0d7c9',
   'grey' : '#6B6B6C',
   'dove-grey' : '#C1BEC0',
   'white' : '#ffffff',
+  'brown' : '#6f372c',
+  'beige' : '#f0d7c9',
   'silver' : {
       'presets': [2,0,648,244],
       'colors': [
-        [0, 'rgba(214, 214, 214, 1.000)'],
+        [0.000, 'rgba(214, 214, 214, 1.000)'],
         [0.346, 'rgba(114, 112, 112, 1.000)'],
         [0.451, 'rgba(150, 139, 139, 1.000)'],
         [0.569, 'rgba(188, 184, 184, 1.000)'],
@@ -65,10 +65,6 @@ var colorHexCodes = {
       ],
       'helpColor': '#f8f99f'
   }
-
-  //Bronze
-  //Silver
-  //Gold
 }
 
 var componentToChangeColor = "base";
@@ -117,7 +113,8 @@ function addToCart(b, t, i) {
 
 $(buyButton).click(function () {
   addToCart(base, trim, inside);
-  updateCheckoutCart();
+  var i = localCart.length - 1;
+  addWalletIconToCart(localCart[i], i);
 });
 
 function syncCart() {
@@ -125,7 +122,7 @@ function syncCart() {
 
   var wallets = Snipcart.api.items.all();
 
-  for (var j = 0; j < wallets.length; j++) {
+  for (var j = wallets.length-1; j >= 0; j--) {
     var wallet = wallets[j];
 
     var b = wallet.customFields[0]['value'];
@@ -301,7 +298,6 @@ function getFill(ctx, color) {
     var grd = ctx.createLinearGradient(presets[0],presets[1],presets[2],presets[3]);
 
     var colors = info['colors'];
-    console.log(colors);
     for (var i = 0; i < colors.length; i++) {
       grd.addColorStop(colors[i][0], colors[i][1]);
     }
@@ -367,13 +363,12 @@ function drawBackWallet(canvas) {
   var ctx = canvas.getContext('2d');
 
   // Draw base
-  console.log(base)
   ctx.fillStyle = getFill(ctx, base);
   ctx.fillRect(0,0,648,244);
 }
 
 function addWalletIconToCart(item, number) {
-  var walletScale = isMobile() ? 0.25 : 0.2;
+  var walletScale = isMobile() ? 0.2 : 0.2;
   var canvas = drawWallet(walletScale, base, trim, inside);
   canvas.style.float = 'left';
   var container = document.createElement('div');
@@ -410,6 +405,7 @@ function addWalletIconToCart(item, number) {
 }
 
 function updateCheckoutCart() {
+  console.log("updating");
   $('#cartDisplay .cartItem').remove();
 
   var tempBase = base;
