@@ -1,6 +1,6 @@
 /* CSS to edit the site on mobile platforms */
 
-@media screen and (max-device-width: 480px)  {
+@media only screen and (max-width: 800px), (max-device-width: 480px)  {
   html,body {
     position: relative;
     max-width: 100%;
@@ -23,32 +23,58 @@
   }
   #main {
     display:block;
+    height: auto;
+  }
+
+  .xButton {
+    color: #aaaaaa;
+  }
+
+  #header {
+    margin-left: 15px;
+  }
+
+  #titleBox {
+    margin-top: 15px;
   }
 
   #aside {
-    padding-right: 10px;
-    max-width: 400px;
     position: relative;
-    display: inline-block;
     float: none;
+    width: 100vw;
 
-    border-right: 2px solid #dfdfdf;
+    clear: both;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    padding-top: 30px;
   }
 
   #colorsContainer {
-    margin-right: 75px;
-    max-width: 560px;
+    max-width: 49vw;
     right: 0;
     float: right !important;
     width: auto !important;
-    height: 500px;
   }
 
   #cartDisplay {
+    text-align: center;
     position: relative;
-    width: auto;
 
+    width: 49vw;
     height: 500px;
+    display: inline-block;
+    width: 50%;
+
+
+    margin-bottom: 25px;
+
+    border-bottom: 0;
+    border-right: 2px solid #dfdfdf;
+  }
+
+  .cartItem {
+    width: 240px;
   }
 
   #checkoutButton {
@@ -63,9 +89,10 @@
 
   #ductTapeDisplay {
     display: inline-block;
-    min-width: 100%;
     border-right: none;
-    min-height: 90%;
+    height: auto;
+
+    clear: both;
   }
 
   #frontWallet, #backWallet {
@@ -75,11 +102,16 @@
   }
 
   .color {
-    padding: 38px;
+    padding: 35px;
+    margin: 2px;
   }
 
   #buyButton {
     margin-right: 15px;
+  }
+
+  #close {
+    font-size: 25px;
   }
 
   .button {
@@ -88,8 +120,12 @@
     font-weight: bold;
   }
 
-  h1 {
+  #title {
     font-size: 50px;
+  }
+
+  #subtitle {
+    font-size: 22px;
   }
 
   #links {
@@ -101,12 +137,15 @@
     position: relative;
     text-align: left;
     display: inline-block;
-    height: 372px;
+    min-width: 40vw;
+    height: 425px;
     overflow: scroll;
+
+    text-align: center;
   }
 
   .cartItem {
-    min-width: 200px;
+    width: auto;
   }
 
   .cartItem p {
@@ -114,8 +153,9 @@
   }
 
   #currentCart {
+    margin-top: 0;
     font-size: 25px;
-    max-width: 375px;
+    width: 100%;
   }
 
   #content {
@@ -131,7 +171,49 @@
     margin-right: -2px;
   }
 
+  #helpButton {
+    width: 40px;
+  }
+
   #helpContent {
-    width: 180px;
+    font-size: 20px;
+    height: auto;
+    border: 2px solid #D2B9AB;
+  }
+
+  #email {
+    font-size: 25px;
+  }
+
+  .socialMediaLink {
+    margin: 1px;
+    margin-top: 10px;
+    width: 50px;
+  }
+
+  #footer {
+    padding: 30px;
+  }
+  html,body {
+    min-width: 800px;
+  }
+
+  #aside {
+    min-width: 800px;
+    position: relative;
+  }
+
+  #colorsContainer {
+    max-width: 390px;
+    width: 50%;
+  }
+  .color {
+    padding: 33px;
+  }
+}
+
+@media only screen and (max-width: 800px) and (min-device-width: 480px) {
+  html, body {
+    overflow-x: scroll;
   }
 }

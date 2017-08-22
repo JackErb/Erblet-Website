@@ -1,0 +1,15 @@
+
+
+#main {
+  position: relative;
+  display: block;
+  min-height: 70vh;
+  height: 70vh;
+  text-align: center;
+  border-top: 2px solid #dfdfdf;
+  padding-top: 100px;
+}
+
+span {
+  color: #888888;
+}

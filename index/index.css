@@ -1,0 +1,76 @@
+/* CSS file for Snipcart customization */
+
+
+.snip-customfields * {
+  visibility: hidden;
+}
+
+.snip-customfields * {
+  max-width: 0 !important;
+  padding: 0 !important;
+}
+
+.snip-customfields {
+  max-width: 0 !important;
+  margin: 0 !important
+  padding: 0 !important;
+}
+
+
+/* TODO: Make thumbnail show up on smaller screen size */
+.snip-product__thumbnail {
+  position: relative;
+  width: 150px !important;
+}
+
+#snipcart-show-discount-box {
+  display: none;
+}
+
+.snip-product__empty {
+  visibility: hidden;
+}
+
+
+@media screen and (max-device-width: 480px)  {
+
+  .snip-customfields * {
+    display:none !important;
+  }
+
+  .snip-customfields {
+    display: none !important;
+    max-height: 0 !important;
+  }
+
+  .snip-table__small-col {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .snip-table__cell--clear {
+    padding-bottom: 0 !important;
+  }
+
+  .snip-table__cell--highlight.snip-table__small-col {
+    position: absolute;
+    right: 0;
+    top: 75px;
+    border-right: 0px solid black !important;
+    visibility: visible !important;
+  }
+
+  .snip-product__thumbnail {
+    display: inline !important;
+    margin-left: 30px !important;
+  }
+
+  .snip-table__item {
+    padding-top: 40px !important;
+  }
+
+  .snip-product__name {
+    margin-top: 10px !important;
+  }
+}

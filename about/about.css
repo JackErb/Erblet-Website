@@ -1,0 +1,19 @@
+#main {
+  position: relative;
+  text-align: center;
+  border-top: 2px solid #dfdfdf;
+}
+
+#content {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 20%;
+  padding-right: 20%;
+  line-height: 2.0;
+  font-weight: bold;
+  text-align: center;
+}
+
+span {
+  color: #888888;
+}

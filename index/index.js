@@ -8,18 +8,23 @@ var base = "peach";
 var trim = "merlot";
 var inside = "beige";
 
-var componentToChangeColor = "base";
+function isMobile() {
+  return $('#title').css('font-size') == '50px';
+}
 
 
 var colorHexCodes = {
   'dark-blue' : '#2E1E87',
   'teal' : '#18a2ac',
   'electric-blue' : '#1eb3e1',
+  'dark-blue' : '#11198B',
+  'teal' : '#18A2AC',
+  'electric-blue' : '#1EB3E1',
   'icy-blue' : '#79ceea',
   'purple' : '#7D319E',
-  'lilac' : '#c6b6e0',
+  'lilac' : '#C6B6E0',
   'olive' : '#0F3714',
-  'green' : '#0f7b42',
+  'green' : '#0F7B42',
   'sage' : '#91c9a2',
   'neon-green' : '#27d63d',
   'fluorescent-citrus' : '#b7f22f',
@@ -33,16 +38,37 @@ var colorHexCodes = {
   'peach' : '#fca489',
   'yellow' : '#f4f418',
   'black' : '#0f181f',
-  'brown' : '#6f372c',
-  'beige' : '#f0d7c9',
   'grey' : '#6B6B6C',
   'dove-grey' : '#C1BEC0',
-  'white' : '#ffffff'
-
-  //Bronze
-  //Silver
-  //Gold
+  'white' : '#ffffff',
+  'brown' : '#6f372c',
+  'beige' : '#f0d7c9',
+  'silver' : {
+      'presets': [2,0,648,244],
+      'colors': [
+        [0.000, 'rgba(214, 214, 214, 1.000)'],
+        [0.346, 'rgba(114, 112, 112, 1.000)'],
+        [0.451, 'rgba(150, 139, 139, 1.000)'],
+        [0.569, 'rgba(188, 184, 184, 1.000)'],
+        [0.801, 'rgba(147, 141, 141, 1.000)'],
+        [1.000, 'rgba(255, 255, 255, 1.000)']
+      ],
+      'helpColor': '#bcb8b8'
+  },
+  'gold': {
+      'presets': [0,2.372,648,244],
+      'colors': [
+        [0.000, 'rgba(193,193,11,1)'],
+        [0.240, 'rgba(248,249,159,1)'],
+        [0.640, 'rgba(217,159,0,1)'],
+        [1.000, 'rgba(244,242,183,1)']
+      ],
+      'helpColor': '#f8f99f'
+  }
 }
+
+var componentToChangeColor = "base";
+changeColor(base);
 
 function componentDisplayName(name) {
   switch(name) {
@@ -64,9 +90,17 @@ function componentDisplayName(name) {
 
 var helpDisplayIsDown = false;
 
-$("#helpDisplay").animate({width:'toggle'},0);
+if (isMobile()) {
+  $('#helpDisplay').animate({height:'hide'},0)
+} else {
+  $("#helpDisplay").animate({width:'hide'},0);
+}
 function displayHelp() {
-  $("#helpDisplay").animate({width:'toggle'});
+  if (isMobile()) {
+    $("#helpDisplay").animate({height:'toggle'});
+  } else {
+    $("#helpDisplay").animate({width:'toggle'});
+  }
 }
 
 
@@ -87,16 +121,16 @@ function addToCart(b, t, i) {
 
 $(buyButton).click(function () {
   addToCart(base, trim, inside);
-  updateCheckoutCart();
+  var i = localCart.length - 1;
+  addWalletIconToCart(localCart[i], i);
 });
 
 function syncCart() {
   localCart = [];
 
   var wallets = Snipcart.api.items.all();
-  console.log(wallets);
 
-  for (var j = 0; j < wallets.length; j++) {
+  for (var j = wallets.length-1; j >= 0; j--) {
     var wallet = wallets[j];
 
     var b = wallet.customFields[0]['value'];
@@ -113,12 +147,10 @@ function syncCart() {
 
 
 
-
 /* Color selection stuff */
 
 var colorsContainer = document.getElementById("colorsContainer");
 
-$(colorsContainer).slideUp(0);
 
 // Create all color icons
 for (var key in colorHexCodes) {
@@ -126,15 +158,17 @@ for (var key in colorHexCodes) {
     var colorDiv = document.createElement("div");
     colorDiv.id = key;
     colorDiv.className += 'color';
-    colorDiv.style.backgroundColor = colorHexCodes[key];
+    if (key == 'gold' || key == 'silver') {
+      // Gradient color -- use an image
+      colorDiv.style.backgroundImage = 'url(images/' + key + '.png)';
+    } else {
+      colorDiv.style.backgroundColor = colorHexCodes[key];
+    }
 
     $('#colors').append(colorDiv);
     $(colorDiv).click(function(event) {
-      changeColor(event.target.id)
-      $('html,body').animate({
-            scrollTop: $('#header').offset().top
-          }, 'smooth');
-      });
+      changeColor(event.target.id);
+    })
   }
 }
 
@@ -156,11 +190,7 @@ function openModal(target) {
 
   closeButton.innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
 
-  var offset = $('#colors').offset().top - $(window).scrollTop();
-
-  $('html,body').animate({
-        scrollTop: offset},
-        'smooth');
+  $('#helpDisplay').animate({width:'hide'});
 }
 
 function closeModal() {
@@ -172,10 +202,6 @@ function changeColor(color) {
   switch (componentToChangeColor) {
     case "base":
       base = color;
-      $('#helpContent').css('background-color',LightenDarkenColor(colorHexCodes[base],20));
-      $('#helpContent').css('color',LightenDarkenColor(colorHexCodes[base],-20));
-      //$('#helpDisplay').css('color',LightenDarkenColor(colorHexCodes[base],-20));
-
       break;
     case "trim":
       trim = color;
@@ -185,11 +211,33 @@ function changeColor(color) {
       break;
   }
 
+  var lighten = 40;
+  var darken = -30;
+  switch (inside) {
+    case 'fluorescent-citrus':
+      lighten = 40;
+      darken = -40;
+      break;
+    case 'yellow':
+      darken = -50;
+      break;
+    case 'white':
+      darken = -60;
+      break;
+  }
+  var color;
+  var isGradient = inside == 'silver' || inside == 'gold';
+  if (isGradient) {
+    color = colorHexCodes[inside]['helpColor'];
+  } else {
+    color = colorHexCodes[inside];
+  }
+  $('#helpContent').css('background-color',adjustColor(color,lighten));
+  $('#helpContent').css('color',adjustColor(color,darken));
+
   drawWallet(1.0, base, trim, inside, $('#frontWalletDisplay')[0]);
   drawBackWallet($('#backWalletDisplay')[0]);
 }
-
-changeColor(base);
 
 
 
@@ -203,7 +251,6 @@ changeColor(base);
 Snipcart.execute('config', 'show_continue_shopping', true);
 
 Snipcart.subscribe('cart.ready', function() {
-
   updateCheckoutCart();
   Snipcart.api.items.clear();
 });
@@ -250,6 +297,22 @@ $('#checkoutButton').click(checkout);
 
 
 
+function getFill(ctx, color) {
+  var isGradient = color == 'gold' || color == 'silver';
+  if (isGradient) {
+    var info = colorHexCodes[color]
+
+    var presets = info['presets']
+    var grd = ctx.createLinearGradient(presets[0],presets[1],presets[2],presets[3]);
+
+    var colors = info['colors'];
+    for (var i = 0; i < colors.length; i++) {
+      grd.addColorStop(colors[i][0], colors[i][1]);
+    }
+    return grd;
+  }
+  return colorHexCodes[color];
+}
 
 /* Drawing wallet */
 
@@ -260,6 +323,8 @@ function drawWallet(scale, base, trim, inside, canvas) {
     canvas.height = "" + Math.round(scale * 271);
   }
 
+  var canvasScale = 0.9;
+
 
   var ctx = canvas.getContext('2d');
 
@@ -269,33 +334,34 @@ function drawWallet(scale, base, trim, inside, canvas) {
   ctx.lineWidth = 0.75;
 
   // Draw base
-  ctx.fillStyle = colorHexCodes[base];
-  ctx.fillRect(0,0,720,271);
+  ctx.fillStyle = getFill(ctx, base);
+  ctx.fillRect(0,0,720 * canvasScale,271 * canvasScale);
 
   // Draw trim
-  ctx.fillStyle = colorHexCodes[trim];
-  ctx.fillRect(15,38,329,19);
-  ctx.fillRect(15,68,329,19);
-  ctx.fillRect(15,98,329,19);
-  ctx.fillRect(369,38,329,19);
+  ctx.fillStyle = getFill(ctx, trim);
+
+  ctx.fillRect(15*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
+  ctx.fillRect(15*canvasScale,68*canvasScale,329*canvasScale,19*canvasScale);
+  ctx.fillRect(15*canvasScale,98*canvasScale,329*canvasScale,19*canvasScale);
+  ctx.fillRect(369*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
 
   if (trim == base) {
-    ctx.strokeRect(15,38,329,19);
-    ctx.strokeRect(15,68,329,19);
-    ctx.strokeRect(15,98,329,19);
+    ctx.strokeRect(15*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
+    ctx.strokeRect(15*canvasScale,68*canvasScale,329*canvasScale,19*canvasScale);
+    ctx.strokeRect(15*canvasScale,98*canvasScale,329*canvasScale,19*canvasScale);
   }
 
   if (trim == base || inside == trim) {
-    ctx.strokeRect(369,38,329,19);
+    ctx.strokeRect(369*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
   }
 
 
   //Draw inside
-  ctx.fillStyle = colorHexCodes[inside];
-  ctx.fillRect(369,57,329,178);
+  ctx.fillStyle = getFill(ctx, inside);
+  ctx.fillRect(369*canvasScale,57*canvasScale,329*canvasScale,178*canvasScale);
 
   if (inside == trim || inside == base) {
-    ctx.strokeRect(369,57,329,178);
+    ctx.strokeRect(369*canvasScale,57*canvasScale,329*canvasScale,178*canvasScale);
   }
 
   return canvas;
@@ -305,14 +371,13 @@ function drawBackWallet(canvas) {
   var ctx = canvas.getContext('2d');
 
   // Draw base
-  ctx.fillStyle = colorHexCodes[base];
-  ctx.fillRect(0,0,720,271);
-
-  return canvas;
+  ctx.fillStyle = getFill(ctx, base);
+  ctx.fillRect(0,0,648,244);
 }
 
 function addWalletIconToCart(item, number) {
-  var canvas = drawWallet(0.2, base, trim, inside);
+  var walletScale = isMobile() ? 0.2 : 0.2;
+  var canvas = drawWallet(walletScale, base, trim, inside);
   canvas.style.float = 'left';
   var container = document.createElement('div');
   container.className = 'cartItem';
@@ -337,7 +402,7 @@ function addWalletIconToCart(item, number) {
   $(xButton).click(removeWallet)
 
   // If the screen is phone-sized, allow the wallet to be removed by touching the container
-  if (window.matchMedia('(min-width: 480px)').matches) {
+  if (isMobile()) {
     $(container).click(removeWallet);
   }
 
@@ -348,6 +413,7 @@ function addWalletIconToCart(item, number) {
 }
 
 function updateCheckoutCart() {
+  console.log("updating");
   $('#cartDisplay .cartItem').remove();
 
   var tempBase = base;
@@ -371,10 +437,14 @@ function updateCheckoutCart() {
 
 
 
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
 
 
-
-function LightenDarkenColor(col, amt) {
+function adjustColor(col, amt) {
 
     var usePound = false;
 
@@ -400,6 +470,7 @@ function LightenDarkenColor(col, amt) {
     if (g > 255) g = 255;
     else if (g < 0) g = 0;
 
-    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+    var color = (g | (b << 8) | (r << 16)).toString(16);
 
+    return '#' + pad(color, 6, 0);
 }
