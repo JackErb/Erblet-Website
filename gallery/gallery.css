@@ -7,8 +7,11 @@
   border-top: 2px solid #dfdfdf;
   padding-top: 50px;
 
-  overflow: auto;
   clear: both;
+}
+
+.asideblocks {
+  visibility: visible !important;
 }
 
 span {
@@ -42,6 +45,4 @@ p {
   display: block;
   margin: 0 auto;
   width: 400px;
-
-  margin-bottom: 50px;
 }
