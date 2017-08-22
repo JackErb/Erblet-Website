@@ -90,9 +90,17 @@ function componentDisplayName(name) {
 
 var helpDisplayIsDown = false;
 
-$("#helpDisplay").animate({width:'hide'},0);
+if (isMobile()) {
+  $('#helpDisplay').animate({height:'hide'},0)
+} else {
+  $("#helpDisplay").animate({width:'hide'},0);
+}
 function displayHelp() {
-  $("#helpDisplay").animate({width:'toggle'});
+  if (isMobile()) {
+    $("#helpDisplay").animate({height:'toggle'});
+  } else {
+    $("#helpDisplay").animate({width:'toggle'});
+  }
 }
 
 

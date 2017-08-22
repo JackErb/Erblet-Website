@@ -23,6 +23,7 @@
   }
   #main {
     display:block;
+    height: auto;
   }
 
   .xButton {
@@ -86,9 +87,10 @@
 
   #ductTapeDisplay {
     display: inline-block;
-    min-width: 100%;
     border-right: none;
-    min-height: 90%;
+    height: auto;
+
+    clear: both;
   }
 
   #frontWallet, #backWallet {
@@ -171,6 +173,12 @@
     width: 40px;
   }
 
+  #helpContent {
+    font-size: 20px;
+    height: auto;
+    border: 2px solid #D2B9AB;
+  }
+
   #email {
     font-size: 25px;
   }
@@ -180,9 +188,10 @@
     margin-top: 10px;
     width: 50px;
   }
-}
 
-@media only screen and (max-width: 800px) {
+  #footer {
+    padding: 30px;
+  }
   html,body {
     min-width: 800px;
   }
@@ -202,5 +211,11 @@
   }
   .color {
     padding: 33px;
+  }
+}
+
+@media only screen and (max-width: 800px) and (min-device-width: 480px) {
+  html, body {
+    overflow-x: scroll;
   }
 }

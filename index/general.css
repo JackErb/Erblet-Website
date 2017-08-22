@@ -349,3 +349,7 @@ img {
   float: right;
   cursor: pointer;
 }
+
+.separator {
+  color: #aaaaaa;
+}
