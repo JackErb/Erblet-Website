@@ -64,7 +64,11 @@ body {
   position: relative;
   float: right;
   border-top: 2px solid #dfdfdf;
-  display: block;
+  display: inline-block;
+  clear: both;
+
+  width: 230px;
+  max-width: 230px;
 }
 
 #header {
@@ -197,6 +201,7 @@ p {
 #cartDisplay {
   position: relative;
   height: 248px;
+  width: 230px;
   border-bottom: 2px solid #dfdfdf;
   margin-bottom: 15px;
 }
@@ -269,6 +274,7 @@ img {
   padding: 15px;
   padding-top: 0px;
   width: 230px;
+  max-width: none;
   line-height: 0;
 }
 

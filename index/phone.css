@@ -41,7 +41,7 @@
   #aside {
     position: relative;
     float: none;
-    width: 100vw !important;
+    width: 100vw;
 
     clear: both;
     overflow-x: hidden;
@@ -64,6 +64,8 @@
     width: 49vw;
     height: 500px;
     display: inline-block;
+    width: 50%;
+
 
     margin-bottom: 25px;
 
@@ -203,10 +205,6 @@
 
   #colorsContainer {
     max-width: 390px;
-    width: 50%;
-  }
-
-  #cartDisplay {
     width: 50%;
   }
   .color {
