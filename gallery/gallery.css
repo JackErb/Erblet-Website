@@ -38,6 +38,7 @@ p {
   display: block;
   margin: 0 auto;
   width: 400px;
+  height: 345px;
   margin-bottom: 10px;
 }
 
@@ -45,4 +46,5 @@ p {
   display: block;
   margin: 0 auto;
   width: 400px;
+  height: 300px;
 }
