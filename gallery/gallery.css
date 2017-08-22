@@ -4,12 +4,44 @@
   position: relative;
   display: block;
   min-height: 70vh;
-  height: 70vh;
-  text-align: center;
   border-top: 2px solid #dfdfdf;
-  padding-top: 100px;
+  padding-top: 50px;
+
+  overflow: auto;
+  clear: both;
 }
 
 span {
   color: #888888;
+}
+
+p {
+  font-weight: bold;
+  text-align: center;
+}
+
+#paintingBox {
+  display: inline-block;
+  width: 50%;
+}
+
+#walletsBox {
+  width: 50%;
+  float: right;
+}
+
+
+#painting {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+#wallets {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+
+  margin-bottom: 50px;
 }
