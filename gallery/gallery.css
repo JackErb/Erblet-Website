@@ -1,26 +1,4 @@
-body {
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-  margin: 0;
 
-  /*color: #444;*/
-  color: #aaaaaa;
-  line-height:1.4;
-  font-size:15px;
-}
-
-#page {
-  width:1050px;
-  display: block;
-  margin: auto;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  background: #F5F5F5;
-  box-shadow: 3px 3px 1px #b6b6b6;
-}
 
 #main {
   position: relative;
@@ -28,52 +6,10 @@ body {
   min-height: 70vh;
   height: 70vh;
   text-align: center;
-  padding-top: 20px;
-}
-#construction {
-    padding-top: 50%;
-}
-
-#aside {
-  position: relative;
-  flex-grow: 1;
   border-top: 2px solid #dfdfdf;
-}
-#header, #footer, article, nav, #aside {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-#header, #footer {
-  width: auto;
-}
-#header {
-  position: relative;
-  display:inline-block;
-  padding: 3% 3% 0 3%;
-  width: 100%;
+  padding-top: 100px;
 }
 
-#footer {
-  background-color: #F0F0F0;
-  text-align: center;
-  padding-bottom: 15px;
+span {
+  color: #888888;
 }
-
-p {
-  margin-bottom: 15px;
-}
-
-h1 {
-  color: #303030;
-}
-
-a {
-  transition-duration: 0.2s;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-}
-
-a:link { color:#aaaaaa; text-decoration:none; font-weight:bold; }
-a:visited { color: #aaaaaa; text-decoration:none; font-weight:bold; }
-a:hover { color: #818181; text-decoration:none; font-weight:bold; }
-a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
