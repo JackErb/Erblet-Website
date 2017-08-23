@@ -1,4 +1,7 @@
-
+#page {
+  max-width: 1020px;
+  width: 100% !important;
+}
 
 #main {
   position: relative;
@@ -7,7 +10,6 @@
   border-top: 2px solid #dfdfdf;
   padding-top: 50px;
 
-  clear: both;
 }
 
 .asideblocks {
@@ -29,6 +31,7 @@ p {
 }
 
 #walletsBox {
+  display: inline-block;
   width: 50%;
   float: right;
 }
@@ -47,4 +50,30 @@ p {
   margin: 0 auto;
   width: 300px;
   height: 400px;
+}
+
+@media only screen and (max-width: 863px)  {
+  #main {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  #walletsBox {
+    float: none;
+    margin-bottom: 20px;
+  }
+
+  #painting {
+    width: 50vw;
+    height: auto;
+  }
+
+  #paintingBox {
+    margin-bottom: 50px;
+  }
+
+  #wallets {
+    width: 50vw;
+    height: auto;
+  }
 }
