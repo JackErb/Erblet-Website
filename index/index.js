@@ -14,12 +14,10 @@ function isMobile() {
 
 
 var colorHexCodes = {
-  'dark-blue' : '#ffff0f',
+  'dark-blue' : '#203080',
   'teal' : '#18a2ac',
   'electric-blue' : '#1eb3e1',
-  'dark-blue' : '#11198B',
   'teal' : '#18A2AC',
-  'electric-blue' : '#1EB3E1',
   'icy-blue' : '#79ceea',
   'purple' : '#7D319E',
   'lilac' : '#C6B6E0',
