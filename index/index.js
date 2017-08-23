@@ -73,11 +73,11 @@ changeColor(base);
 function componentDisplayName(name) {
   switch(name) {
     case 'base':
-      return 'primary';
+      return 'base';
     case 'trim':
-      return 'secondary';
+      return 'trim';
     case 'inside':
-      return 'tertiary';
+      return 'id background';
     default:
       return '';
   }
