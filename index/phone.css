@@ -182,13 +182,11 @@
   }
 
   #email {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .socialMediaLink {
-    margin: 1px;
-    margin-top: 10px;
-    width: 50px;
+    width: 40px;
   }
 
   #footer {
