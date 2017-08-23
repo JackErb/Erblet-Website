@@ -17,3 +17,25 @@
 span {
   color: #888888;
 }
+
+@media only screen and (max-width: 863px)  {
+  #page {
+
+    max-width: 100vw !important;
+  }
+
+  #content {
+    padding-left: 10%;
+    padding-right: 10%;
+
+    font-size: 12px;
+  }
+
+  #email {
+    font-size: 12px;
+  }
+
+  .socialMediaLink {
+    width: 40px;
+  }
+}

@@ -55,10 +55,12 @@ p {
 @media only screen and (max-width: 863px)  {
   #main {
     text-align: center;
+    font-size: 22px;
   }
 
   #walletsBox {
     float: none;
+    margin-bottom: 20px;
   }
 
   #painting {
