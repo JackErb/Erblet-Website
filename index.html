@@ -3,16 +3,31 @@
   <title>erblet | duct tape wallets</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  <!-- REMEMBER TO UPDATE TO ACTUAL API KEY WHEN DONE TESTING -->
-  <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js"
-          data-api-key="NjFiZDRlN2YtZWNjNC00MGFkLTgwMmUtYzRlNTBmOTI1ZTE1NjM2MzU1MDIwMDIxMDcyMjMw"
-          id="snipcart"></script>
-  <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="OGI4ZGZhNTMtNDQwYy00NTk1LWI2NjgtZmE4MDA5MGJkMTY5NjM2MzU1MDIwMDIxMDcyMjMw"></script>
+  <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
   <link type="text/css" href="index/index.css" rel="stylesheet /">
   <link type="text/css" href="index/general.css" rel="stylesheet /">
   <link type="text/css" href="index/phone.css" rel="stylesheet /">
 
   <meta name="viewport" content="width=644">
+
+  <noscript>
+    <style>
+      #main {
+        visibility: hidden;
+      }
+
+      #aside {
+        visibility: hidden;
+      }
+
+      #javascriptRequired {
+        margin-top: 50px;
+        text-align: center;
+        font-weight: bold;
+      }
+    </style>
+  </noscript>
 </head>
 <body>
   <div id="page">
@@ -32,6 +47,9 @@
     </header>
 
 
+    <noscript>
+      <p id="javascriptRequired">This site requires javascript to function</p>
+    </noscript>
     <div id="main">
       <article id="ductTapeDisplay">
         <!-- White block divs that cover up parts of the border -->
@@ -121,7 +139,7 @@
     <div id="footer">
       <br/>
       <br/>
-      <b id="email" style="text-align: centered">erbletwallets@gmail.com</b>
+      <b id="email" style="text-align: centered"><a href="mailto:erbletwallets@gmail.com">erbletwallets@gmail.com</a></b>
       <br/>
       <a href="https://www.instagram.com/erbletwallets/" target="_blank">
         <img class="socialMediaLink" src="images/instagram.png"/>
