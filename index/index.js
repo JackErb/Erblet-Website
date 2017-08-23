@@ -67,8 +67,54 @@ var colorHexCodes = {
   }
 }
 
+var colorCombos = [
+  {
+    'base': 'peach',
+    'trim': 'merlot',
+    'inside': 'beige'
+  },
+  {
+    'base': 'electric-blue',
+    'trim': 'neon-orange',
+    'inside': 'fluorescent-citrus'
+  },
+  {
+    'base': 'green',
+    'trim': 'neon-green',
+    'inside': 'fluorescent-citrus'
+  },
+  {
+    'base': 'icy-blue',
+    'trim': 'brown',
+    'inside': 'white'
+  },
+  {
+    'base': 'purple',
+    'trim': 'pink',
+    'inside': 'baby-pink'
+  }
+];
+
+var colorCounter = 1;
+var colorChangeInterval = setInterval(function() {
+  if (colorCounter >= colorCombos.length) {
+    colorCounter = 0;
+  }
+
+  componentToChangeColor = 'trim';
+  changeColor(colorCombos[colorCounter]['trim'], false);
+
+  componentToChangeColor = 'inside';
+  changeColor(colorCombos[colorCounter]['inside'], false);
+
+  componentToChangeColor = 'base';
+  changeColor(colorCombos[colorCounter]['base'], false);
+
+  colorCounter++;
+},3000);
+
 var componentToChangeColor = "base";
-changeColor(base);
+changeColor(base, false);
 
 function componentDisplayName(name) {
   switch(name) {
@@ -90,12 +136,17 @@ function componentDisplayName(name) {
 
 var helpDisplayIsDown = false;
 
-if (isMobile()) {
+/*if (isMobile()) {
   $('#helpDisplay').animate({height:'hide'},0)
 } else {
   $("#helpDisplay").animate({width:'hide'},0);
-}
+}*/
 function displayHelp() {
+  if (colorChangeInterval != null) {
+    openModal('inside');
+    return;
+  }
+
   if (isMobile()) {
     $("#helpDisplay").animate({height:'toggle'});
   } else {
@@ -167,7 +218,7 @@ for (var key in colorHexCodes) {
 
     $('#colors').append(colorDiv);
     $(colorDiv).click(function(event) {
-      changeColor(event.target.id);
+      changeColor(event.target.id, true);
     })
   }
 }
@@ -184,13 +235,21 @@ document.onkeydown = function(evt) {
 };
 
 function openModal(target) {
+  clearInterval(colorChangeInterval);
+  colorChangeInterval = null;
+
   colorsContainer.style.visibility = "visible";
   $(colorsContainer).slideDown('smooth');
   componentToChangeColor = target;
 
   closeButton.innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
 
-  $('#helpDisplay').animate({width:'hide'});
+  // Hide the help display
+  if (isMobile()) {
+    $('#helpDisplay').animate({height:'hide'},'smooth')
+  } else {
+    $("#helpDisplay").animate({width:'hide'},'smooth');
+  }
 }
 
 function closeModal() {
@@ -198,7 +257,20 @@ function closeModal() {
 }
 
 // Switch the color of the wallet
-function changeColor(color) {
+function changeColor(color, shouldStopInterval) {
+  // Stop interval that's in charge of constantly changing the wallet's color
+  if (shouldStopInterval) {
+    clearInterval(colorChangeInterval);
+    colorChangeInterval = null;
+
+    // Hide the help display
+    if (isMobile()) {
+      $('#helpDisplay').animate({height:'hide'},'smooth')
+    } else {
+      $("#helpDisplay").animate({width:'hide'},'smooth');
+    }
+  }
+
   switch (componentToChangeColor) {
     case "base":
       base = color;
@@ -400,11 +472,6 @@ function addWalletIconToCart(item, number) {
 
   // Remove wallet from cart
   $(xButton).click(removeWallet)
-
-  // If the screen is phone-sized, allow the wallet to be removed by touching the container
-  if (isMobile()) {
-    $(container).click(removeWallet);
-  }
 
   container.appendChild(xButton);
   container.appendChild(canvas);
