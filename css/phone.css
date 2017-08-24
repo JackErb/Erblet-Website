@@ -96,9 +96,16 @@
   }
 
   #frontWallet, #backWallet {
-    display: table;
     margin: 0 auto;
-    max-width: 720px;
+    max-width: 644px;
+  }
+
+  #frontWallet {
+    margin-top: 15px;
+  }
+
+  #backWallet {
+    margin-bottom: 15px;
   }
 
   .color {
@@ -134,9 +141,9 @@
 
   #walletsCartDisplay {
     padding-left: 15px;
-    position: relative;
+    position: static;
     text-align: left;
-    display: inline-block;
+    display: block;
     min-width: 40vw;
     height: 425px;
     overflow: scroll;
@@ -145,7 +152,9 @@
   }
 
   .cartItem {
+    display: inline-block;
     width: auto;
+    margin-bottom: -10px;
   }
 
   .cartItem p {

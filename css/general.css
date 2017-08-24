@@ -1,29 +1,26 @@
 /* CSS for the general (and desktop) webpage */
 
 * {
-  box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: Helvetica,Arial,sans-serif !important;
   margin: 0;
 
-  /*color: #444;*/
   color: #aaaaaa;
-  line-height:1.4;
   font-size:15px;
+  font-family: Helvetica,Arial,sans-serif !important;
+  line-height:1.4;
 }
 
 #page {
-  width:1020px;
   position: relative;
+
   margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+
+  width:1020px;
 
   background: #F5F5F5;
   box-shadow: 3px 3px 1px #b6b6b6;
@@ -33,69 +30,69 @@ body {
   text-align: center;
 }
 
+#backWallet  {
+  margin-bottom: 15px;
+}
+
+#frontWallet {
+  margin-top: 15px;
+}
+
 #main {
+  position: relative;
   display: inline-block;
   width: auto;
-  position: relative;
 }
 
 #ductTapeDisplay {
-  padding-top:15px;
-  padding-left:30px;
-  padding-right: 15px;
-
-  border-top: 2px solid #dfdfdf;
-  border-right: 2px solid #dfdfdf;
-
-
-
   position: relative;
+
+  padding: 15px 15px 0px 30px;
+
   width: 790px;
   height: 590px;
 
-}
-#walletPictures {
-  margin: 15px;
-  z-index: 2;
+  border-top: 2px solid #dfdfdf;
+  border-right: 2px solid #dfdfdf;
 }
 
 
 #aside {
   position: relative;
-  float: right;
-  border-top: 2px solid #dfdfdf;
   display: inline-block;
+
+  float: right;
   clear: both;
 
-  width: 230px;
   max-width: 230px;
+  width: 230px;
+
+  border-top: 2px solid #dfdfdf;
 }
 
 #header {
   position: relative;
   display:inline-block;
+
   padding-top: 40px;
   padding-left: 2vw;
+
   width: 100%;
 }
-hr {
-  border-color: #FFFFFF;
-}
-/* The Close Button */
+
 #close {
+  width: 100%;
+
   color: #aaaaaa;
-  font-size: 19px;
   font-weight: bold;
-  padding-bottom: 10px;
+  font-size: 19px;
   line-height: 1.4;
 
   cursor: pointer;
 
-  width: 100%;
-
-  transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
   -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }
 #close:hover {
   color: #cecece;
@@ -103,15 +100,17 @@ hr {
 
 .color {
   display: inline-block;
-  padding: 20px;
+
   margin: 1px;
   margin-bottom: 0;
+  padding: 20px;
   border-radius: 2px;
-  transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
 
   cursor: pointer;
+
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }
 
 .color:hover {
@@ -119,23 +118,24 @@ hr {
 }
 
 #colors {
-  margin: 0 auto;
+  margin-top: 10px;
   text-align: center;
 }
 
 
 .button {
-  padding: 10px;
-  background-color: #e7e7e7;
-  border-top: 1px solid #cecece;
-  border-left: 1px solid #cecece;
-  border-right: 1px solid #b6b6b6;
-  border-bottom: 3px solid #b6b6b6;
-  cursor: pointer;
-  border-radius: 5px;
   margin-bottom: 15px;
+  padding: 10px;
+
+  border: 1px solid #cecece;
+  border-bottom: 3px solid #b6b6b6;
+  border-radius: 4px;
+
+  background-color: #e7e7e7;
 
   color: #989898;
+
+  cursor: pointer;
 
   transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
@@ -161,64 +161,52 @@ hr {
 
 #checkoutButton {
   position: absolute;
-  bottom: 10px;
   right: 0;
-  float: right;
-  margin-right: 10px;
+  bottom: 10px;
+
+  margin-right: 1vw;
   margin-bottom: 5px;
 }
 
 .wallet {
-
   cursor: pointer;
-}
-.wallet:hover {
-
 }
 
 #footer {
+  padding-bottom: 15px;
   width: 100%;
   background-color: #F0F0F0;
   text-align: center;
-  padding-bottom: 15px;
-  bottom: 0;
-}
-
-p {
-  margin-bottom: 15px;
 }
 
 
 #currentCart {
-  font-size: 19px;
   color: #aaaaaa;
   text-align: center;
-}
-
-#links {
+  font-size: 19px;
 }
 
 #cartDisplay {
   position: relative;
-  height: 248px;
-  width: 230px;
-  border-bottom: 2px solid #dfdfdf;
   margin-bottom: 15px;
+  width: 230px;
+  height: 248px;
+  border-bottom: 2px solid #dfdfdf;
 }
 
 #walletsCartDisplay{
+  position: relative;
+  overflow-y: scroll;
+  margin: 0 auto;
   width: 230px;
   height: 200px;
-  overflow-y: scroll;
-  position: relative;
-  margin: 0 auto;
   text-align: center;
 }
 
 a {
-  transition-duration: 0.2s;
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 
 a:link { color:#aaaaaa; text-decoration:none; font-weight:bold; }
@@ -227,11 +215,10 @@ a:hover { color: #818181; text-decoration:none; font-weight:bold; }
 a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
 
 .cartItem {
+  position: relative;
+  margin: 0 auto;
   width: 170px;
   height: auto;
-  margin: 0 auto;
-  position: relative;
-  display:inline-block;
 }
 
 .cartItem p {
@@ -239,9 +226,9 @@ a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
 }
 
 .xButton {
-  transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
   -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }
 .xButton:hover {
   color: #cecece;
@@ -253,16 +240,14 @@ img {
 }
 
 #title {
-  font-size: 35px;
-  margin-bottom: 50px !important;
   color: #303030;
-  line-height: 1.1;
   letter-spacing: 3px;
+  font-size: 35px;
+  line-height: 1.1;
 }
 
 #subtitle {
   color: #888888;
-
 }
 
 #links {
@@ -270,23 +255,25 @@ img {
 }
 
 #colorsContainer {
-  text-align: center;
   padding: 15px;
   padding-top: 0px;
-  width: 230px;
+
   max-width: none;
+  width: 230px;
+
+  text-align: center;
   line-height: 0;
 }
 
 .socialMediaLink {
-  display: inline;
-  text-align: center;
   width: 25px;
   height: auto;
 
-  transition-duration: 0.3s;
+  text-align: center;
+
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 .socialMediaLink:hover {
@@ -300,13 +287,14 @@ img {
 
 #helpButton {
   position: absolute;
-  width: 24px;
-  height: auto;
   margin-left: 15px;
 
-  transition-duration: 0.3s;
+  width: 24px;
+  height: auto;
+
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 
 #helpButton:hover {
@@ -321,21 +309,23 @@ img {
 
 #helpDisplay {
   position: absolute;
-  left: 332px;
   top: 51px;
-  z-index: 10002;
+  left: 332px;
+  z-index: 103;
 }
 
 #helpContent {
-  width: 296px;
-  height: 160px;;
   padding: 10px;
   padding-top: 3px;
-  line-height: 1.4;
 
-  font-size: 14px;
+  width: 296px;
+  height: 160px;
+
   text-align: center;
   font-weight: bold;
+
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .walletFrame {
@@ -343,16 +333,16 @@ img {
 }
 
 .walletDisplay {
-  cursor: pointer;
-  box-shadow: 3px 3px 1px #b6b6b6;
   width: 648px;
   height: 244px;
+  box-shadow: 3px 3px 1px #b6b6b6;
+  cursor: pointer;
 }
 
 #helpClose {
+  float: right;
   margin-right: 10px;
   margin-bottom: 15px;
-  float: right;
   cursor: pointer;
 }
 
