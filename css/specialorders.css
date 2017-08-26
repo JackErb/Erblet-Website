@@ -1,0 +1,30 @@
+#page {
+  max-width: 1020px;
+  width: 100% !important;
+}
+
+#main {
+  position: relative;
+  display: block;
+  min-height: 70vh;
+  border-top: 2px solid #dfdfdf;
+
+  text-align: center;
+
+  padding-top: 20%;
+
+  font-size: 15px !important;
+
+  padding-left: 5%;
+  padding-right: 5%;
+
+}
+
+span {
+  color: #888888;
+}
+
+p {
+  font-weight: bold;
+  text-align: center;
+}

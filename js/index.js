@@ -1,8 +1,4 @@
 
-// When the user clicks on the 'x' button, close the modal
-var closeButton = document.getElementById("close");
-
-var buyButton = document.getElementById("buyButton");
 
 var base = "peach";
 var trim = "merlot";
@@ -13,6 +9,7 @@ function isMobile() {
 }
 
 
+// Hex codes for all the duct tape colors
 var colorHexCodes = {
   'dark-blue' : '#203080',
   'teal' : '#18a2ac',
@@ -41,6 +38,8 @@ var colorHexCodes = {
   'white' : '#ffffff',
   'brown' : '#6f372c',
   'beige' : '#f0d7c9',
+
+  // These two colors are gradients and all the extra info is to generate the gradient
   'silver' : {
       'presets': [2,0,648,244],
       'colors': [
@@ -134,11 +133,6 @@ function componentDisplayName(name) {
 
 var helpDisplayIsDown = false;
 
-/*if (isMobile()) {
-  $('#helpDisplay').animate({height:'hide'},0)
-} else {
-  $("#helpDisplay").animate({width:'hide'},0);
-}*/
 function displayHelp() {
   if (colorChangeInterval != null) {
     openModal('inside');
@@ -168,7 +162,7 @@ function addToCart(b, t, i) {
   });
 }
 
-$(buyButton).click(function () {
+$('#buyButton').click(function () {
   addToCart(base, trim, inside);
   var i = localCart.length - 1;
   addWalletIconToCart(localCart[i], i);
@@ -233,14 +227,16 @@ document.onkeydown = function(evt) {
 };
 
 function openModal(target) {
-  clearInterval(colorChangeInterval);
-  colorChangeInterval = null;
+  if (colorChangeInterval != null) {
+    clearInterval(colorChangeInterval);
+    colorChangeInterval = null;
+  }
 
   colorsContainer.style.visibility = "visible";
   $(colorsContainer).slideDown('smooth');
   componentToChangeColor = target;
 
-  closeButton.innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
+  document.getElementById("close").innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
 
   // Hide the help display
   if (isMobile()) {
@@ -324,7 +320,6 @@ Snipcart.subscribe('cart.ready', function() {
   updateCheckoutCart();
   Snipcart.api.items.clear();
 });
-
 Snipcart.subscribe('cart.closed', function() {
   syncCart();
   updateCheckoutCart();
