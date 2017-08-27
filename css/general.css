@@ -234,11 +234,6 @@ a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
   color: #cecece;
 }
 
-img {
-  cursor: pointer;
-  cursor: hand;
-}
-
 #title {
   color: #303030;
   letter-spacing: 3px;
