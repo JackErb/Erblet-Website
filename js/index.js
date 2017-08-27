@@ -71,6 +71,7 @@ var colorCombos = [
     'inside': 'beige'
   },
   {
+<<<<<<< HEAD
     'base': 'icy-blue',
     'trim': 'merlot',
     'inside': 'beige'
@@ -78,6 +79,15 @@ var colorCombos = [
   {
     'base': 'icy-blue',
     'trim': 'merlot',
+=======
+    'base': 'peach',
+    'trim': 'brown',
+    'inside': 'beige'
+  },
+  {
+    'base': 'peach',
+    'trim': 'brown',
+>>>>>>> aeadea9cf181d34a36efb0e16ca287e7f7ba7114
     'inside': 'white'
   },
   {
