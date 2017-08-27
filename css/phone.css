@@ -201,14 +201,6 @@
   #footer {
     padding: 30px;
   }
-  html,body {
-    min-width: 800px;
-  }
-
-  #aside {
-    min-width: 800px;
-    position: relative;
-  }
 
   #colorsContainer {
     max-width: 390px;
@@ -216,11 +208,5 @@
   }
   .color {
     padding: 33px;
-  }
-}
-
-@media only screen and (max-width: 800px) and (min-device-width: 480px) {
-  html, body {
-    overflow-x: scroll;
   }
 }

@@ -27,6 +27,9 @@ body {
 }
 
 #frontWallet, #backWallet {
+  position: relative;
+  margin: 0 auto;
+  width: 644px;
   text-align: center;
 }
 
@@ -36,6 +39,7 @@ body {
 
 #frontWallet {
   margin-top: 15px;
+  padding-bottom:10px;
 }
 
 #main {
@@ -46,11 +50,12 @@ body {
 
 #ductTapeDisplay {
   position: relative;
+  display: inline-block;
+  width: auto;
 
   padding: 15px 15px 0px 30px;
 
   width: 790px;
-  height: 590px;
 
   border-top: 2px solid #dfdfdf;
   border-right: 2px solid #dfdfdf;
@@ -234,11 +239,6 @@ a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
   color: #cecece;
 }
 
-img {
-  cursor: pointer;
-  cursor: hand;
-}
-
 #title {
   color: #303030;
   letter-spacing: 3px;
@@ -348,4 +348,9 @@ img {
 
 .separator {
   color: #aaaaaa;
+}
+
+.clear {
+  clear: both;
+  visibility: hidden;
 }

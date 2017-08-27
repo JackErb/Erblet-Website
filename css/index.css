@@ -74,3 +74,28 @@
     margin-top: 10px !important;
   }
 }
+
+
+
+img {
+  cursor: pointer;
+  cursor: hand;
+}
+
+
+@media only screen and (max-width: 800px), (max-device-width: 480px)  {
+  html,body {
+    min-width: 800px;
+  }
+
+  #aside {
+    min-width: 800px;
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 800px) and (min-device-width: 480px) {
+  html, body {
+    overflow-x: scroll;
+  }
+}
