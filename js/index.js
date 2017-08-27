@@ -71,14 +71,14 @@ var colorCombos = [
     'inside': 'beige'
   },
   {
-    'base': 'electric-blue',
-    'trim': 'neon-orange',
-    'inside': 'fluorescent-citrus'
+    'base': 'peach',
+    'trim': 'brown',
+    'inside': 'beige'
   },
   {
-    'base': 'green',
-    'trim': 'neon-green',
-    'inside': 'fluorescent-citrus'
+    'base': 'peach',
+    'trim': 'brown',
+    'inside': 'white'
   },
   {
     'base': 'icy-blue',
@@ -86,9 +86,64 @@ var colorCombos = [
     'inside': 'white'
   },
   {
-    'base': 'purple',
-    'trim': 'pink',
-    'inside': 'baby-pink'
+    'base': 'icy-blue',
+    'trim': 'dark-blue',
+    'inside': 'white'
+  },
+  {
+    'base': 'icy-blue',
+    'trim': 'dark-blue',
+    'inside': 'gold'
+  },
+  {
+    'base': 'lilac',
+    'trim': 'white',
+    'inside': 'gold'
+  },
+  {
+    'base': 'lilac',
+    'trim': 'white',
+    'inside': 'sage'
+  },
+  {
+    'base': 'teal',
+    'trim': 'green',
+    'inside': 'sage'
+  },
+  {
+    'base': 'teal',
+    'trim': 'green',
+    'inside': 'olive'
+  },
+  {
+    'base': 'black',
+    'trim': 'green',
+    'inside': 'olive'
+  },
+  {
+    'base': 'black',
+    'trim': 'neon-orange',
+    'inside': 'olive'
+  },
+  {
+    'base': 'black',
+    'trim': 'neon-orange',
+    'inside': 'brown'
+  },
+  {
+    'base': 'terracota',
+    'trim': 'neon-orange',
+    'inside': 'brown'
+  },
+  {
+    'base': 'terracota',
+    'trim': 'merlot',
+    'inside': 'brown'
+  },
+  {
+    'base': 'terracota',
+    'trim': 'merlot',
+    'inside': 'beige'
   }
 ];
 
