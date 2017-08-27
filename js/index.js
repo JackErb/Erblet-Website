@@ -163,7 +163,7 @@ var colorChangeInterval = setInterval(function() {
   changeColor(colorCombos[colorCounter]['base'], false);
 
   colorCounter++;
-},3000);
+},1500);
 
 var componentToChangeColor = "base";
 changeColor(base, false);

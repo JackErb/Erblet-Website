@@ -10,21 +10,25 @@
   border-top: 2px solid #dfdfdf;
 
   text-align: center;
-
-  padding-top: 20%;
-
+  padding-top: 50px;
   font-size: 15px !important;
+
+}
+
+#main article {
+  display: inline;
+  height: 150px;
+  font-weight: bold;
+  text-align: center;
 
   padding-left: 5%;
   padding-right: 5%;
 
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 span {
   color: #888888;
-}
-
-p {
-  font-weight: bold;
-  text-align: center;
 }
