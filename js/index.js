@@ -71,79 +71,119 @@ var colorCombos = [
     'inside': 'beige'
   },
   {
-    'base': 'icy-blue',
+    'base': 'sage',
     'trim': 'merlot',
     'inside': 'beige'
   },
   {
-    'base': 'icy-blue',
-    'trim': 'merlot',
-    'inside': 'white'
-  },
-  {
-    'base': 'icy-blue',
-    'trim': 'brown',
-    'inside': 'white'
-  },
-  {
-    'base': 'icy-blue',
-    'trim': 'dark-blue',
-    'inside': 'white'
-  },
-  {
-    'base': 'icy-blue',
-    'trim': 'dark-blue',
-    'inside': 'gold'
-  },
-  {
-    'base': 'lilac',
-    'trim': 'white',
-    'inside': 'gold'
-  },
-  {
-    'base': 'lilac',
-    'trim': 'white',
-    'inside': 'sage'
-  },
-  {
-    'base': 'teal',
-    'trim': 'green',
-    'inside': 'sage'
-  },
-  {
-    'base': 'teal',
-    'trim': 'green',
-    'inside': 'olive'
-  },
-  {
-    'base': 'black',
-    'trim': 'green',
-    'inside': 'olive'
-  },
-  {
-    'base': 'black',
-    'trim': 'neon-orange',
-    'inside': 'olive'
-  },
-  {
-    'base': 'black',
-    'trim': 'neon-orange',
-    'inside': 'brown'
-  },
-  {
-    'base': 'terracota',
-    'trim': 'neon-orange',
-    'inside': 'brown'
-  },
-  {
-    'base': 'terracota',
-    'trim': 'merlot',
-    'inside': 'brown'
-  },
-  {
-    'base': 'terracota',
-    'trim': 'merlot',
+    'base': 'sage',
+    'trim': 'icy-blue',
     'inside': 'beige'
+  },
+  {
+    'base': 'sage',
+    'trim': 'icy-blue',
+    'inside': 'neon-orange'
+  },
+  {
+    'base': 'olive',
+    'trim': 'icy-blue',
+    'inside': 'neon-orange'
+  },
+  {
+    'base': 'olive',
+    'trim': 'sage',
+    'inside': 'neon-orange'
+  },
+  {
+    'base': 'olive',
+    'trim': 'sage',
+    'inside': 'teal'
+  },
+  {
+    'base': 'lilac',
+    'trim': 'sage',
+    'inside': 'teal'
+  },
+  {
+    'base': 'lilac',
+    'trim': 'dark-blue',
+    'inside': 'teal'
+  },
+  {
+    'base': 'lilac',
+    'trim': 'dark-blue',
+    'inside': 'white'
+  },
+  {
+    'base': 'gold',
+    'trim': 'dark-blue',
+    'inside': 'white'
+  },
+  {
+    'base': 'gold',
+    'trim': 'fuchsia',
+    'inside': 'white'
+  },
+  {
+    'base': 'gold',
+    'trim': 'fuchsia',
+    'inside': 'purple'
+  },
+  {
+    'base': 'black',
+    'trim': 'fuchsia',
+    'inside': 'purple'
+  },
+  {
+    'base': 'black',
+    'trim': 'white',
+    'inside': 'purple'
+  },
+  {
+    'base': 'black',
+    'trim': 'white',
+    'inside': 'dove-grey'
+  },
+  {
+    'base': 'dark-blue',
+    'trim': 'white',
+    'inside': 'dove-grey'
+  },
+  {
+    'base': 'dark-blue',
+    'trim': 'teal',
+    'inside': 'dove-grey'
+  },
+  {
+    'base': 'dark-blue',
+    'trim': 'teal',
+    'inside': 'white'
+  },
+  {
+    'base': 'green',
+    'trim': 'teal',
+    'inside': 'white'
+  },
+  {
+    'base': 'green',
+    'trim': 'yellow',
+    'inside': 'white'
+  },
+  {
+    'base': 'green',
+    'trim': 'yellow',
+    'inside': 'olive'
+  },
+  {
+    'base': 'peach',
+    'trim': 'yellow',
+    'inside': 'olive'
+  },
+  {
+    'base': 'peach',
+    'trim': 'merlot',
+    'inside': 'olive'
   }
 ];
 
