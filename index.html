@@ -13,12 +13,12 @@
 
   <noscript>
   <style>
-  #main {
+  #ductTapeDisplay {
     visibility: hidden;
   }
 
   #aside {
-    visibility: hidden;
+    display: none;
   }
 
   #javascriptRequired {
@@ -30,6 +30,7 @@
 </noscript>
 </head>
 <body>
+  <!-- #page is a container div used to center the entire layout -->
   <div id="page">
     <header id="header">
       <div id="titleBox">
@@ -50,68 +51,67 @@
     <noscript>
       <p id="javascriptRequired">This site requires javascript to function</p>
     </noscript>
-    <div id="main">
-      <article id="ductTapeDisplay">
-        <!-- White block divs that cover up parts of the border -->
-        <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
-        <div id="mainRight" style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
-        <!-- Front Picture of Wallet -->
-        <div id="frontWallet" style="padding-bottom:10px;">
-          <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#FrontWalletMap" />
+    <article id="ductTapeDisplay">
+      <!-- White block divs that cover up parts of the border -->
+      <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+      <div id="mainRight" style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
 
-          <div class="canvasWrap">
-            <canvas class="walletDisplay" id="frontWalletDisplay" width="648px" height="244px"></canvas>
-            <div id="helpDisplay" onclick='displayHelp()'>
-              <div id="helpContent">
-                <span id='helpClose'>&times;</span>
-                <p>click on one of the three sections of this wallet to select it, you can then customize its color</p>
-                <p>the color behind this text is the background of the transparent id cover and is also the interior billfold color</p>
-              </div>
-            </div>
+
+      <!-- Front Picture of Wallet -->
+      <div id="frontWallet">
+        <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#FrontWalletMap" />
+
+        <canvas class="walletDisplay" id="frontWalletDisplay" width="648px" height="244px"></canvas>
+        <div id="helpDisplay" onclick='displayHelp()'>
+          <!-- Inner #helpContent div is used so that the jquery width toggle animation looks smoother -->
+          <div id="helpContent">
+            <span id='helpClose'>&times;</span>
+            <p>click on one of the three sections of this wallet to select it, you can then customize its color</p>
+            <p>the color behind this text is the background of the transparent id cover and is also the interior billfold color</p>
           </div>
         </div>
-        <map name="FrontWalletMap" id="FrontWalletMap">
-          <!-- Trim -->
-          <area alt="" onClick="openModal('trim')" shape="rect" coords='14,34,310,105' />
-          <area alt="" onClick="openModal('trim')" shape="rect" coords="332,34,628,51" />
+      </div>
+      <map name="FrontWalletMap" id="FrontWalletMap">
+        <!-- Trim -->
+        <area alt="" onClick="openModal('trim')" shape="rect" coords='14,34,310,105' />
+        <area alt="" onClick="openModal('trim')" shape="rect" coords="332,34,628,51" />
 
-          <!-- Inside -->
-          <area alt="" onClick="openModal('inside')" shape="rect" coords="332,51,628,212" />
+        <!-- Inside -->
+        <area alt="" onClick="openModal('inside')" shape="rect" coords="332,51,628,212" />
 
-          <!-- Base -->
-          <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,643,239" />
-        </map>
-
-
-        <!-- Back Picture of Wallet -->
-        <div id="backWallet" style="padding-top: 10px;">
-          <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#BackWalletMap" />
-
-          <canvas class="walletDisplay" id="backWalletDisplay" width="648px" height="244px"></canvas>
-        </div>
-        <map name="BackWalletMap" id="BackWalletMap">
-          <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
-        </map>
-
-        <!-- Snipcart Products -->
-        <span
-        class="snipcart-add-item"
-        data-item-id="WALLET"
-        data-item-name="wallet"
-        data-item-price="16"
-        data-item-stackable="false"
-        data-item-url="http://www.erblet.com/"
-        data-item-custom1-name="base"
-        data-item-custom2-name="trim"
-        data-item-custom3-name="inside">
-        </span>
-      <div id="buyButton" class="button">add to cart</div>
-
-      <img id="helpButton" src="images/help-icon.png" onclick="displayHelp()" />
-    </article>
+        <!-- Base -->
+        <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,643,239" />
+      </map>
 
 
-  </div>
+      <!-- Back Picture of Wallet -->
+      <div id="backWallet" style="padding-top: 10px;">
+        <img class="walletFrame" src="images/emptywallet.png" style="position: absolute; z-index:101;" usemap="#BackWalletMap" />
+
+        <canvas class="walletDisplay" id="backWalletDisplay" width="648px" height="244px"></canvas>
+      </div>
+      <map name="BackWalletMap" id="BackWalletMap">
+        <area alt="" onClick="openModal('base')" shape="rect" coords="5,5,715,266" />
+      </map>
+
+      <!-- Snipcart Products -->
+      <span
+      class="snipcart-add-item"
+      data-item-id="WALLET"
+      data-item-name="wallet"
+      data-item-price="16"
+      data-item-stackable="false"
+      data-item-url="http://www.erblet.com/"
+      data-item-custom1-name="base"
+      data-item-custom2-name="trim"
+      data-item-custom3-name="inside">
+      </span>
+    <div id="buyButton" class="button">add to cart</div>
+
+    <img id="helpButton" src="images/help-icon.png" onclick="displayHelp()" />
+
+    <div style="position: absolute; right: 0; bottom: 0; background-color: #F5F5F5; height: 1vw; width: 5px; z-index: 1; margin-top: -17px; margin-right: -2px;"></div>
+  </article>
   <div id="aside">
     <div style="position: absolute; left: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-left: -2px;margin-top: -3px;"></div>
     <div id="aside-right" style="position: absolute; right: 0; background-color: #F5F5F5; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -3px;"></div>
@@ -133,7 +133,7 @@
     </div>
   </div>
 
-  <div id="footer">
+  <footer id="footer">
     <br/>
     <br/>
     <b id="email" style="text-align: centered"><a href="mailto:erbletwallets@gmail.com">erbletwallets@gmail.com</a></b>
@@ -149,7 +149,7 @@
     </a>
     <br/>
     <br/>
-  </div>
+  </footer>
 </div>
 
 <script type="text/javascript" src="js/index.js"></script>

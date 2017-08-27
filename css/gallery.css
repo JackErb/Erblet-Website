@@ -12,12 +12,6 @@
   padding-bottom: 50px;
 
 }
-
-.clear {
-  clear: both;
-  visibility: hidden;
-}
-
 .asideblocks {
   visibility: visible !important;
 }
