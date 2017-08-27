@@ -94,57 +94,57 @@ var colorCombos = [
   {
     'base': 'icy-blue',
     'trim': 'dark-blue',
-    'insdie': 'gold'
+    'inside': 'gold'
   }
   {
     'base': 'lilac',
     'trim': 'white',
-    'insdie': 'gold'
+    'inside': 'gold'
   }
   {
     'base': 'lilac',
     'trim': 'white',
-    'insdie': 'sage'
+    'inside': 'sage'
   }
   {
     'base': 'teal',
     'trim': 'green',
-    'insdie': 'sage'
+    'inside': 'sage'
   }
   {
     'base': 'teal',
     'trim': 'green',
-    'insdie': 'olive'
+    'inside': 'olive'
   }
   {
     'base': 'black',
     'trim': 'green',
-    'insdie': 'olive'
+    'inside': 'olive'
   }
   {
     'base': 'black',
     'trim': 'neon-orange',
-    'insdie': 'olive'
+    'inside': 'olive'
   }
   {
     'base': 'black',
     'trim': 'neon-orange',
-    'insdie': 'brown'
+    'inside': 'brown'
   }
   {
     'base': 'terracota',
     'trim': 'neon-orange',
-    'insdie': 'brown'
+    'inside': 'brown'
   }
   {
     'base': 'terracota',
     'trim': 'merlot',
-    'insdie': 'brown'
+    'inside': 'brown'
   }
   {
     'base': 'terracota',
     'trim': 'merlot',
-    'insdie': 'beige'
+    'inside': 'beige'
   }
 ];
 
