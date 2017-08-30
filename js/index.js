@@ -35,7 +35,7 @@ var colorHexCodes = {
   'black' : '#0f181f',
   'grey' : '#6B6B6C',
   'dove-grey' : '#C1BEC0',
-  'white' : '#ffffff',
+  'white' : '#F5F5F5',
   'brown' : '#6f372c',
   'beige' : '#f0d7c9',
 
