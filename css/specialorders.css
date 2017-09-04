@@ -11,24 +11,48 @@
 
   text-align: center;
   padding-top: 50px;
+  padding-bottom: 50px;
   font-size: 15px !important;
+
+  padding: 5% 5% 50px 50px;
 
 }
 
-#main article {
-  display: inline;
-  height: 150px;
+.imgContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.painting {
+  height: 300px;
+  width: auto;
+}
+
+p {
   font-weight: bold;
-  text-align: center;
-
-  padding-left: 5%;
-  padding-right: 5%;
-
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 span {
   color: #888888;
+}
+
+#mainText {
+  margin-top: 30px;
+}
+
+hr {
+  display: block;
+   height: 1px;
+   border: 0;
+   border-top: 1px solid #dfdfdf;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   padding: 0;
+}
+
+@media only screen and (max-width: 620px), (max-device-width: 480px)  {
+  .painting {
+    width: 300px;
+    height: auto;
+  }
 }
