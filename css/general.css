@@ -79,6 +79,7 @@ body {
 
   max-width: 230px;
   width: 230px;
+  height: 608px;
 
   border-top: 2px solid #dfdfdf;
 }
@@ -93,22 +94,50 @@ body {
   width: 100%;
 }
 
-#close {
+.close {
+  margin: 0px;
+  padding: 0px;
   width: 100%;
 
   color: #aaaaaa;
   font-weight: bold;
+  text-align: left;
   font-size: 19px;
   line-height: 1.4;
+
+  padding-left: 5px;
+  padding-right: 5px;
 
   cursor: pointer;
 
   -webkit-transition-duration: 0.4s;
   -moz-transition-duration: 0.4s;
   transition-duration: 0.4s;
+
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
 }
-#close:hover {
+.close:hover {
   color: #cecece;
+}
+
+
+.close div {
+  display: inline-block;
+
+  margin: 1px;
+  margin-bottom: 0;
+  padding: 10px;
+  border-radius: 2px;
+  float: right;
+
+  cursor: pointer;
+}
+
+.close span {
+  font-size: 15px;
 }
 
 .color {
@@ -130,8 +159,7 @@ body {
   opacity: 0.8;
 }
 
-#colors {
-  margin-top: 10px;
+.colors {
   text-align: center;
 }
 
@@ -203,7 +231,7 @@ body {
   position: relative;
   margin-bottom: 15px;
   width: 230px;
-  height: 248px;
+  height: 200px;
   border-bottom: 2px solid #dfdfdf;
 }
 
@@ -212,7 +240,7 @@ body {
   overflow-y: scroll;
   margin: 0 auto;
   width: 230px;
-  height: 200px;
+  height: 152px;
   text-align: center;
 }
 
@@ -268,6 +296,7 @@ a:active { color: #aaaaaa; text-decoration:none; font-weight:bold; }
 
   max-width: none;
   width: 230px;
+  height: 500px;
 
   text-align: center;
   line-height: 0;

@@ -126,10 +126,19 @@
       <div style="position: absolute; bottom: 0; right: 0; background-color: #FFFFFF; width: 2vw; padding-top: 3%; z-index: 1; margin-bottom: -2px;"></div>
     </div>
     <div id="colorsContainer">
-      <span id="close" onclick="closeModal()">primary color &times;</span>
-      <div id="colors">
+      <div id="primary" class="close" onclick="openModal('base')"><span>></span> primary: <div id="primaryColor"></div></div>
+      <div id="primaryColors" class="colors">
 
       </div>
+      <div id="secondary" class="close" onclick="openModal('trim')"><span>></span> secondary: <div id="secondaryColor"></div></div>
+      <div id="secondaryColors" class="colors">
+
+      </div>
+      <div id="tertiary" class="close" onclick="openModal('inside')"><span>></span> id background: <div id="tertiaryColor"></div></div>
+      <div id="tertiaryColors" class="colors">
+
+      </div>
+      <!--<div class="close"><span>></span> other options: </div>-->
     </div>
   </div>
 

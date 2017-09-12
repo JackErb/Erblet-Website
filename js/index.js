@@ -203,7 +203,7 @@ var colorChangeInterval = setInterval(function() {
   changeColor(colorCombos[colorCounter]['base'], false);
 
   colorCounter++;
-},1500);
+},100000000);
 
 var componentToChangeColor = "base";
 changeColor(base, false);
@@ -302,15 +302,31 @@ for (var key in colorHexCodes) {
     } else {
       colorDiv.style.backgroundColor = colorHexCodes[key];
     }
-
-    $('#colors').append(colorDiv);
-    $(colorDiv).click(function(event) {
+    var p = colorDiv.cloneNode();
+    $(p).click(function(event) {
       changeColor(event.target.id, true);
     })
+    $('#primaryColors').append(p);
+
+    var s = colorDiv.cloneNode();
+    $(s).click(function(event) {
+      changeColor(event.target.id, true);
+    })
+    $('#secondaryColors').append(s);
+
+    var t = colorDiv.cloneNode();
+    $(t).click(function(event) {
+      changeColor(event.target.id, true);
+    })
+    $('#tertiaryColors').append(t);
   }
 }
 
 $(colorsContainer).height($(colorsContainer).height());
+
+$('#primaryColors').hide();
+$('#secondaryColors').hide();
+$('#tertiaryColors').hide();
 
 
 // When the user presses escape, close the color selector
@@ -321,7 +337,7 @@ document.onkeydown = function(evt) {
     }
 };
 
-function openModal(target) {
+function openModal(target, instantly) {
   if (colorChangeInterval != null) {
     clearInterval(colorChangeInterval);
     colorChangeInterval = null;
@@ -331,14 +347,53 @@ function openModal(target) {
   $(colorsContainer).slideDown('smooth');
   componentToChangeColor = target;
 
-  document.getElementById("close").innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
+  // document.getElementById("close").innerHTML = componentDisplayName(componentToChangeColor) + " color &times;";
+  switch(target) {
+    case 'base':
+      componentToChangeColor = 'base';
+      var time = 'smooth';
+      if (instantly) {
+        time = 0;
+      }
+      $('#primaryColors').animate({'height': 'show'}, time);
+      $('#primary span').text('v');
+
+      $('#secondaryColors').animate({'height': 'hide'});
+      $('#tertiaryColors').animate({'height': 'hide'});
+      $('#secondary span').text('>');
+      $('#tertiary span').text('>');
+
+      break;
+    case 'trim':
+      componentToChangeColor = 'trim';
+      $('#secondaryColors').animate({'height': 'show'});
+      $('#secondary span').text('v');
+
+
+      $('#primaryColors').animate({'height': 'hide'});
+      $('#tertiaryColors').animate({'height': 'hide'});
+      $('#primary span').text('>');
+      $('#tertiary span').text('>');
+      break;
+    case 'inside':
+      componentToChangeColor = 'inside';
+      $('#tertiaryColors').animate({'height': 'show'});
+      $('#tertiary span').text('v');
+
+
+      $('#secondaryColors').animate({'height': 'hide'});
+      $('#primaryColors').animate({'height': 'hide'});
+      $('#secondary span').text('>');
+      $('#primary span').text('>');
+      break;
+  }
 
   // Hide the help display
-  if (isMobile()) {
+  /*if (isMobile()) {
     $('#helpDisplay').animate({height:'hide'},'smooth')
   } else {
     $("#helpDisplay").animate({width:'hide'},'smooth');
-  }
+  }*/
 }
 
 function closeModal() {
@@ -347,6 +402,7 @@ function closeModal() {
 
 // Switch the color of the wallet
 function changeColor(color, shouldStopInterval) {
+  console.log(color);
   // Stop interval that's in charge of constantly changing the wallet's color
   if (shouldStopInterval) {
     clearInterval(colorChangeInterval);
@@ -395,6 +451,13 @@ function changeColor(color, shouldStopInterval) {
   }
   $('#helpContent').css('background-color',adjustColor(color,lighten));
   $('#helpContent').css('color',adjustColor(color,darken));
+
+
+  // Update the color selection display
+  $('#primaryColor').css('background-color',colorHexCodes[base]);
+  $('#secondaryColor').css('background-color',colorHexCodes[trim]);
+  $('#tertiaryColor').css('background-color',colorHexCodes[inside]);
+
 
   drawWallet(1.0, base, trim, inside, $('#frontWalletDisplay')[0]);
   drawBackWallet($('#backWalletDisplay')[0]);
@@ -568,7 +631,6 @@ function addWalletIconToCart(item, number) {
 }
 
 function updateCheckoutCart() {
-  console.log("updating");
   $('#cartDisplay .cartItem').remove();
 
   var tempBase = base;
@@ -629,3 +691,5 @@ function adjustColor(col, amt) {
 
     return '#' + pad(color, 6, 0);
 }
+
+openModal('base', true);
