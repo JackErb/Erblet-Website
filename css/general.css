@@ -63,6 +63,12 @@ body {
   border-right: 2px solid #dfdfdf;
 }
 
+#main {
+  position: relative;
+  display: block;
+  text-align: center;
+  border-top: 2px solid #dfdfdf;
+}
 
 #aside {
   position: relative;

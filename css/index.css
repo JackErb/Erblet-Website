@@ -23,10 +23,6 @@
   width: 150px !important;
 }
 
-#snipcart-show-discount-box {
-  display: none;
-}
-
 .snip-product__empty {
   visibility: hidden;
 }

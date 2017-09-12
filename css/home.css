@@ -1,0 +1,8 @@
+.productDisplay {
+  height: 200px;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  margin-bottom: 10px;
+
+  border-bottom: 2px solid #f0f0f0;
+}
