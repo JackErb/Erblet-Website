@@ -19,9 +19,21 @@ var imageData = [
     'description': 'the <span>great wave off kanagawa</span>, made entirely in duct tape',
     'src': 'images/wave.jpeg'
   },
-]
+];
 
-function displayImage(num) {
+var counter = 0;
+var imageChangeInterval = setInterval(function(){
+  counter++;
+  if (counter >= imageData.length) {
+    counter = 0;
+  }
+  displayImage(counter, false);
+}, 4000);
+
+function displayImage(num, userInput) {
+  if (userInput) {
+    clearInterval(imageChangeInterval);
+  }
   $('#mainImage').attr('src',imageData[num].src);
   $('#imageDescription').html(imageData[num].description);
 }
