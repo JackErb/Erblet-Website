@@ -558,6 +558,7 @@ function drawWallet(scale, base, trim, inside, canvas) {
 
   // Draw base
   ctx.fillStyle = getFill(ctx, base);
+
   ctx.fillRect(0,0,720 * canvasScale,271 * canvasScale);
 
   // Draw trim
@@ -567,6 +568,7 @@ function drawWallet(scale, base, trim, inside, canvas) {
   ctx.fillRect(15*canvasScale,68*canvasScale,329*canvasScale,19*canvasScale);
   ctx.fillRect(15*canvasScale,98*canvasScale,329*canvasScale,19*canvasScale);
   ctx.fillRect(369*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
+
 
   if (trim == base) {
     ctx.strokeRect(15*canvasScale,38*canvasScale,329*canvasScale,19*canvasScale);
@@ -581,7 +583,10 @@ function drawWallet(scale, base, trim, inside, canvas) {
 
   //Draw inside
   ctx.fillStyle = getFill(ctx, inside);
+
   ctx.fillRect(369*canvasScale,57*canvasScale,329*canvasScale,178*canvasScale);
+
+
 
   if (inside == trim || inside == base) {
     ctx.strokeRect(369*canvasScale,57*canvasScale,329*canvasScale,178*canvasScale);

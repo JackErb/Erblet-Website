@@ -6,7 +6,6 @@
     <link type="text/css" href="css/general.css" rel="stylesheet /">
     <link type="text/css" href="css/phone.css" rel="stylesheet /">
     <link type="text/css" href="css/gallery.css" rel="stylesheet /">
-
     <meta name="viewport" content="width=644">
 
 
@@ -30,29 +29,27 @@
 
 
     <div id="main">
-      <div style="position: absolute; left: 0; background-color: #FFFFFF; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -54px; margin-right: -2px;"></div>
-      <div id="mainRight" style="position: absolute; right: 0; background-color: #FFFFFF; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -54px; margin-right: 0px;"></div>
-      <div class='left'>
-        <img id='painting' src='images/serenawilliams.jpeg'/>
-        <p>a duct tape portrait of tennis star, <span>serena williams</span></p>
+      <div style="position: absolute; left: 0; background-color: #FFFFFF; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -29px; margin-right: -2px;"></div>
+      <div id="mainRight" style="position: absolute; right: 0; background-color: #FFFFFF; width: 2vw; padding-top: 3%; z-index: 1; margin-top: -29px; margin-right: 0px;"></div>
+      <div id="imageDisplay">
+        <img id="mainImage">
+        <p id="imageDescription">This is an image.</p>
       </div>
-      <div class='right'>
-        <p><span>erblet</span> wallets are made nearly 100% out of duct tape with only 1.4% of the wallet being a film for the id-holder</p>
-        <img id='wallets' src='images/wallets.jpg'/>
+      <div class="row">
+        <div class="column">
+          <img src="images/serenawilliams.jpeg" onclick="displayImage(0)" class="hover-shadow">
+        </div>
+        <div class="column">
+          <img id="walletspic" src="images/wallets.jpg" onclick="displayImage(1)" class="hover-shadow">
+        </div>
+        <div class="column">
+          <img id="walletpic" src="images/walletpic.jpeg" onclick="displayImage(2)" class="hover-shadow">
+        </div>
+        <div class="column">
+          <img src="images/wave.jpeg" onclick="displayImage(3)" class="hover-shadow">
+        </div>
       </div>
-
-      <div class='left'>
-        <img id='wave' src='images/wave.jpeg'/>
-        <p>the <span>great wave off kanagawa</span>, made entirely in duct tape</p>
-      </div>
-      <div class='right'>
-        <p>an <span>erblet wallet</span> is pretty much just a highly functional piece of art. here's a design from artist wilson rhan.</p>
-        <img id='walletPic' src='images/walletpic.jpeg'/>
-      </div>
-      <hr class='clear'/>
     </div>
-
-
     <div id="footer">
       <br/>
       <br/>
@@ -71,4 +68,6 @@
       <br/>
     </div>
   </div>
+
+  <script type="text/javascript" src="js/gallery.js"></script>
 </body>
