@@ -1,8 +1,148 @@
-.productDisplay {
-  height: 200px;
-  margin-left: 3vw;
-  margin-right: 3vw;
-  margin-bottom: 10px;
 
-  border-bottom: 2px solid #f0f0f0;
+* {
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.arrow {
+  font-size: 8px;
+}
+
+body > header {
+  position: relative;
+  text-align: center;
+  background-color: #B9B9B9;
+  height: 60px;
+
+  border-bottom: 3px solid #9E9E9E;
+}
+  #menuIcon {
+    float:left;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    width: 25px;
+  }
+
+  body > header h1 {
+    padding-top: 12px;
+    color: #EFEFEF;
+  }
+
+
+#design {
+  padding: 5px;
+  text-align: center;
+}
+
+  #design h2 {
+    color: black;
+    font-weight:lighter;
+  }
+
+  #design h6 {
+    color: #9B9B9B;
+    font-weight: normal;
+  }
+
+
+#imageGallery{
+  width: 100%;
+  height:auto;
+}
+
+  #imageGallery img {
+    display: block;
+    width:100%;
+  }
+
+
+#walletStyles header {
+  background-color: #EFEFEF;
+  border-bottom: 3px solid #CBCBCB;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+  #walletStyles header h2 {
+    font-size: 19px;
+    font-weight: lighter;
+    text-align: center;
+  }
+
+.product {
+  overflow: auto;
+  width: 98%;
+  margin-left: 1%;
+
+  margin-bottom: 15px;
+  margin-top: 15px;
+
+  padding-bottom: 15px;
+}
+
+  .product .description {
+    margin-top: 7px;
+    margin-left: 10px;
+
+    width: 29%;
+
+    float: left;
+  }
+
+  .product .description h3 {
+    color: white;
+    padding-bottom: 5px;
+  }
+
+  .product .description .walletDescription {
+    color: #4F4F4F;
+  }
+
+  .product .imgContainer {
+    position: relative;
+    margin-top: 20px;
+    margin-right: 8px;
+    float: right;
+    width: 65%;
+    height: auto;
+  }
+
+  .product .imgContainer img {
+    width: 100%;
+  }
+
+  .product .imgContainer p {
+    margin-right: 5px;
+    margin-top: 10px;
+    text-align: right;
+    color: #A4A4A4;
+    font-size: 14px;
+  }
+
+  .product .description .learnMore {
+    color: #A4A4A4;
+    margin-top: 5px;
+    font-size: 10px;
+  }
+
+
+
+#yak {
+  background-color: #E7E6E8;
+}
+
+.walletDescription {
+  font-size: 9px;
 }
