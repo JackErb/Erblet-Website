@@ -3,6 +3,10 @@
 <html lang="en">
 <head>
   <link type="text/css" href="css/home.css" rel="stylesheet /">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="js/jquery-rotate.js"></script>
+  <script src="js/home.js"></script>
+
 
   <meta name="viewport" content="width=device-width">
 </head>
@@ -38,8 +42,13 @@
           <p class="walletDescription">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
-          <p class="learnMore"><span class="arrow">&#9658;</span> more about this wallet</p>
+          <p class="learnMore" onclick="showInfo('yak');"><img class="arrow" src="images/arrowIcon.png">more about this wallet</p>
         </div>
+      </div>
+      <div id="yakInfo" class="moreInfo">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
       </div>
     </div>
   </article>

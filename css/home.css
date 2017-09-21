@@ -1,4 +1,4 @@
-
+/* Website is initially designed for the target of iPhone 6 Plus, 414 x 736px */
 * {
   font-family: Helvetica;
   margin: 0;
@@ -7,6 +7,7 @@
   outline: 0;
   vertical-align: baseline;
   background: transparent;
+
 }
 
 
@@ -16,7 +17,9 @@ html, body {
 }
 
 .arrow {
-  font-size: 8px;
+  display: inline;
+  margin-right: 3px;
+  width: 5px;
 }
 
 body > header {
@@ -42,6 +45,7 @@ body > header {
 
 
 #design {
+  /*background-color: #EFEFEF;*/
   padding: 5px;
   text-align: center;
 }
@@ -59,12 +63,13 @@ body > header {
 
 #imageGallery{
   width: 100%;
-  height:auto;
+  /*border-top: 3px solid #9E9E9E;*/
 }
 
   #imageGallery img {
     display: block;
     width:100%;
+    height: auto;
   }
 
 
@@ -86,7 +91,6 @@ body > header {
   width: 98%;
   margin-left: 1%;
 
-  margin-bottom: 15px;
   margin-top: 15px;
 
   padding-bottom: 15px;
@@ -108,6 +112,7 @@ body > header {
 
   .product .description .walletDescription {
     color: #4F4F4F;
+    font-size: 9px;
   }
 
   .product .imgContainer {
@@ -131,6 +136,11 @@ body > header {
     font-size: 14px;
   }
 
+  .product .imgContainer .arrow {
+    font-size: 10px;
+    margin-right: 1px;
+  }
+
   .product .description .learnMore {
     color: #A4A4A4;
     margin-top: 5px;
@@ -143,6 +153,52 @@ body > header {
   background-color: #E7E6E8;
 }
 
-.walletDescription {
-  font-size: 9px;
+
+.moreInfo {
+  width: 88%;
+  margin-right: 1%;
+  padding: 10px;
+  float: right;
+  background-color: #EFEFEF;
+  border: 2px solid #E7E6E8;
+  border-top: 0px;
+  font-size: 11px;
+
+  overflow: hidden;
+}
+
+  .moreInfo > p {
+    overflow: hidden;
+  }
+
+@media only screen and (max-width: 398px) {
+  .walletDescription {
+    font-size: 8px !important;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .product .imgContainer {
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .product .imgContainer {
+    width: 59%;
+  }
+
+  .product .description {
+    width: 34%;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .product .imgContainer {
+    margin-top: 30px;
+  }
+
+  .product .imgContainer p {
+    margin-top: 15px;
+  }
 }
