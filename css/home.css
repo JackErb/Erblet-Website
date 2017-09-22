@@ -7,7 +7,6 @@
   outline: 0;
   vertical-align: baseline;
   background: transparent;
-
 }
 
 
@@ -128,12 +127,15 @@ body > header {
     width: 100%;
   }
 
-  .product .imgContainer p {
+  .product .imgContainer a {
     margin-right: 5px;
     margin-top: 10px;
     text-align: right;
     color: #A4A4A4;
     font-size: 14px;
+    text-decoration: none;
+
+    float: right;
   }
 
   .product .imgContainer .arrow {
@@ -145,6 +147,11 @@ body > header {
     color: #A4A4A4;
     margin-top: 5px;
     font-size: 10px;
+
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
   }
 
 
