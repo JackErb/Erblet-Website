@@ -11,46 +11,90 @@
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
-  <header>
-    <img id="menuIcon" src="images/menuIcon.png">
-    <h1>erblet</h1>
+  <header id="header">
+    <div id="titleBox">
+      <h1>erblet<h5>wallets</h5></h1>
+    </div>
   </header>
-  <article>
+  <div id="whiteSpace"></div>
+  <article id="main">
     <div id="design">
-      <h2>design a duct tape wallet</h2>
+      <h2>handmade duct tape wallets, designed by you</h2>
       <h6><span class="arrow">&#9658;</span> learn more</h6>
     </div>
 
     <div id="imageGallery">
-      <img src="images/walletheader.jpeg">
+      <span class="helper"></span>
+      <img class="galleryArrow" src="images/arrowleft.png" onclick="galleryChange(-1)">
+      <div id="imageContainer">
+        <img id="placeholder" src="images/home/gallery0.jpeg"></img>
+        <img id="img" src="images/home/gallery0.jpeg">
+        <img id="img2" src="images/home/gallery1.jpeg">
+      </div>
+      <img class="galleryArrow" src="images/arrowright.png" onclick="galleryChange(1)">
     </div>
 
-    <div id="walletStyles">
-      <header>
-        <h2>wallet styles</h2>
+    <hr class="separator">
 
-      </header>
-
-      <div id="yak" class="product">
-        <div class="imgContainer">
-          <img src="images/yakWallet.jpg">
-
-          <a href="www.erblet.com"><span class="arrow">&#9658;</span> design now</a>
+    <div id="popularDesigns">
+      <h2>popular designs</h2>
+      <div id="wallets">
+        <div class="popularWallets">
+          <img src="images/home/theyak.jpeg">
+          <div class="button">add to cart</div>
+          <div class="button">customize</div>
         </div>
-        <div class="description">
-          <h3>the yak</h3>
-          <p class="walletDescription">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <p class="learnMore" onclick="showInfo('yak');"><img class="arrow" src="images/arrowIcon.png">more about this wallet</p>
+        <div class="popularWallets">
+          <img src="images/home/theyak.jpeg">
+          <div class="button">add to cart</div>
+          <div class="button">customize</div>
         </div>
-      </div>
-      <div id="yakInfo" class="moreInfo">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+        <div class="popularWallets">
+          <img src="images/home/theyak.jpeg">
+          <div class="button">add to cart</div>
+          <div class="button">customize</div>
+        </div>
+        <div class="popularWallets">
+          <img src="images/home/theyak.jpeg">
+          <div class="button">add to cart</div>
+          <div class="button">customize</div>
+        </div>
       </div>
     </div>
+
+    <hr class="separator">
+
+    <div id="productsBox">
+      <h2>products</h2>
+      <div id="products">
+        <div class="product">
+          <h2>the yak</h2>
+          <img class="productImage" src="images/home/theyak.jpeg">
+          <h3>the quick red fox jumped over the lazy brown dog</h3>
+
+        </div>
+        <div class="product">
+        </div>
+      </div>
+    </div>
+
   </article>
+  <footer id="footer">
+    <br/>
+    <br/>
+    <b id="email" style="text-align: centered"><a href="mailto:erbletwallets@gmail.com">erbletwallets@gmail.com</a></b>
+    <br/>
+    <a href="https://www.instagram.com/erbletwallets/" target="_blank">
+      <img class="socialMediaLink" src="images/instagram.png"/>
+    </a>
+    <a href="https://www.facebook.com/erbletwallets/" target="_blank">
+      <img class="socialMediaLink" src="images/facebook.png"/>
+    </a>
+    <a href="https://twitter.com/erbletwallets" target="_blank">
+      <img class="socialMediaLink" src="images/twitter.png"/>
+    </a>
+    <br/>
+    <br/>
+  </footer>
 </body>
 </html>
